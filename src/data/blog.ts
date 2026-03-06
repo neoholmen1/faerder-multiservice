@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Skal du flytte? Her er fem tips som gjør at du får tilbake depositumet og leverer en bolig du kan være stolt av.",
     tags: ["Tips", "Flyttevask"],
-    image: "/images/illustrations/blogg-flyttevask.png",
+    image: "/images/illustrations/blogg-flyttevask.webp",
     date: "Februar 2026",
     seoTitle: "5 ting du bør vite før du bestiller flyttevask — Færder Multiservice",
     seoDescription:
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Ukentlig, annenhver uke eller månedlig? Vi hjelper deg å finne riktig frekvens for hjemmet ditt.",
     tags: ["Guide", "Fast vask"],
-    image: "/images/illustrations/blogg-fast-vask.png",
+    image: "/images/illustrations/blogg-fast-vask.webp",
     date: "Februar 2026",
     seoTitle: "Hvor ofte bør du ha fast vask? En guide — Færder Multiservice",
     seoDescription:
@@ -73,7 +73,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Små daglige rutiner gjør en stor forskjell. Her er våre beste tips for et rent hjem — uten å bruke hele helgen.",
     tags: ["Tips", "Renhold"],
-    image: "/images/illustrations/blogg-rent-mellom.png",
+    image: "/images/illustrations/blogg-rent-mellom.webp",
     date: "Januar 2026",
     seoTitle: "Slik holder du hjemmet rent mellom vaskene — Færder Multiservice",
     seoDescription:
@@ -101,7 +101,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Et rent arbeidsmiljø øker produktivitet, reduserer sykefravær og gir et bedre inntrykk på kunder og ansatte.",
     tags: ["Guide", "Kontor"],
-    image: "/images/illustrations/blogg-profesjonelt-renhold.png",
+    image: "/images/illustrations/blogg-profesjonelt-renhold.webp",
     date: "Januar 2026",
     seoTitle: "Derfor bør bedrifter investere i profesjonelt renhold — Færder Multiservice",
     seoDescription:

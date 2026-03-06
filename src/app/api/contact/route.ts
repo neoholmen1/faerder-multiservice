@@ -3,8 +3,15 @@ import { Resend } from "resend";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-// ── Resend client ──
-const resend = new Resend(process.env.RESEND_API_KEY);
+// ── Resend client (lazy — avoids build crash when env var is missing) ──
+let _resend: Resend | null = null;
+function getResend() {
+  if (!_resend) {
+    if (!process.env.RESEND_API_KEY) return null;
+    _resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return _resend;
+}
 
 // ── Rate limiter (optional — skipped if env vars missing) ──
 const ratelimit =
@@ -68,6 +75,14 @@ export async function POST(req: NextRequest) {
     const sted = String(body.sted ?? "").trim();
     const tjeneste = String(body.tjeneste ?? "").trim();
     const melding = String(body.melding ?? "").trim();
+
+    const resend = getResend();
+    if (!resend) {
+      return NextResponse.json(
+        { error: "E-post er ikke konfigurert." },
+        { status: 503 }
+      );
+    }
 
     const fromEmail = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
     const notificationEmail = process.env.NOTIFICATION_EMAIL ?? "post@faerdermultiservice.no";

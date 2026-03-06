@@ -333,7 +333,7 @@ export const services: Service[] = [
     steps: [
       { title: "Si ifra", description: "Boligtype, størrelse og når visningen er." },
       { title: "Du får fast pris", description: "Ingen overraskelser. Rett frem." },
-      { title: "Vi gjør den klar", description: "Boligen skinne til visning og foto." },
+      { title: "Vi gjør den klar", description: "Boligen skinner til visning og foto." },
     ],
     faq: [
       { question: "Hvor tidlig bør jeg bestille?", answer: "Helst 3–5 dager før. Haster det? Bare ring — vi prøver alltid å få det til." },

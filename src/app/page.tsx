@@ -18,12 +18,12 @@ import { testimonials } from "@/data/testimonials";
 import { blogPosts } from "@/data/blog";
 
 const tjenester = [
-  { name: "Fast vask", pris: "350 kr/t", slug: "fast-vask", icon: Home },
-  { name: "Flyttevask", pris: "3 500 kr", slug: "flyttevask", icon: Truck },
-  { name: "Kontorvask", pris: "Avtale", slug: "kontorvask", icon: Building2 },
-  { name: "Byggvask", pris: "400 kr/t", slug: "byggvask", icon: HardHat },
-  { name: "Spesialvask", pris: "350 kr/t", slug: "spesialvask", icon: Sparkles },
-  { name: "Luktsanering", pris: "Befaring", slug: "luktsanering", icon: Wind },
+  { name: "Fast vask", pris: "Fra 550 kr", slug: "fast-vask", icon: Home },
+  { name: "Flyttevask", pris: "Fra 3 500 kr", slug: "flyttevask", icon: Truck },
+  { name: "Kontorvask", pris: "Etter avtale", slug: "kontorvask", icon: Building2 },
+  { name: "Byggvask", pris: "Fra 5 000 kr", slug: "byggvask", icon: HardHat },
+  { name: "Spesialvask", pris: "Fra 800 kr", slug: "spesialvask", icon: Sparkles },
+  { name: "Luktsanering", pris: "Fra 3 000 kr", slug: "luktsanering", icon: Wind },
 ];
 
 /* ── Service card — icon + text, no images ── */
@@ -38,7 +38,7 @@ function TjenesteKort({ t }: { t: (typeof tjenester)[number] }) {
       <Icon size={48} strokeWidth={1.2} className="text-primary" />
 
       <h3 className="mt-4 text-[16px] font-semibold tracking-tight text-text">{t.name}</h3>
-      <p className="mt-1.5 text-[13px] font-medium text-primary">Fra {t.pris}</p>
+      <p className="mt-1.5 text-[13px] font-medium text-primary">{t.pris}</p>
 
       <ArrowRight size={14} className="mt-3 text-text-secondary/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
     </Link>
@@ -162,7 +162,7 @@ const stegData = [
   {
     nr: "03",
     tittel: "Vi gjør jobben",
-    tekst: "Lén deg tilbake. Vi fikser resten — grundig og skikkelig.",
+    tekst: "Len deg tilbake. Vi fikser resten — grundig og skikkelig.",
     bilde: "/images/illustrations/steg-vasker.webp",
     alt: "Vasketeamet i arbeid",
     rotate: "-1deg",
@@ -573,7 +573,7 @@ function CTASeksjon() {
           <div className="relative mx-auto max-w-[280px] lg:max-w-[380px]">
             <div className="absolute -top-8 -left-8 -z-10 h-[300px] w-[300px] rounded-full bg-primary/[0.06]" aria-hidden="true" />
             <Image
-              src="/images/illustrations/hjem_til_rent_hus.png"
+              src="/images/illustrations/hjem_til_rent_hus.webp"
               alt="Glad person som kommer hjem til rent hus"
               width={380}
               height={380}
