@@ -5,6 +5,7 @@ import { Confetti } from "@/components/Confetti";
 
 export const metadata: Metadata = {
   title: "Takk! Vi ringer deg · Færder Multiservice",
+  description: "Vi ringer deg vanligvis samme dag med et tilbud. Ingen forpliktelser.",
   robots: { index: false, follow: false },
 };
 

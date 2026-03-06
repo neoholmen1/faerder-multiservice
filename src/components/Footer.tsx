@@ -71,7 +71,7 @@ export function Footer() {
               <li>
                 <span className="flex items-start gap-2.5 text-[15px] text-text-secondary">
                   <MapPin size={15} className="mt-0.5 shrink-0" />
-                  Rambergveien, 3115 Tønsberg
+                  Smørmeien 1, 3116 Nøtterøy
                 </span>
               </li>
             </ul>

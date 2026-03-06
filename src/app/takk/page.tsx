@@ -5,6 +5,7 @@ import { Confetti } from "@/components/Confetti";
 
 export const metadata: Metadata = {
   title: "Takk for din henvendelse · Færder Multiservice",
+  description: "Vi har mottatt meldingen din og svarer vanligvis innen 1 virkedag.",
   robots: { index: false, follow: false },
 };
 

@@ -117,7 +117,7 @@ export default function OmOssPage() {
               {
                 icon: Heart,
                 title: "Lokalt og personlig",
-                text: "Basert på Kaldnes i Tønsberg. Kort reisevei, kjente fjes, personlig oppfølging.",
+                text: "Basert på Nøtterøy. Kort reisevei, kjente fjes, personlig oppfølging.",
                 color: "text-rose-500",
                 bg: "bg-rose-50",
               },

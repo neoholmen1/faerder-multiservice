@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
           </p>
           <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 24px 0;" />
           <p style="color: #9CA3AF; font-size: 13px;">
-            Færder Multiservice AS · Rambergveien, 3115 Tønsberg<br />
+            Færder Multiservice AS · Smørmeien 1, 3116 Nøtterøy<br />
             <a href="https://faerdermultiservice.no" style="color: #E8721C;">faerdermultiservice.no</a>
           </p>
         </div>

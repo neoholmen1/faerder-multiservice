@@ -286,7 +286,7 @@ function HvorforOss() {
             { icon: ShieldCheck, tittel: "Offentlig godkjent", tekst: "Godkjent av Arbeidstilsynet. Alt er på stell hos oss.", iconColor: "text-blue-600", bgColor: "bg-blue-50", tooltip: "Registrert i Renholdsregisteret." },
             { icon: Handshake, tittel: "Medlem av NHO", tekst: "Vi er med i NHO Service og Handel. Vi gjør ting ordentlig.", iconColor: "text-violet-600", bgColor: "bg-violet-50", tooltip: "NHO Service og Handel." },
             { icon: Leaf, tittel: "EV-sertifisert", tekst: "Vi vasker med damp — ingen sterke kjemikalier. Bra for deg og miljøet.", iconColor: "text-emerald-600", bgColor: "bg-emerald-50", tooltip: "Kun vann og varme. Ingen kjemikalier." },
-            { icon: MapPin, tittel: "Lokalt i Vestfold", tekst: "Vi holder til på Kaldnes. Kort vei til hele Vestfold.", iconColor: "text-amber-600", bgColor: "bg-amber-50", tooltip: "Rambergveien, Tønsberg." },
+            { icon: MapPin, tittel: "Lokalt i Vestfold", tekst: "Vi holder til på Nøtterøy. Kort vei til hele Vestfold.", iconColor: "text-amber-600", bgColor: "bg-amber-50", tooltip: "Smørmeien 1, Nøtterøy." },
           ].map((k) => {
             const Icon = k.icon;
             return (
@@ -798,12 +798,14 @@ export default function Hjem() {
               Vaskebyrå i Vestfold
             </span>
 
-            {/* "Rent ___." — typewriter */}
-            <HeroTypewriter />
-            {/* "Null stress." — serif italic orange */}
-            <span className="block font-serif italic text-[clamp(2rem,8vw,2.5rem)] leading-[1.05] tracking-[-0.02em] text-primary md:text-[clamp(2.25rem,8vw,5rem)]">
-              Null stress.
-            </span>
+            {/* "Rent ___. Null stress." — h1 with typewriter */}
+            <h1>
+              <HeroTypewriter />
+              {/* "Null stress." — serif italic orange */}
+              <span className="block font-serif italic text-[clamp(2rem,8vw,2.5rem)] leading-[1.05] tracking-[-0.02em] text-primary md:text-[clamp(2.25rem,8vw,5rem)]">
+                Null stress.
+              </span>
+            </h1>
 
             {/* Subtitle */}
             <p className="mx-auto mt-5 max-w-lg text-[1.0625rem] font-medium leading-[1.6] tracking-wide text-text-secondary">

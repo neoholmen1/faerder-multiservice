@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nb">
+    <html lang="no">
       <body className={`${dmSans.variable} ${dmSerif.variable} antialiased`}>
         <LocalBusinessJsonLd />
         <Header />

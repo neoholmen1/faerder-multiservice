@@ -17,15 +17,15 @@ export function LocalBusinessJsonLd() {
     email: "post@faerdermultiservice.no",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Rambergveien",
-      addressLocality: "Tønsberg",
-      postalCode: "3115",
+      streetAddress: "Smørmeien 1",
+      addressLocality: "Nøtterøy",
+      postalCode: "3116",
       addressCountry: "NO",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 59.264031,
-      longitude: 10.402755,
+      latitude: 59.2256,
+      longitude: 10.4186,
     },
     areaServed: {
       "@type": "GeoCircle",
@@ -36,6 +36,7 @@ export function LocalBusinessJsonLd() {
       },
       geoRadius: "50000",
     },
+    openingHours: "Mo-Fr 08:00-16:00",
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],

@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "404 — Siden finnes ikke",
+  description: "Denne siden finnes ikke. Se våre tjenester eller kontakt oss.",
+  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
