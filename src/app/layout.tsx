@@ -1,17 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { CookieBanner } from "@/components/CookieBanner";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const dmSerif = DM_Serif_Display({
+  variable: "--font-dm-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -22,20 +32,20 @@ export const metadata: Metadata = {
     template: "%s | Færder Multiservice",
   },
   description:
-    "Profesjonelt renhold for hjem og bedrift i Tønsberg, Nøtterøy og Vestfold. Offentlig godkjent, EV-sertifisert. Se priser og bestill.",
+    "Skikkelig renhold for hjem og bedrift i Vestfold. Godkjent, EV-sertifisert, fra 350 kr/t. Se priser og bestill.",
   openGraph: {
     type: "website",
     locale: "nb_NO",
     siteName: "Færder Multiservice AS",
-    title: "Færder Multiservice — Profesjonelt renhold i Vestfold",
+    title: "Færder Multiservice — Skikkelig renhold i Vestfold",
     description:
-      "Fast vask fra 350 kr/t. Flyttevask, kontorvask og mer. EV-sertifisert, NHO-medlem, 4.8/5 på Google.",
+      "Fast vask fra 350 kr/t. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
     url: "https://faerdermultiservice.no",
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Færder Multiservice — Rent hjem. Null stress." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Færder Multiservice — Profesjonelt renhold i Vestfold",
+    title: "Færder Multiservice — Vi vasker, du slipper",
     description:
       "Fast vask fra 350 kr/t. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
     images: ["/images/og-image.jpg"],
@@ -56,7 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nb">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${dmSerif.variable} antialiased`}>
         <LocalBusinessJsonLd />
         <Header />
         <main>
@@ -64,6 +74,8 @@ export default function RootLayout({
         </main>
         <Footer />
         <ScrollToTop />
+        <CookieBanner />
+        <GoogleAnalytics />
         <Analytics />
         <Script id="easter-egg" strategy="afterInteractive">{`
           console.log('%c\\u{1f9f9} Færder Multiservice','font-size:16px;font-weight:bold;color:#E8721C');

@@ -14,6 +14,7 @@ export interface Service {
   longDescription: string;
   price: string;
   icon: string;
+  image: string;
   included: string[];
   frequencies: FrequencyOption[];
   steps: { title: string; description: string }[];
@@ -27,9 +28,10 @@ export const services: Service[] = [
   {
     slug: "fast-vask",
     name: "Fast vask",
-    description: "Ukentlig eller månedlig renhold for et alltid rent hjem.",
+    description: "Vi kommer fast — du slipper å tenke på det.",
+    image: "/images/tjenester/fast-vask.webp",
     longDescription:
-      "Vi tilbyr fullstendig rengjøring av ditt hjem. Rengjøringen skal ikke være noe du bekymrer deg for. Vi er offentlig godkjent og medlem av NHO Service og Handel. Vi vet at alle hjem har varierende behov, og sammen kommer vi frem til en renholdsplan som passer deg og utfyller dine ønsker. Rengjøring kan bestilles ukentlig, annenhver uke, hver tredje uke eller før/etter en fest.",
+      "Vi tar oss av vasken, så slipper du. Samme team kommer hver gang, og de lærer seg hjemmet ditt fort. Du velger selv hvor ofte — ukentlig, annenhver uke eller månedlig. Vi er godkjent av Arbeidstilsynet og med i NHO.",
     price: "Fra 550 kr",
     icon: "Sparkles",
     frequencies: [
@@ -51,28 +53,29 @@ export const services: Service[] = [
       "Vask av skapfronter på badet",
     ],
     steps: [
-      { title: "Kontakt oss", description: "Fortell oss om boligen din og hvor ofte du ønsker vask." },
-      { title: "Vi gir tilbud", description: "Du får et fast prisforslag basert på størrelse og behov." },
-      { title: "Vi vasker", description: "Samme team kommer til avtalt tid, hver gang." },
+      { title: "Si hva du trenger", description: "Fortell oss om boligen og hvor ofte du vil ha vask." },
+      { title: "Vi gir deg en pris", description: "Fast pris basert på størrelse. Ingen overraskelser." },
+      { title: "Vi fikser resten", description: "Samme team hver gang, til avtalt tid." },
     ],
     faq: [
-      { question: "Hvor ofte kan dere komme?", answer: "Vi tilbyr ukentlig, annenhver uke, hver tredje uke eller månedlig vask. Du velger selv frekvensen som passer best." },
-      { question: "Er det de samme som kommer hver gang?", answer: "Ja, vi tilstreber å sende samme team hver gang slik at de blir kjent med hjemmet ditt og vet hva du forventer." },
-      { question: "Hva om jeg vil avlyse en gang?", answer: "Gi oss beskjed minst 24 timer i forveien, så flytter vi vasken uten ekstra kostnad." },
-      { question: "Hva med ekstra vask?", answer: "Vi tilbyr tillegg som vinduer, innvendig i skap, stryking, klesvask og mer. Alt kan tilpasses ditt behov." },
+      { question: "Hvor ofte kan dere komme?", answer: "Ukentlig, annenhver uke, eller månedlig. Du bestemmer selv hva som passer." },
+      { question: "Er det de samme som kommer hver gang?", answer: "Ja! Samme team hver gang. De blir kjent med hjemmet ditt og vet hva du liker." },
+      { question: "Hva om jeg vil avlyse en gang?", answer: "Bare gi beskjed 24 timer før, så flytter vi vasken. Ingen ekstra kostnad." },
+      { question: "Hva med ekstra vask?", answer: "Vi kan ta vinduer, innvendig i skap, stryking, klesvask og mer. Bare si ifra." },
     ],
     coverageText:
-      "Vi tilbyr fast vaskehjelp i Tønsberg, Nøtterøy, Tjøme, Sandefjord og resten av Vestfold. Kort reisevei betyr raskt oppmøte og fleksible tidspunkter.",
+      "Vi vasker fast i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold. Vi er aldri langt unna.",
     seoTitle: "Fast vaskehjelp i Vestfold · Fra 550 kr/gang",
     seoDescription:
-      "Fast vaskehjelp i Tønsberg og Vestfold. Ukentlig eller månedlig renhold for hjemmet ditt. Offentlig godkjent. Medlem av NHO Service og Handel. Få tilbud i dag.",
+      "Fast vaskehjelp i Tønsberg og Vestfold. Vi kommer fast — du slipper å tenke på det. Godkjent og NHO-medlem. Få tilbud i dag.",
   },
   {
     slug: "flyttevask",
     name: "Flyttevask",
-    description: "Grundig vask ved inn- eller utflytting med 100 % fornøydgaranti.",
+    description: "Grundig utvask med garanti. Du slipper å tenke på det.",
+    image: "/images/tjenester/flyttevask.webp",
     longDescription:
-      "Vi har lang erfaring med flyttevask og er så sikre i vår jobb at vi tilbyr 100 % fornøydgaranti. Er ikke utleier eller kjøper fornøyd, kommer vi tilbake og fikser det kostnadsfritt. Vi kan hente og levere nøkkel mellom kl. 8 og 18 uavhengig om du er hjemme eller på jobb.",
+      "Vi har gjort hundrevis av flyttevasker. Er ikke utleier fornøyd? Vi kommer tilbake og fikser det — gratis. Vi henter og leverer nøkkel, så du trenger ikke være hjemme.",
     price: "Fra 3 500 kr",
     icon: "Truck",
     frequencies: [
@@ -93,29 +96,30 @@ export const services: Service[] = [
       "Tresiders dør- og karmvask",
     ],
     steps: [
-      { title: "Kontakt oss", description: "Oppgi boligstørrelse, antall rom og ønsket dato." },
-      { title: "Vi gir fast pris", description: "Du får fast pris basert på boligens størrelse — ingen overraskelser." },
-      { title: "Vi vasker", description: "Grundig vask fra gulv til tak — klar for overlevering. Nøkkelhenting inkludert." },
+      { title: "Si ifra", description: "Fortell oss størrelse, antall rom og når du skal flytte." },
+      { title: "Du får fast pris", description: "Ingen overraskelser. Du vet hva det koster på forhånd." },
+      { title: "Vi fikser alt", description: "Grundig vask fra gulv til tak. Vi henter nøkkel." },
     ],
     faq: [
-      { question: "Hva koster flyttevask?", answer: "Pris avhenger av boligstørrelse. En leilighet på 50–80 m² koster typisk 4 500–7 000 kr. Vi gir alltid fast pris på forhånd." },
+      { question: "Hva koster flyttevask?", answer: "Det kommer an på størrelsen. En vanlig leilighet (50–80 m²) koster typisk 4 500–7 000 kr. Du får alltid fast pris på forhånd." },
       { question: "Hvor lang tid tar det?", answer: "En vanlig leilighet tar 4–6 timer. Større boliger kan ta en hel dag." },
-      { question: "Garanterer dere godkjent utvask?", answer: "Ja — vi tilbyr 100 % fornøydgaranti. Er ikke utleier eller kjøper fornøyd, kommer vi tilbake kostnadsfritt." },
-      { question: "Kan dere hente nøkkel?", answer: "Ja — vi henter og leverer nøkkel mellom kl. 8 og 18, uavhengig om du er hjemme eller på jobb." },
+      { question: "Garanterer dere godkjent utvask?", answer: "Ja! Er ikke utleier fornøyd, kommer vi tilbake og fikser det — gratis." },
+      { question: "Kan dere hente nøkkel?", answer: "Klart! Vi henter og leverer nøkkel mellom 8 og 18. Du trenger ikke være hjemme." },
     ],
     coverageText:
-      "Vi utfører flyttevask i Tønsberg, Nøtterøy, Sandefjord og resten av Vestfold. Kort reisevei betyr raskt oppmøte — ofte innen 2–3 virkedager.",
+      "Vi gjør flyttevask i Tønsberg, Nøtterøy, Sandefjord og hele Vestfold. Ofte ledig innen 2–3 dager.",
     seoTitle: "Flyttevask i Tønsberg & Vestfold · 100 % fornøydgaranti",
     seoDescription:
-      "Flyttevask i Tønsberg og Vestfold fra 3 500 kr. Grundig utvask med 100 % fornøydgaranti. Nøkkelhenting inkludert. Bestill i dag.",
+      "Flyttevask i Tønsberg og Vestfold fra 3 500 kr. Grundig utvask med garanti. Vi henter nøkkel. Bestill i dag.",
   },
   {
     slug: "kontorvask",
     name: "Kontorvask",
-    description: "Profesjonelt renhold for bedrifter og kontorer.",
+    description: "Rene kontorer, fornøyde ansatte. Fast avtale.",
+    image: "/images/tjenester/kontorvask.webp",
     longDescription:
-      "Et rent kontor gir bedre arbeidsmiljø, færre sykedager og et profesjonelt inntrykk på kunder. Vi skreddersyr en renholdsavtale tilpasset din bedrift. Et godt forhold bygger først og fremst på en åpen dialog — du får en fast kontaktperson og skriftlig avtale med 100 % fornøydgaranti.",
-    price: "Tilpasset avtale",
+      "Rent kontor = bedre arbeidsmiljø. Vi lager en avtale som passer din bedrift. Du får en fast kontaktperson som kjenner lokalene, og skriftlig avtale med garanti.",
+    price: "Etter avtale",
     icon: "Building2",
     frequencies: [
       { id: "daily", label: "Daglig", sublabel: "5 dager/uke", price: "Avtale", period: "" },
@@ -133,27 +137,28 @@ export const services: Service[] = [
       "Gulvpolering ved behov",
     ],
     steps: [
-      { title: "Befaring", description: "Vi kommer og ser på lokalene, helt uforpliktende." },
-      { title: "Skreddersydd tilbud", description: "Du får skriftlig avtale tilpasset omfang og frekvens." },
-      { title: "Fast renhold", description: "Vi leverer konsistent kvalitet med fast kontaktperson, uke etter uke." },
+      { title: "Vi tar en titt", description: "Vi kommer og ser på lokalene. Helt gratis." },
+      { title: "Du får et tilbud", description: "Skriftlig avtale med fast pris. Rett frem." },
+      { title: "Vi holder det rent", description: "Samme folk, uke etter uke. Stabil kvalitet." },
     ],
     faq: [
-      { question: "Kan dere komme utenom arbeidstid?", answer: "Ja, vi tilpasser tidspunktene slik at renholdet ikke forstyrrer arbeidsdagen. Kveld og tidlig morgen er vanlig." },
-      { question: "Hvor ofte bør et kontor vaskes?", answer: "De fleste kontorer har behov for 2–5 ganger per uke, avhengig av antall ansatte og type virksomhet." },
-      { question: "Har dere bedriftsforsikring?", answer: "Ja — vi har full bedriftsforsikring, er MVA-registrert og gir skriftlig avtale med fast kontaktperson." },
+      { question: "Kan dere komme utenom arbeidstid?", answer: "Klart det. Kveld eller tidlig morgen — vi tilpasser oss så det ikke forstyrrer dere." },
+      { question: "Hvor ofte bør et kontor vaskes?", answer: "De fleste trenger 2–5 ganger i uka. Vi finner ut hva som passer." },
+      { question: "Har dere bedriftsforsikring?", answer: "Ja — full forsikring, MVA-registrert, og du får en fast kontaktperson." },
     ],
     coverageText:
-      "Vi leverer kontorvask til bedrifter i Tønsberg, Nøtterøy, Sandefjord, Horten og hele Vestfold. Fast kontaktperson og stabil kvalitet.",
+      "Vi vasker kontorer i Tønsberg, Nøtterøy, Sandefjord, Horten og hele Vestfold.",
     seoTitle: "Kontorvask i Vestfold · Bedriftsrenhold",
     seoDescription:
-      "Profesjonelt kontorvask og bedriftsrenhold i Vestfold. Skreddersydd avtale med skriftlig kontrakt. 100 % fornøydgaranti. Få uforpliktende tilbud.",
+      "Kontorvask og bedriftsrenhold i Vestfold. Fast avtale, fast kontaktperson. Garanti. Få tilbud gratis.",
   },
   {
     slug: "byggvask",
     name: "Byggvask",
-    description: "Rengjøring etter bygg og renovering med 100 % fornøydgaranti.",
+    description: "Vi fjerner byggstøvet. Grundig og skikkelig.",
+    image: "/images/tjenester/byggvask.webp",
     longDescription:
-      "Byggstøv legger seg i de mest skjulte hjørnene. Vi fjerner alt grundig slik at du ikke ser sporet etter håndverkere og huset er klargjort til bruk. Vi tilbyr 100 % fornøydgaranti — er du ikke fornøyd, kommer vi tilbake kostnadsfritt. Vi kan hente og levere nøkkel mellom kl. 8 og 18.",
+      "Byggstøv setter seg overalt. Vi tar alt — grundig — så du ikke ser spor etter håndverkerne. Er du ikke fornøyd, kommer vi tilbake gratis. Vi henter nøkkel om du trenger det.",
     price: "Fra 5 000 kr",
     icon: "HardHat",
     frequencies: [
@@ -173,27 +178,28 @@ export const services: Service[] = [
       "Speil- og skapvask",
     ],
     steps: [
-      { title: "Kontakt oss", description: "Beskriv prosjektet og omfanget av arbeidet." },
-      { title: "Befaring", description: "Vi ser på lokalene og gir deg en fast pris." },
-      { title: "Vi vasker", description: "Grundig byggvask slik at alt er klargjort til bruk." },
+      { title: "Fortell oss om jobben", description: "Hva er bygget, og hvor mye støv snakker vi om?" },
+      { title: "Vi ser på det", description: "Vi kommer og gir deg en fast pris." },
+      { title: "Vi fikser det", description: "Grundig vask så alt er klart til bruk." },
     ],
     faq: [
-      { question: "Når bør byggvask utføres?", answer: "Byggvask gjøres etter at alt byggearbeid er ferdig, men før møbler og inventar flyttes inn." },
-      { question: "Trenger vi flere runder?", answer: "Ofte holder én grundig runde, men ved mye støv kan det være nødvendig med to omganger." },
-      { question: "Kan dere ta hele bygget?", answer: "Ja — vi tar alt fra leiligheter til større næringsbygg. Nybygg, renovering og tilbygg." },
+      { question: "Når bør byggvask gjøres?", answer: "Etter at håndverkerne er ferdige, men før møblene kommer inn." },
+      { question: "Trenger vi flere runder?", answer: "Én runde holder som regel. Mye støv? Da tar vi to omganger." },
+      { question: "Kan dere ta hele bygget?", answer: "Ja — alt fra leiligheter til næringsbygg. Nybygg, renovering og tilbygg." },
     ],
     coverageText:
       "Vi utfører byggvask i hele Vestfold — fra Holmestrand i nord til Larvik i sør. Tar prosjekter av alle størrelser.",
     seoTitle: "Byggvask i Vestfold · 100 % fornøydgaranti",
     seoDescription:
-      "Profesjonell byggvask i Vestfold fra 5 000 kr. Grundig rengjøring etter bygg og renovering. 100 % fornøydgaranti. Få tilbud i dag.",
+      "Byggvask i Vestfold fra 5 000 kr. Vi fjerner byggstøvet grundig. Garanti. Få tilbud i dag.",
   },
   {
     slug: "spesialvask",
     name: "Spesialvask",
-    description: "Vindusvask, tepperens, møbelrens og spesialtjenester.",
+    description: "Vinduer, tepper og møbler. Vi tar det du ikke gidder.",
+    image: "/images/tjenester/spesialvask.webp",
     longDescription:
-      "Vi elsker å vaske vinduer, så hvis det er noe du gruer deg til, tar vi det gjerne for deg. Det er viktig å sikre godt innslipp av dagslys — og for bedrifter er rene vinduer avgjørende for et profesjonelt inntrykk. Vi tilbyr også tepperens, møbelrens og andre spesialtjenester.",
+      "Gruer du deg til vindusvask? Vi tar det gjerne. Rene vinduer gir masse dagslys, og vi gjør tepperens og møbelrens også. Bare si hva du trenger.",
     price: "Fra 800 kr",
     icon: "Wind",
     frequencies: [
@@ -210,27 +216,28 @@ export const services: Service[] = [
       "Impregnering ved behov",
     ],
     steps: [
-      { title: "Kontakt oss", description: "Fortell oss hva som trengs, så vurderer vi omfanget." },
-      { title: "Vi gir tilbud", description: "Fast pris basert på antall enheter og type jobb." },
-      { title: "Vi utfører", description: "Profesjonelt utført med riktig utstyr og kompetanse." },
+      { title: "Fortell oss hva du trenger", description: "Vinduer? Tepper? Møbler? Vi finner ut av det." },
+      { title: "Du får en pris", description: "Fast pris basert på jobben. Ingen overraskelser." },
+      { title: "Vi fikser det", description: "Ordentlig utført med riktig utstyr." },
     ],
     faq: [
-      { question: "Vasker dere vinduer i høyden?", answer: "Ja, vi har utstyr for vinduer opptil 3. etasje." },
-      { question: "Hvor ofte bør vinduer vaskes?", answer: "Vi anbefaler minimum 2 ganger i året — vår og høst." },
-      { question: "Kan dere rense møbler og tepper?", answer: "Ja — vi tilbyr tepperens og møbelrens med profesjonelt utstyr og skånsomme midler." },
+      { question: "Vasker dere vinduer i høyden?", answer: "Ja, vi tar vinduer opptil 3. etasje." },
+      { question: "Hvor ofte bør vinduer vaskes?", answer: "Minst 2 ganger i året — vår og høst. Da merker du forskjell." },
+      { question: "Kan dere rense møbler og tepper?", answer: "Ja! Vi har riktig utstyr og bruker skånsomme midler." },
     ],
     coverageText:
-      "Vi tilbyr spesialvask og vindusvask i Tønsberg, Nøtterøy, Tjøme og hele Vestfold.",
+      "Vi gjør spesialvask og vindusvask i Tønsberg, Nøtterøy, Tjøme og hele Vestfold.",
     seoTitle: "Spesialvask i Vestfold · Vindusvask & tepperens",
     seoDescription:
-      "Spesialvask og vindusvask i Vestfold fra 800 kr. Profesjonelt utført. Kontakt oss for tilbud.",
+      "Vindusvask og spesialvask i Vestfold fra 800 kr. Vi tar det du ikke gidder. Ring for tilbud.",
   },
   {
     slug: "luktsanering",
     name: "Luktsanering",
-    description: "Profesjonell fjerning av vond lukt fra boliger og lokaler.",
+    description: "Vi fjerner vond lukt. Skikkelig, ikke bare skjuler den.",
+    image: "/images/tjenester/luktsanering.webp",
     longDescription:
-      "Vond lukt er forårsaket av en blanding av kjemiske stoffer fra proteiner, bakterier og organisk materiale. Uten behandling forsterkes luktproblemene og sprer seg, og blir stadig vanskeligere å håndtere. Vi samarbeider med Inneklimaspesialisten og EV Of Norway for å eliminere luktkilden og behandle berørte områder med flere metoder og spesialutstyr.",
+      "Vond lukt blir bare verre om du lar den stå. Vi finner kilden og fjerner den ordentlig — ikke bare dekker over. Vi jobber med Inneklimaspesialisten og EV Of Norway, og bruker flere metoder for å få det helt bort.",
     price: "Fra 3 000 kr",
     icon: "Droplets",
     frequencies: [
@@ -247,27 +254,28 @@ export const services: Service[] = [
       "Oppfølging og kontroll",
     ],
     steps: [
-      { title: "Befaring", description: "Vi kartlegger kilden til lukten og omfanget." },
-      { title: "Behandlingsplan", description: "Du får en plan og pris for saneringen." },
-      { title: "Vi sanerer", description: "Grundig behandling med spesialutstyr til lukten er borte." },
+      { title: "Vi tar en titt", description: "Vi finner kilden til lukten." },
+      { title: "Du får en plan", description: "Du vet hva vi gjør og hva det koster." },
+      { title: "Vi fjerner lukten", description: "Grundig behandling til lukten er helt borte." },
     ],
     faq: [
-      { question: "Hva slags lukt kan dere fjerne?", answer: "Vi behandler røyklukt, kjæledyrlukt, fukt- og mugglukt, brannlukt og andre inneklimalukter." },
-      { question: "Hvor lang tid tar det?", answer: "En vanlig luktsanering tar 1–3 dager, avhengig av omfang. Vi gir estimat etter befaring." },
-      { question: "Hvilke metoder bruker dere?", answer: "Vi bruker flere metoder inkludert ozonsanering, tekstilbehandling og ventilasjonssanering — i samarbeid med Inneklimaspesialisten og EV Of Norway." },
+      { question: "Hva slags lukt kan dere fjerne?", answer: "Røyk, kjæledyr, fukt, mugg, brann — du nevner det. Vi fikser det." },
+      { question: "Hvor lang tid tar det?", answer: "Vanligvis 1–3 dager. Vi gir deg et estimat etter at vi har sett på det." },
+      { question: "Hvilke metoder bruker dere?", answer: "Ozon, tekstilbehandling, ventilasjonssanering — vi bruker det som trengs. Vi jobber med Inneklimaspesialisten og EV Of Norway." },
     ],
     coverageText:
-      "Vi utfører luktsanering i hele Vestfold. Rask responstid — vi kan ofte komme innen få dager.",
+      "Vi gjør luktsanering i hele Vestfold. Ofte ledig innen få dager.",
     seoTitle: "Luktsanering i Vestfold · Fjern vond lukt",
     seoDescription:
-      "Profesjonell luktsanering i Vestfold fra 3 000 kr. Samarbeid med Inneklimaspesialisten. Befaring og tilbud.",
+      "Luktsanering i Vestfold fra 3 000 kr. Vi fjerner lukten ordentlig. Ring for befaring.",
   },
   {
     slug: "hovedrengjoring",
     name: "Hovedrengjøring",
-    description: "Grundig dyprengjøring fra topp til bunn.",
+    description: "Skikkelig grundig vask. Alt fra topp til bunn.",
+    image: "/images/tjenester/hovedrengjoring.webp",
     longDescription:
-      "Noen ganger trenger hjemmet en skikkelig grundig vask. Vår hovedrengjøring inkluderer alt i standard vask pluss innvendig i skap, bak og under møbler og hvitevarer, grundig rengjøring av bad og fliser, stekeovn, kjøleskap og fryser. Vi anbefaler 1–2 ganger i året som supplement til fast vask.",
+      "Noen ganger trenger hjemmet en skikkelig omgang. Vi tar alt — innvendig i skap, bak møbler, stekeovn, kjøleskap, fliser. Det hele. Fint å gjøre 1–2 ganger i året.",
     price: "Fra 1 100 kr",
     icon: "Home",
     frequencies: [
@@ -285,27 +293,28 @@ export const services: Service[] = [
       "Vegg- og takvask ved behov",
     ],
     steps: [
-      { title: "Kontakt oss", description: "Fortell oss om boligen og hva du ønsker ekstra fokus på." },
-      { title: "Vi gir tilbud", description: "Fast pris basert på størrelse og omfang." },
-      { title: "Vi rengjør", description: "Grundig dyprengjøring fra topp til bunn." },
+      { title: "Fortell oss hva du vil ha fokus på", description: "Boligstørrelse og hva som trenger ekstra kjærlighet." },
+      { title: "Du får fast pris", description: "Basert på størrelse og omfang. Ingen overraskelser." },
+      { title: "Vi tar alt fra topp til bunn", description: "Grundig dypvask. Du kjenner forskjellen." },
     ],
     faq: [
-      { question: "Hva er forskjellen på vanlig vask og hovedrengjøring?", answer: "Hovedrengjøring går mye grundigere — vi tar innvendig i skap, bak møbler, grundig på bad og kjøkken, og alle detaljer som ikke dekkes i vanlig vask." },
-      { question: "Hvor lang tid tar det?", answer: "En leilighet på 50–80 m² tar typisk 5–8 timer. Større boliger kan ta en hel dag." },
-      { question: "Hvor ofte bør man ha hovedrengjøring?", answer: "Vi anbefaler 1–2 ganger i året, gjerne vår og høst, som supplement til fast vask." },
+      { question: "Hva er forskjellen på vanlig vask og hovedrengjøring?", answer: "Vi går mye grundigere. Innvendig i skap, bak møbler, ordentlig på bad og kjøkken — alt det du ellers hopper over." },
+      { question: "Hvor lang tid tar det?", answer: "En vanlig leilighet tar 5–8 timer. Større boliger kan ta en hel dag." },
+      { question: "Hvor ofte bør man ha hovedrengjøring?", answer: "1–2 ganger i året holder fint. Vår og høst er populært." },
     ],
     coverageText:
-      "Vi tilbyr hovedrengjøring i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold.",
+      "Vi gjør hovedrengjøring i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold.",
     seoTitle: "Hovedrengjøring i Vestfold · Dyprengjøring",
     seoDescription:
-      "Grundig hovedrengjøring i Tønsberg og Vestfold fra 1 100 kr. Dyprengjøring fra topp til bunn. Bestill i dag.",
+      "Hovedrengjøring i Tønsberg og Vestfold fra 1 100 kr. Grundig fra topp til bunn. Bestill i dag.",
   },
   {
     slug: "visningsvask",
     name: "Visningsvask",
-    description: "Klargjøring av bolig før visning.",
+    description: "Boligen din klar for visning. Godt førsteinntrykk.",
+    image: "/images/tjenester/visningsvask.webp",
     longDescription:
-      "Førsteinntrykket teller. En visningsvask gjør boligen din presentabel og innbydende for potensielle kjøpere — noe som kan øke salgsprisen. Vi planlegger slik at vi er ferdige i god tid før visningen starter.",
+      "Førsteinntrykket teller. En skikkelig vask før visning gjør boligen innbydende — og kan faktisk øke salgsprisen. Vi er alltid ferdige i god tid.",
     price: "Fra 900 kr",
     icon: "Eye",
     frequencies: [
@@ -322,27 +331,28 @@ export const services: Service[] = [
       "Klar for fotografering og visning",
     ],
     steps: [
-      { title: "Kontakt oss", description: "Oppgi boligtype, størrelse og visningstidspunkt." },
-      { title: "Vi gir tilbud", description: "Fast pris — ingen overraskelser." },
-      { title: "Vi klargjør", description: "Boligen er klar for visning og fotografering." },
+      { title: "Si ifra", description: "Boligtype, størrelse og når visningen er." },
+      { title: "Du får fast pris", description: "Ingen overraskelser. Rett frem." },
+      { title: "Vi gjør den klar", description: "Boligen skinne til visning og foto." },
     ],
     faq: [
-      { question: "Hvor tidlig bør jeg bestille?", answer: "Vi anbefaler å bestille minst 3–5 virkedager før visning. Ved hast — ring oss, vi prøver alltid å finne en løsning." },
-      { question: "Kan dere komme samme dag som visningen?", answer: "Ja — vi planlegger slik at vi er ferdige i god tid før visningen starter." },
-      { question: "Hva med hastebestilling?", answer: "Vi tilbyr haste-levering innen 24 timer mot et tillegg. Ring oss direkte for raskest mulig respons." },
+      { question: "Hvor tidlig bør jeg bestille?", answer: "Helst 3–5 dager før. Haster det? Bare ring — vi prøver alltid å få det til." },
+      { question: "Kan dere komme samme dag som visningen?", answer: "Ja! Vi er ferdige i god tid før folk kommer." },
+      { question: "Hva med hastebestilling?", answer: "Vi fikser haste-jobb innen 24 timer mot et tillegg. Ring oss direkte." },
     ],
     coverageText:
-      "Vi utfører visningsvask i Tønsberg, Nøtterøy, Sandefjord og Vestfold. Rask responstid — vi forstår at visningsdatoer ofte er faste.",
+      "Vi gjør visningsvask i Tønsberg, Nøtterøy, Sandefjord og hele Vestfold. Vi vet at visningsdatoer ikke venter.",
     seoTitle: "Visningsvask i Vestfold · Klar for visning",
     seoDescription:
-      "Visningsvask i Vestfold fra 900 kr. Klargjøring av bolig før visning. Øk førsteinntrykket. Bestill i dag.",
+      "Visningsvask i Vestfold fra 900 kr. Boligen klar for visning. Godt førsteinntrykk. Bestill i dag.",
   },
   {
     slug: "borettslag",
     name: "Borettslag",
-    description: "Renhold av fellesarealer i borettslag og sameier.",
+    description: "Rene fellesarealer, fornøyde beboere. Fast avtale.",
+    image: "/images/tjenester/borettslag.webp",
     longDescription:
-      "Rene fellesarealer gir et bedre bomiljø for alle beboere. Vi tilbyr faste avtaler for trappevask, garasjer, vaskerom og andre fellesarealer. Fast kontaktperson, skriftlig avtale og konsistent kvalitet hele året.",
+      "Rene oppganger og fellesarealer gjør at folk trives. Vi tar trappevask, garasjer, vaskerom — alt det felles. Du får en fast kontaktperson og skriftlig avtale.",
     price: "Månedlig avtale",
     icon: "Users",
     frequencies: [
@@ -360,20 +370,20 @@ export const services: Service[] = [
       "Sesongbasert tillegg (sandkasser, uteområder)",
     ],
     steps: [
-      { title: "Befaring", description: "Vi ser på fellesarealene og kartlegger behov." },
-      { title: "Skriftlig avtale", description: "Skreddersydd avtale med fast månedspris og fast kontaktperson." },
-      { title: "Fast renhold", description: "Konsistent kvalitet, uke etter uke, hele året." },
+      { title: "Vi tar en titt", description: "Vi ser på fellesarealene og finner ut hva som trengs." },
+      { title: "Dere får en avtale", description: "Fast månedspris, fast kontaktperson. Enkelt." },
+      { title: "Vi holder det rent", description: "Uke etter uke, hele året." },
     ],
     faq: [
-      { question: "Hvor ofte bør fellesarealer vaskes?", answer: "De fleste borettslag har behov for ukentlig trappevask. Vi tilpasser frekvensen etter behov og budsjett." },
-      { question: "Kan vi få tilbud for hele borettslaget?", answer: "Ja — send oss informasjon om antall oppganger, etasjer og fellesarealer, så gir vi en totalpris." },
-      { question: "Tilbyr dere snømåking?", answer: "Ja — vi tilbyr snømåking som vintertillegg til den faste renholdsavtalen." },
+      { question: "Hvor ofte bør fellesarealer vaskes?", answer: "De fleste trenger ukentlig trappevask. Vi finner ut hva som passer budsjettet." },
+      { question: "Kan vi få tilbud for hele borettslaget?", answer: "Klart! Send oss antall oppganger og etasjer, så gir vi en totalpris." },
+      { question: "Tilbyr dere snømåking?", answer: "Ja — vi tar snømåking som tillegg til renholdsavtalen om vinteren." },
     ],
     coverageText:
-      "Vi leverer renhold til borettslag og sameier i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold.",
+      "Vi vasker for borettslag og sameier i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold.",
     seoTitle: "Borettslag renhold i Vestfold · Fast avtale",
     seoDescription:
-      "Renhold for borettslag og sameier i Vestfold. Trappevask, fellesarealer, fast månedlig avtale. Få tilbud.",
+      "Renhold for borettslag i Vestfold. Trappevask og fellesarealer. Fast avtale. Få tilbud.",
   },
 ];
 

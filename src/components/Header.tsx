@@ -7,44 +7,29 @@ import Image from "next/image";
 import { Phone, ArrowRight } from "lucide-react";
 import { trackEvent } from "@/lib/tracking";
 import { copyAndToast } from "@/lib/toast";
-import { services } from "@/data/services";
 
 const navItems = [
+  { href: "/prisliste", label: "Priser" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/kontakt", label: "Kontakt" },
   { href: "/jobb", label: "Jobb hos oss" },
 ];
 
-/* #14 Open/closed indicator based on Norwegian business hours */
-function useIsOpen() {
-  const [open, setOpen] = useState<boolean | null>(null);
-  useEffect(() => {
-    const now = new Date();
-    const day = now.getDay(); // 0=Sun
-    const h = now.getHours();
-    setOpen(day >= 1 && day <= 5 && h >= 8 && h < 16);
-  }, []);
-  return open;
-}
-
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const isHome = pathname === "/";
-  const isOpen = useIsOpen();
 
   const close = useCallback(() => setMobileOpen(false), []);
 
-  // Transparent → solid header on scroll
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll on iOS Safari (needs both overflow and position fixed)
+  // Lock body scroll on iOS Safari
   useEffect(() => {
     if (mobileOpen) {
       const scrollY = window.scrollY;
@@ -71,7 +56,7 @@ export function Header() {
     };
   }, [mobileOpen]);
 
-  // Close mobile menu on Escape key
+  // Close mobile menu on Escape
   useEffect(() => {
     if (!mobileOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -81,42 +66,31 @@ export function Header() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen, close]);
 
-  const transparent = isHome && !scrolled && !mobileOpen;
-  const ease = "cubic-bezier(0.4, 0, 0.2, 1)";
-  const dur = "0.4s";
-
   return (
     <header
       className="fixed top-0 right-0 left-0 z-50"
       style={{
-        background: transparent ? "rgba(255,255,255,0)" : "rgba(255,255,255,0.85)",
-        backdropFilter: transparent ? "saturate(100%) blur(0px)" : "saturate(180%) blur(20px)",
-        WebkitBackdropFilter: transparent ? "saturate(100%) blur(0px)" : "saturate(180%) blur(20px)",
-        boxShadow: transparent ? "0 1px 3px rgba(0,0,0,0)" : "0 1px 3px rgba(0,0,0,0.06)",
-        borderBottom: transparent ? "1px solid rgba(0,0,0,0)" : "1px solid rgba(0,0,0,0.06)",
-        transition: `background ${dur} ${ease}, backdrop-filter ${dur} ${ease}, -webkit-backdrop-filter ${dur} ${ease}, box-shadow ${dur} ${ease}, border-color ${dur} ${ease}`,
+        background: scrolled ? "rgba(250, 248, 245, 0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px) saturate(1.2)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(12px) saturate(1.2)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.05)" : "1px solid transparent",
+        transition: "background 0.3s ease, border-bottom 0.3s ease",
       }}
     >
       <div
-        className="mx-auto flex max-w-[1200px] items-center justify-between px-6"
-        style={{
-          height: scrolled ? 56 : 64,
-          transition: `height ${dur} ${ease}`,
-        }}
+        className="mx-auto flex items-center justify-between px-6"
+        style={{ maxWidth: 1200, height: 64 }}
       >
-        {/* Logo */}
-        <Link href="/" onClick={close} className="relative z-50 transition-transform duration-200 hover:scale-[1.02]">
+        {/* Logo — icon only on mobile, full logo on desktop */}
+        <Link href="/" onClick={close} className="relative z-50 shrink-0">
           <Image
             src="/images/faerder-logo.webp"
             alt="Færder Multiservice"
-            width={160}
-            height={48}
+            width={140}
+            height={42}
             priority
-            className="h-12 w-auto object-contain"
-            style={{
-              filter: transparent ? "brightness(0) invert(1)" : "brightness(1) invert(0)",
-              transition: `filter ${dur} ${ease}`,
-            }}
+            quality={90}
+            className="h-8 w-auto object-contain md:h-10"
           />
         </Link>
 
@@ -131,42 +105,28 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-link relative text-[14px] font-medium ${
-                  !transparent && isActive ? "nav-link-active" : ""
-                }`}
+                className={`nav-hover-link relative text-[0.85rem] font-[450] tracking-[0.01em] ${isActive ? "nav-hover-link--active" : ""}`}
                 style={{
-                  color: transparent
-                    ? isActive ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.7)"
-                    : isActive ? "#1A1A1A" : "#6B7280",
-                  textShadow: transparent ? "0 1px 2px rgba(0,0,0,0.3)" : "none",
-                  transition: `color ${dur} ${ease}, text-shadow ${dur} ${ease}`,
+                  color: isActive ? "#1A1A1A" : "#1A1A1A",
                 }}
               >
                 {item.label}
-                {isActive && (
-                  <span className="absolute -bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary" />
-                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right */}
-        <div className="flex items-center gap-3">
-          {/* Gratis befaring CTA — desktop only */}
+        {/* Right CTAs */}
+        <div className="flex items-center gap-4">
+          {/* Gratis befaring — plain text link, desktop only */}
           <Link
             href="/kontakt"
-            className="hidden items-center gap-1 rounded-full px-3.5 py-1.5 text-[12px] font-semibold lg:flex"
-            style={{
-              color: transparent ? "rgba(255,255,255,0.8)" : "#E8721C",
-              textShadow: transparent ? "0 1px 2px rgba(0,0,0,0.3)" : "none",
-              transition: `color ${dur} ${ease}, text-shadow ${dur} ${ease}`,
-            }}
+            className="hidden items-center gap-1.5 text-[0.82rem] font-medium text-text-secondary transition-colors duration-200 hover:text-text lg:flex"
           >
             Gratis befaring <ArrowRight size={12} />
           </Link>
 
-          {/* Phone CTA with open/closed indicator */}
+          {/* Phone CTA — orange pill, desktop only */}
           <a
             href="tel:+4796823647"
             onClick={(e) => {
@@ -174,55 +134,39 @@ export function Header() {
               copyAndToast("968 23 647", "Telefonnummer kopiert!");
               trackEvent("phone_click", { location: "header" });
             }}
-            className="phone-pulse hidden items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-semibold text-white md:flex cursor-pointer"
-            style={{
-              background: transparent ? "rgba(255,255,255,0.15)" : "#E8721C",
-              border: transparent ? "1px solid rgba(255,255,255,0.25)" : "1px solid transparent",
-              backdropFilter: transparent ? "blur(12px)" : "blur(0px)",
-              WebkitBackdropFilter: transparent ? "blur(12px)" : "blur(0px)",
-              transition: `all ${dur} ${ease}`,
-            }}
+            className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-[0.82rem] font-medium text-white transition-opacity duration-200 hover:opacity-90 md:flex cursor-pointer"
           >
-            {/* Open/closed dot */}
-            {isOpen !== null && (
-              <span className={`h-1.5 w-1.5 rounded-full ${isOpen ? "bg-emerald-400 animate-pulse" : "bg-red-400"}`} />
-            )}
             <Phone size={13} />
             968 23 647
           </a>
 
-          {/* Mobile: phone */}
+          {/* Mobile: orange phone pill */}
           <a
             href="tel:+4796823647"
             onClick={() => trackEvent("phone_click", { location: "header" })}
-            className="relative z-50 flex h-11 w-11 items-center justify-center rounded-full hover:opacity-60 md:hidden"
-            style={{
-              color: transparent ? "#fff" : "#1A1A1A",
-              transition: `color ${dur} ${ease}`,
-            }}
-            aria-label="Ring oss"
+            className="relative z-50 flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-[13px] font-medium text-white md:hidden"
           >
-            <Phone size={18} />
+            <Phone size={14} />
+            968 23 647
           </a>
 
           {/* Hamburger */}
           <button
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
+            className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-[5px] md:hidden"
             aria-label={mobileOpen ? "Lukk meny" : "Åpne meny"}
             aria-expanded={mobileOpen}
           >
             {[0, 1, 2].map((i) => (
               <span
                 key={i}
-                className={`block h-[2px] w-5 rounded-full ${
+                className={`block h-[2px] w-5 rounded-full bg-[#1A1A1A] ${
                   mobileOpen
                     ? i === 0 ? "translate-y-[7px] rotate-45" : i === 1 ? "scale-x-0 opacity-0" : "-translate-y-[7px] -rotate-45"
                     : ""
                 }`}
                 style={{
-                  backgroundColor: mobileOpen ? "#1A1A1A" : transparent ? "#fff" : "#1A1A1A",
-                  transition: `transform 0.3s ease, opacity 0.3s ease, background-color ${dur} ${ease}`,
+                  transition: "transform 0.3s ease, opacity 0.3s ease",
                 }}
               />
             ))}
@@ -232,70 +176,66 @@ export function Header() {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-          mobileOpen
-            ? "visible translate-x-0 opacity-100"
-            : "invisible translate-x-full opacity-0"
+        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          mobileOpen ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
-        {/* Background — click to close */}
-        <div className="absolute inset-0 bg-white" onClick={close} />
+        {/* Solid warm background */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "#faf8f5" }}
+          onClick={close}
+        />
 
-        {/* Content */}
+        {/* Nav content — centered */}
         <nav
-          className="relative flex h-[100dvh] flex-col px-8 pt-20 pb-10"
+          className="relative flex h-[100dvh] flex-col items-center justify-center gap-5 px-10 text-center"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Tjenester section */}
-          <p className="text-[11px] font-semibold tracking-widest text-text-secondary/60 uppercase">
-            Tjenester
-          </p>
-          <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
-            {services.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/tjenester/${s.slug}`}
-                onClick={close}
-                className="py-2 text-[15px] font-medium text-text transition-colors duration-150 hover:text-primary"
-              >
-                {s.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Divider */}
-          <div className="my-6 h-px bg-gray-100" />
-
-          {/* Main nav links — #10 stagger animation */}
-          {navItems.map((item, i) => (
+          {[
+            { href: "/tjenester", label: "Tjenester" },
+            ...navItems,
+          ].map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={close}
-              className="py-3 text-2xl font-bold tracking-tight text-text transition-all duration-200 hover:opacity-60"
+              className="font-serif text-[28px] tracking-[-0.02em] text-text transition-colors duration-200 hover:text-primary"
               style={mobileOpen ? {
-                animation: `hero-in 0.4s cubic-bezier(0.16,1,0.3,1) ${0.1 + i * 0.05}s both`,
+                animation: `hero-in 0.5s cubic-bezier(0.16,1,0.3,1) ${0.05 + i * 0.06}s both`,
               } : undefined}
             >
               {item.label}
             </Link>
           ))}
 
-          {/* Spacer pushes phone button to bottom */}
-          <div className="flex-1" />
-
-          {/* Phone CTA — orange, at bottom */}
-          <a
-            href="tel:+4796823647"
-            onClick={() => {
-              trackEvent("phone_click", { location: "header" });
-              close();
-            }}
-            className="flex w-full items-center justify-center gap-2.5 rounded-full bg-primary px-6 py-4 text-[16px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
-          >
-            <Phone size={18} />
-            968 23 647
-          </a>
+          {/* CTA buttons */}
+          <div className="mt-10 flex w-full flex-col gap-3">
+            <Link
+              href="/kontakt"
+              onClick={close}
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-[15px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+              style={mobileOpen ? {
+                animation: "hero-in 0.5s cubic-bezier(0.16,1,0.3,1) 0.3s both",
+              } : undefined}
+            >
+              Gratis befaring <ArrowRight size={15} />
+            </Link>
+            <a
+              href="tel:+4796823647"
+              onClick={() => {
+                trackEvent("phone_click", { location: "header" });
+                close();
+              }}
+              className="flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-text/20 px-6 py-4 text-[15px] font-medium text-text transition-colors duration-200 hover:border-text/40"
+              style={mobileOpen ? {
+                animation: "hero-in 0.5s cubic-bezier(0.16,1,0.3,1) 0.35s both",
+              } : undefined}
+            >
+              <Phone size={16} />
+              968 23 647
+            </a>
+          </div>
         </nav>
       </div>
     </header>

@@ -5,11 +5,11 @@ import JobbClient from "./client";
 export const metadata: Metadata = {
   title: "Jobb hos oss",
   description:
-    "Bli en del av teamet hos Færder Multiservice. Vi ser alltid etter dyktige folk. Godt arbeidsmiljø, konkurransedyktig lønn og fleksible arbeidstider.",
+    "Bli med på laget! Vi er alltid på utkikk etter flinke folk. Godt miljø, god lønn og fleksible tider.",
   alternates: { canonical: "/jobb" },
   openGraph: {
     title: "Jobb hos oss | Færder Multiservice",
-    description: "Bli en del av teamet. Godt arbeidsmiljø, konkurransedyktig lønn og fleksible arbeidstider.",
+    description: "Bli med på laget. Godt miljø, god lønn og fleksible tider.",
     url: "/jobb",
   },
 };

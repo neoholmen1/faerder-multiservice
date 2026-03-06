@@ -12,17 +12,39 @@ export default function JobbClient() {
     epost: "",
     telefon: "",
     melding: "",
+    website: "", // honeypot
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const update = useCallback((name: string, value: string) => {
     setFields((prev) => ({ ...prev, [name]: value }));
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 2000);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...fields,
+          tjeneste: "Jobbsøknad",
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Noe gikk galt. Prøv igjen eller ring oss.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Noe gikk galt. Prøv igjen eller ring oss.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -30,7 +52,7 @@ export default function JobbClient() {
       <PageHero
         label="Karriere"
         title="Bli en del av teamet"
-        subtitle="Vi ser alltid etter dyktige folk som vil gjøre en forskjell."
+        subtitle="Vi er alltid på utkikk etter flinke folk."
       />
 
       {/* Team hero image */}
@@ -43,7 +65,7 @@ export default function JobbClient() {
               alt="Teamet i Færder Multiservice på jobb i Vestfold"
               width={700}
               height={450}
-              quality={85}
+              quality={90}
               sizes="(max-width: 768px) 100vw, 700px"
               className="w-full"
             />
@@ -62,37 +84,38 @@ export default function JobbClient() {
         </SectionReveal>
       </section>
 
-      <section className="bg-background-warm py-24 lg:py-32">
+      <div className="section-divider" />
+      <section className="bg-[#f5f5f7] py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
               Fordeler
             </p>
-            <h2 className="mt-4 text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] text-text">
+            <h2 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
               Hvorfor jobbe hos oss
             </h2>
           </SectionReveal>
 
-          <SectionReveal className="mt-16 grid gap-6 sm:grid-cols-3">
+          <SectionReveal className="mt-20 grid gap-6 sm:grid-cols-3">
             {[
               {
                 icon: Users,
-                title: "Godt arbeidsmiljø",
-                text: "Vi er et tett team som støtter hverandre. God stemning på jobb, hver dag.",
+                title: "Godt miljø",
+                text: "Vi er et tett team. God stemning og folk som bryr seg.",
                 color: "text-blue-600",
                 bg: "bg-blue-50",
               },
               {
                 icon: Briefcase,
-                title: "Konkurransedyktig lønn",
-                text: "Vi verdsetter godt arbeid og tilbyr konkurransedyktige betingelser.",
+                title: "God lønn",
+                text: "Vi betaler godt. Gjør du en bra jobb, merker du det.",
                 color: "text-emerald-600",
                 bg: "bg-emerald-50",
               },
               {
                 icon: Clock,
-                title: "Fleksible arbeidstider",
-                text: "Vi tilpasser arbeidstidene slik at det fungerer for alle i teamet.",
+                title: "Fleksible tider",
+                text: "Vi finner tider som passer. Hverdagen skal gå opp.",
                 color: "text-amber-600",
                 bg: "bg-amber-50",
               },
@@ -101,12 +124,12 @@ export default function JobbClient() {
               return (
                 <div
                   key={v.title}
-                  className="feature-card group rounded-3xl border border-gray-100/80 bg-white p-8 lg:p-10"
+                  className="feature-card group rounded-3xl bg-white p-8 lg:p-10"
                 >
                   <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${v.bg} transition-transform duration-500 group-hover:scale-110`}>
                     <Icon size={26} strokeWidth={1.5} className={v.color} />
                   </div>
-                  <h3 className="mt-7 text-[19px] font-semibold tracking-[-0.02em] text-text">
+                  <h3 className="mt-7 text-[19px] tracking-[-0.02em] text-text">
                     {v.title}
                   </h3>
                   <p className="mt-3 text-[15px] leading-[1.7] text-text-secondary">
@@ -119,18 +142,29 @@ export default function JobbClient() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32">
+      <div className="section-divider" />
+      <section className="py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-2xl px-6">
           <div className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
               Søk
             </p>
-            <h2 className="mt-4 text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] text-text">
-              Interessert? Send oss en melding.
+            <h2 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
+              Høres bra ut? Si hei!
             </h2>
           </div>
 
           <form className="mt-10 space-y-5" onSubmit={handleSubmit}>
+            {/* Honeypot — hidden from real users */}
+            <input
+              type="text"
+              name="website"
+              value={fields.website}
+              onChange={(e) => update("website", e.target.value)}
+              className="absolute -left-[9999px] h-0 w-0 opacity-0"
+              tabIndex={-1}
+              autoComplete="off"
+            />
             <div className="grid gap-5 sm:grid-cols-2">
               {[
                 { id: "jobb-navn", label: "Navn *", name: "navn", type: "text" },
@@ -173,14 +207,24 @@ export default function JobbClient() {
               />
               <label htmlFor="jobb-melding">Melding</label>
             </div>
+            {error && (
+              <p className="text-[14px] text-red-600">{error}</p>
+            )}
             <button
               type="submit"
+              disabled={submitting}
               className={`btn-glow inline-flex items-center gap-2 rounded-full px-8 py-4 text-[15px] font-semibold text-white transition-all duration-300 ${
-                submitted ? "btn-success bg-emerald-500" : "bg-primary hover:bg-primary-dark"
+                submitted
+                  ? "btn-success bg-emerald-500"
+                  : submitting
+                    ? "bg-primary/70 cursor-not-allowed"
+                    : "bg-primary hover:bg-primary-dark"
               }`}
             >
               {submitted ? (
                 <><Check size={16} /> Sendt!</>
+              ) : submitting ? (
+                <span>Sender...</span>
               ) : (
                 <><span>Send søknad</span> <ArrowRight size={16} /></>
               )}

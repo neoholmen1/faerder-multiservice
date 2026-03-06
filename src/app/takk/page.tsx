@@ -45,6 +45,26 @@ export default function TakkPage() {
       <p className="mx-auto mt-4 max-w-md text-[17px] leading-[1.7] text-text-secondary">
         Vi har mottatt meldingen din og svarer vanligvis innen 1 virkedag.
       </p>
+
+      {/* Hva skjer nå? */}
+      <div className="mx-auto mt-10 max-w-sm text-left">
+        <p className="text-[13px] font-semibold tracking-widest text-primary uppercase">Hva skjer nå?</p>
+        <ol className="mt-4 space-y-4">
+          {[
+            "Vi har mottatt meldingen din",
+            "Vi svarer innen 24 timer",
+            "Vi avtaler tid som passer deg",
+          ].map((step, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[13px] font-bold text-primary">
+                {i + 1}
+              </span>
+              <span className="text-[15px] leading-[1.6] text-text-secondary">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
       <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
         <a
           href="tel:+4796823647"
@@ -54,12 +74,20 @@ export default function TakkPage() {
           Haster? Ring 968 23 647
         </a>
       </div>
-      <Link
-        href="/"
-        className="mt-12 text-sm font-medium text-primary transition-opacity duration-200 hover:opacity-70"
-      >
-        ← Tilbake til forsiden
-      </Link>
+      <div className="mt-10 flex items-center gap-6">
+        <Link
+          href="/"
+          className="text-sm font-medium text-primary transition-opacity duration-200 hover:opacity-70"
+        >
+          ← Tilbake til forsiden
+        </Link>
+        <Link
+          href="/tjenester"
+          className="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-primary"
+        >
+          Se våre tjenester →
+        </Link>
+      </div>
     </section>
   );
 }

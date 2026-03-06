@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import {
   Sparkles, Truck, Building2, HardHat, Wind,
-  Droplets, Home, Eye, Users, ArrowRight, Phone,
+  Home, ArrowRight, Phone,
 } from "lucide-react";
 import { services } from "@/data/services";
 import { PageHero } from "@/components/DarkHero";
@@ -21,8 +21,19 @@ export const metadata: Metadata = {
 };
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>> = {
-  Sparkles, Truck, Building2, HardHat, Wind, Droplets, Home, Eye, Users,
+  Sparkles, Truck, Building2, HardHat, Wind, Home,
 };
+
+const slugToIcon: Record<string, string> = {
+  "fast-vask": "Home",
+  "flyttevask": "Truck",
+  "kontorvask": "Building2",
+  "byggvask": "HardHat",
+  "spesialvask": "Sparkles",
+  "luktsanering": "Wind",
+};
+
+const visibleSlugs = new Set(["fast-vask", "flyttevask", "kontorvask", "byggvask", "spesialvask", "luktsanering"]);
 
 export default function TjenesterPage() {
   return (
@@ -31,26 +42,26 @@ export default function TjenesterPage() {
         { name: "Hjem", href: "/" },
         { name: "Tjenester", href: "/tjenester" },
       ]} />
-      <PageHero label="Tjenester" title="Våre tjenester" subtitle="Alt innen profesjonelt renhold — for hjem og bedrift." />
+      <PageHero label="Tjenester" title="Våre tjenester" subtitle="Vi vasker for folk og bedrifter i hele Vestfold." />
 
-      <section className="py-24 lg:py-32">
+      <section className="py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-              {services.map((s) => {
-                const Icon = iconMap[s.icon] || Sparkles;
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+              {services.filter((s) => visibleSlugs.has(s.slug)).map((s) => {
+                const iconName = slugToIcon[s.slug] || s.icon;
+                const Icon = iconMap[iconName] || Sparkles;
                 return (
                   <Link
                     key={s.slug}
                     href={`/tjenester/${s.slug}`}
-                    className="service-card group flex flex-col rounded-3xl border border-gray-100/80 bg-white p-8 lg:p-10"
+                    className="service-card group flex flex-col items-center rounded-[16px] bg-white px-6 py-8 text-center"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent transition-all duration-500 group-hover:bg-primary/10 group-hover:scale-110">
-                      <Icon size={26} strokeWidth={1.5} className="text-primary" />
-                    </div>
-                    <h2 className="mt-6 text-[19px] font-semibold tracking-[-0.02em] text-text">{s.name}</h2>
-                    <p className="mt-2 text-[15px] leading-[1.7] text-text-secondary">{s.description}</p>
-                    <p className="mt-auto pt-5 text-sm font-semibold text-primary">Fra {s.price}</p>
+                    <Icon size={48} strokeWidth={1.2} className="text-primary" />
+                    <h2 className="mt-4 text-[16px] font-semibold tracking-tight text-text">{s.name}</h2>
+                    <p className="mt-1 text-[14px] leading-[1.6] text-text-secondary">{s.description}</p>
+                    <p className="mt-3 text-[13px] font-medium text-primary">{s.price}</p>
+                    <ArrowRight size={14} className="mt-3 text-text-secondary/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
                   </Link>
                 );
               })}
@@ -59,13 +70,14 @@ export default function TjenesterPage() {
         </div>
       </section>
 
-      <section className="bg-background-warm py-24 lg:py-32">
+      <div className="section-divider" />
+      <section className="bg-[#f5f5f7] py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] text-text">
+          <h2 className="text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
             Usikker på hva du trenger?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-[17px] leading-[1.7] text-text-secondary">
-            Kontakt oss for en uforpliktende befaring — vi hjelper deg å finne riktig løsning.
+            Ring oss, så tar vi en titt — helt gratis. Vi finner ut hva du trenger.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link

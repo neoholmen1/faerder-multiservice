@@ -11,21 +11,21 @@ export function LocalBusinessJsonLd() {
     name: "Færder Multiservice AS",
     image: `${BASE_URL}/images/firmabil-hero.webp`,
     description:
-      "Profesjonelt renhold i hele Vestfold. Fast vask, flyttevask, kontorvask og mer. EV-sertifisert og offentlig godkjent renholdsbedrift.",
+      "Skikkelig renhold i hele Vestfold. Fast vask, flyttevask, kontorvask og mer. Godkjent og EV-sertifisert.",
     url: BASE_URL,
     telephone: "+4796823647",
     email: "post@faerdermultiservice.no",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Smormeien 1",
-      addressLocality: "Nøtterøy",
-      postalCode: "3116",
+      streetAddress: "Rambergveien",
+      addressLocality: "Tønsberg",
+      postalCode: "3115",
       addressCountry: "NO",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 59.2264,
-      longitude: 10.4044,
+      latitude: 59.264031,
+      longitude: 10.402755,
     },
     areaServed: {
       "@type": "GeoCircle",
@@ -44,9 +44,9 @@ export function LocalBusinessJsonLd() {
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.8",
-      bestRating: "5",
-      ratingCount: "127",
+      ratingValue: 4.8,
+      bestRating: 5,
+      ratingCount: 127,
     },
     priceRange: "350-1200 NOK/time",
     memberOf: {

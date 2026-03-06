@@ -25,12 +25,9 @@ const dekningsomrader = [
 
 export function Footer() {
   return (
-    <footer>
-      {/* Separator */}
-      <div className="h-px bg-gray-200/50" />
-
-      <div className="mx-auto max-w-[1200px] px-6 py-20 lg:py-24">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+    <footer className="bg-[#faf0e4]">
+      <div className="mx-auto max-w-[1200px] px-6 pt-20 pb-8 lg:px-8">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16">
           {/* Kontaktinfo */}
           <div>
             <Image
@@ -38,14 +35,14 @@ export function Footer() {
               alt="Færder Multiservice"
               width={160}
               height={50}
-              quality={85}
+              quality={90}
               className="h-12 w-auto object-contain"
             />
-            <p className="mt-3 text-[15px] leading-[1.7] text-text-secondary">
-              Profesjonelt renhold for private og bedrifter i Vestfold.
+            <p className="mt-4 text-[15px] leading-[1.7] text-text-secondary">
+              Vi vasker for folk og bedrifter i Vestfold.
             </p>
 
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-6 space-y-3">
               <li>
                 <a
                   href="tel:+4796823647"
@@ -74,7 +71,7 @@ export function Footer() {
               <li>
                 <span className="flex items-start gap-2.5 text-[15px] text-text-secondary">
                   <MapPin size={15} className="mt-0.5 shrink-0" />
-                  Smormeien 1, 3116 Nøtterøy
+                  Rambergveien, 3115 Tønsberg
                 </span>
               </li>
             </ul>
@@ -120,6 +117,7 @@ export function Footer() {
             </p>
             <ul className="mt-6 space-y-2.5">
               {[
+                { href: "/prisliste", label: "Priser" },
                 { href: "/om-oss", label: "Om oss" },
                 { href: "/kontakt", label: "Kontakt" },
                 { href: "/jobb", label: "Jobb hos oss" },
@@ -139,39 +137,38 @@ export function Footer() {
         </div>
 
         {/* Bottom: badges + copyright */}
-        <div className="mt-16 border-t border-gray-200/50 pt-8">
+        <div className="mt-20 border-t border-black/[0.06] pt-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <div className="flex flex-wrap items-center gap-4">
-              <span className="tooltip-trigger flex items-center gap-2 text-[13px] font-medium text-text-secondary">
-                <ShieldCheck size={14} className="text-primary" />
+              <span className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]">
+                <ShieldCheck size={13} className="text-primary" />
                 Offentlig godkjent renholdsbedrift
                 <span className="tooltip hidden sm:block">Godkjent av Arbeidstilsynet. Registrert i Renholdsregisteret.</span>
               </span>
-              <span className="tooltip-trigger flex items-center gap-2 text-[13px] font-medium text-text-secondary">
-                <Handshake size={14} className="text-primary" />
+              <span className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]">
+                <Handshake size={13} className="text-primary" />
                 Medlem av NHO Service og Handel
                 <span className="tooltip hidden sm:block">NHO Service og Handel: Norges ledende arbeidsgiverorganisasjon for servicenæringen.</span>
               </span>
-              <span className="tooltip-trigger flex items-center gap-2 text-[13px] font-medium text-text-secondary">
-                <Leaf size={14} className="text-primary" />
+              <span className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]">
+                <Leaf size={13} className="text-primary" />
                 EV-sertifisert
                 <span className="tooltip hidden sm:block">EV-dampmaskin: Ingen sterke kjemikalier. Skånsomt for miljøet.</span>
               </span>
             </div>
-            <p className="text-sm text-text-secondary">
+            <p className="text-xs text-[#9CA3AF]">
               &copy; {new Date().getFullYear()} Færder Multiservice AS &middot; Org.nr 824 779 392
             </p>
           </div>
         </div>
 
         {/* Back to top */}
-        <div className="mt-10 text-center">
+        <div className="mt-6 text-center">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="back-to-top-text inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-primary"
+            className="text-xs text-[#9CA3AF] transition-colors duration-200 hover:text-primary"
           >
-            <span className="text-default">↑ Tilbake til toppen</span>
-            <span className="text-hover">Opp, opp og avgårde! ↑</span>
+            ↑ Tilbake til toppen
           </button>
         </div>
       </div>

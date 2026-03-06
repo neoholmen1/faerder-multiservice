@@ -10,14 +10,14 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="bg-background-warm pt-32 pb-20 lg:pt-40 lg:pb-24">
+    <section className="bg-[#faf8f5] pt-32 pb-20 lg:pt-40 lg:pb-24">
       <div className="mx-auto max-w-[1200px] px-6 text-center">
         {label && (
           <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
             {label}
           </p>
         )}
-        <h1 className="mt-4 text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] font-bold tracking-[-0.04em] text-text">
+        <h1 className="mt-5 text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-text">
           {title}
         </h1>
         {subtitle && (

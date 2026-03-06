@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 import { services, getServiceBySlug } from "@/data/services";
 import { SectionReveal } from "@/components/SectionReveal";
 import { Accordion } from "@/components/Accordion";
@@ -29,6 +31,24 @@ export async function generateMetadata({
     },
   };
 }
+
+const relatedServices: Record<string, { text: string; slug: string; label: string }> = {
+  "fast-vask": {
+    text: "Trenger du hovedrengjøring? En grundig engangsvask fra topp til bunn.",
+    slug: "hovedrengjoring",
+    label: "Les om hovedrengjøring",
+  },
+  "flyttevask": {
+    text: "Trenger du visningsvask? Vi klargjør boligen før visning.",
+    slug: "visningsvask",
+    label: "Les om visningsvask",
+  },
+  "kontorvask": {
+    text: "Vi vasker også fellesarealer i borettslag og sameier.",
+    slug: "borettslag",
+    label: "Les om borettslag",
+  },
+};
 
 const dekningsomrader = [
   "Tønsberg", "Nøtterøy", "Tjøme", "Færder",
@@ -68,6 +88,25 @@ export default async function TjenestePage({
           </div>
         </SectionReveal>
       </section>
+
+      {/* Related service */}
+      {relatedServices[slug] && (
+        <section className="border-t border-gray-100 py-12 lg:py-16">
+          <SectionReveal className="mx-auto max-w-3xl px-6">
+            <div className="flex flex-col gap-3 rounded-2xl bg-[#faf8f5] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+              <p className="text-[15px] leading-[1.6] text-text-secondary">
+                {relatedServices[slug].text}
+              </p>
+              <Link
+                href={`/tjenester/${relatedServices[slug].slug}`}
+                className="inline-flex shrink-0 items-center gap-1.5 text-[14px] font-semibold text-primary transition-colors hover:text-primary/80"
+              >
+                {relatedServices[slug].label} <ArrowRight size={14} />
+              </Link>
+            </div>
+          </SectionReveal>
+        </section>
+      )}
 
       {/* Coverage tags + CTA — compact */}
       <section className="border-t border-gray-100 py-16 lg:py-20">

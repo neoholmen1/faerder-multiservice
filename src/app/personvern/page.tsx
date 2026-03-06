@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Personvernerklæring",
   description: "Personvernerklæring for Færder Multiservice AS. Les om hvordan vi behandler dine personopplysninger.",
   alternates: { canonical: "/personvern" },
+  openGraph: {
+    title: "Personvernerklæring | Færder Multiservice",
+    description: "Les om hvordan vi behandler dine personopplysninger.",
+    url: "/personvern",
+  },
 };
 
 export default function PersonvernPage() {
@@ -25,7 +30,7 @@ export default function PersonvernPage() {
             personopplysninger som samles inn via denne nettsiden.
           </p>
           <p>
-            <strong>Adresse:</strong> Smormeien 1, 3116 Nøtterøy<br />
+            <strong>Adresse:</strong> Rambergveien, 3115 Tønsberg<br />
             <strong>E-post:</strong> post@faerdermultiservice.no<br />
             <strong>Telefon:</strong> +47 968 23 647
           </p>
@@ -77,12 +82,28 @@ export default function PersonvernPage() {
               <strong>Upstash Redis</strong> — rate limiting for å beskytte skjema
               mot misbruk. Ingen personopplysninger lagres.
             </li>
+            <li>
+              <strong>Google Analytics (GA4)</strong> — anonymisert
+              besøksstatistikk. Lastes kun dersom du godtar informasjonskapsler.
+              Google kan overføre data til servere i USA under EUs
+              standardkontraktsklausuler.
+            </li>
           </ul>
 
-          <h2>Cookies</h2>
+          <h2>Informasjonskapsler (cookies)</h2>
           <p>
-            Denne nettsiden bruker ingen informasjonskapsler (cookies) for sporing.
-            Vercel Analytics er cookiefri og samler kun anonymisert data.
+            Denne nettsiden bruker Google Analytics for å samle anonymisert
+            besøksstatistikk. Google Analytics settes kun dersom du godtar
+            informasjonskapsler via banneret som vises ved første besøk. Ditt
+            valg lagres lokalt i nettleseren din.
+          </p>
+          <p>
+            Vercel Analytics kjører i tillegg og er helt cookiefri — den samler
+            kun anonymisert data uten sporings&shy;teknologi.
+          </p>
+          <p>
+            Du kan når som helst endre ditt valg ved å slette nettleserdata for
+            denne siden, hvorpå banneret vises på nytt.
           </p>
 
           <h2>Dine rettigheter</h2>
@@ -105,7 +126,7 @@ export default function PersonvernPage() {
           </p>
 
           <p className="mt-12 text-sm text-text-secondary">
-            Sist oppdatert: Februar 2026
+            Sist oppdatert: Mars 2026
           </p>
         </article>
       </section>

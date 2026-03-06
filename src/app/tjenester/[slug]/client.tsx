@@ -492,7 +492,7 @@ function SummaryCard({
       </div>
 
       <p className="mt-3 text-[12px] text-text-secondary">
-        Estimert pris eks. mva. Endelig pris kan bli lavere eller høyere etter befaring.
+        Estimat eks. mva. Endelig pris kan endre seg etter befaring.
       </p>
 
       {/* Share estimate */}
@@ -564,10 +564,10 @@ function SummaryCard({
       ) : (
         <div className="mt-6 border-t border-gray-100 pt-5">
           <p className="mb-1 text-[15px] font-semibold text-text">
-            Få et nøyaktig tilbud
+            Vi ringer deg med en pris
           </p>
           <p className="mb-4 text-[13px] text-text-secondary">
-            Vi ringer deg med en eksakt pris.
+            Fyll inn, så tar vi kontakt.
           </p>
           <LeadForm
             tjeneste={service.name}
@@ -705,7 +705,7 @@ export function ServicePageClient({ service }: { service: Service }) {
             {service.name}
           </p>
           <h1 className="mt-3 text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.04em] leading-[1.1] text-text">
-            Konfigurer din {service.name.toLowerCase()}
+            Sett sammen din{service.slug === "fast-vask" ? " faste vask" : ` ${service.name.toLowerCase()}`}
           </h1>
           <p className="mt-3 max-w-xl text-[15px] leading-[1.7] text-text-secondary line-clamp-2">
             {service.description}

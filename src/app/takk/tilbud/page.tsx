@@ -43,8 +43,28 @@ export default function TakkTilbudPage() {
         Takk! Vi ringer deg snart.
       </h1>
       <p className="mx-auto mt-4 max-w-md text-[17px] leading-[1.7] text-text-secondary">
-        Vi har mottatt forespørselen din og tar kontakt med nøyaktig pris innen kort tid.
+        Vi ringer deg vanligvis samme dag — senest neste virkedag.
       </p>
+
+      {/* Timeline */}
+      <div className="mx-auto mt-10 max-w-sm text-left">
+        <p className="text-[13px] font-semibold tracking-widest text-primary uppercase">Hva skjer nå?</p>
+        <ol className="mt-4 space-y-4">
+          {[
+            "Vi har mottatt forespørselen din",
+            "Vi ringer deg med en fast pris",
+            "Du bestemmer — ingen forpliktelser",
+          ].map((step, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[13px] font-bold text-primary">
+                {i + 1}
+              </span>
+              <span className="text-[15px] leading-[1.6] text-text-secondary">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
       <div className="mt-8 space-y-3">
         <a
           href="tel:+4796823647"
@@ -61,12 +81,20 @@ export default function TakkTilbudPage() {
           post@faerdermultiservice.no
         </a>
       </div>
-      <Link
-        href="/"
-        className="mt-12 text-sm font-medium text-primary transition-opacity duration-200 hover:opacity-70"
-      >
-        ← Tilbake til forsiden
-      </Link>
+      <div className="mt-10 flex items-center gap-6">
+        <Link
+          href="/"
+          className="text-sm font-medium text-primary transition-opacity duration-200 hover:opacity-70"
+        >
+          ← Tilbake til forsiden
+        </Link>
+        <Link
+          href="/blogg"
+          className="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-primary"
+        >
+          Les tips på bloggen →
+        </Link>
+      </div>
     </section>
   );
 }

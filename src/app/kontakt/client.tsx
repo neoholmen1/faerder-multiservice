@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, ArrowRight, Check, Loader2 } from "lucide-react";
 import { trackEvent } from "@/lib/tracking";
@@ -13,7 +12,7 @@ import { SectionReveal } from "@/components/SectionReveal";
 const kontaktInfo = [
   { icon: Phone, label: "Telefon", value: "+47 968 23 647", href: "tel:+4796823647" },
   { icon: Mail, label: "E-post", value: "post@faerdermultiservice.no", href: "mailto:post@faerdermultiservice.no" },
-  { icon: MapPin, label: "Adresse", value: "Smormeien 1, 3116 Nøtterøy", href: null },
+  { icon: MapPin, label: "Adresse", value: "Rambergveien, 3115 Tønsberg", href: null },
   { icon: Clock, label: "Åpningstider", value: "Man–Fre 08:00–16:00", href: null },
 ];
 
@@ -197,15 +196,15 @@ export default function KontaktClient() {
       <PageHero
         label="Kontakt"
         title="Kontakt oss"
-        subtitle="Vi svarer innen 24 timer."
+        subtitle="Vi svarer alltid innen 24 timer."
       />
 
-      <section className="py-24 lg:py-32">
+      <section className="py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
             <SectionReveal className="lg:col-span-3">
-              <h2 className="text-2xl font-bold tracking-[-0.03em] text-text">
-                Send oss en melding
+              <h2 className="text-2xl tracking-[-0.02em] text-text">
+                Skriv til oss
               </h2>
               <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
                 <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -305,7 +304,7 @@ export default function KontaktClient() {
                     </>
                   ) : (
                     <>
-                      Send henvendelse <ArrowRight size={16} />
+                      Send melding <ArrowRight size={16} />
                     </>
                   )}
                 </button>
@@ -316,8 +315,8 @@ export default function KontaktClient() {
             </SectionReveal>
 
             <SectionReveal className="lg:col-span-2">
-              <div className="rounded-3xl border border-gray-100/80 bg-background-warm p-8 lg:p-10">
-                <h3 className="text-lg font-bold tracking-[-0.03em] text-text">
+              <div className="rounded-3xl bg-background-warm p-8 lg:p-10 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.04)]">
+                <h3 className="text-lg tracking-[-0.03em] text-text">
                   Kontaktinformasjon
                 </h3>
                 <ul className="mt-8 space-y-6">
@@ -358,22 +357,22 @@ export default function KontaktClient() {
                 </ul>
               </div>
 
-              {/* Aleksandra with EV machine */}
+              {/* Aleksandra in company car */}
               <div className="mt-8">
                 <div className="photo-frame">
                   <div className="photo-frame-bg" />
                   <Image
                     src="/images/aleksandra-bil.webp"
-                    alt="Aleksandra viser EV-dampmaskin i aksjon, Færder Multiservice"
+                    alt="Aleksandra i firmabilen til Færder Multiservice"
                     width={600}
                     height={400}
-                    quality={85}
+                    quality={90}
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="w-full"
                   />
                 </div>
                 <p className="mt-3 text-center text-[13px] text-text-secondary">
-                  Aleksandra viser EV-dampmaskin i aksjon
+                  Aleksandra klar for oppdrag i firmabilen
                 </p>
               </div>
             </SectionReveal>
@@ -384,7 +383,7 @@ export default function KontaktClient() {
       <section className="pb-24 lg:pb-32">
         <SectionReveal className="mx-auto max-w-[1200px] px-6">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2038.5!2d10.4044!3d59.2264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSmormeien+1%2C+3116+N%C3%B8tter%C3%B8y!5e0!3m2!1sno!2sno!4v1"
+            src="https://maps.google.com/maps?q=59.264031,10.402755&z=15&output=embed"
             width="100%"
             height="400"
             style={{ border: 0 }}
@@ -392,7 +391,7 @@ export default function KontaktClient() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-            title="Kart til Færder Multiservice, Nøtterøy, Vestfold"
+            title="Kart til Færder Multiservice, Kaldnes, Tønsberg"
           />
         </SectionReveal>
       </section>
