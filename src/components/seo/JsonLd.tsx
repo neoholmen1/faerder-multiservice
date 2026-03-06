@@ -48,7 +48,7 @@ export function LocalBusinessJsonLd() {
       bestRating: 5,
       ratingCount: 127,
     },
-    priceRange: "350-1200 NOK/time",
+    priceRange: "550-1200 NOK",
     memberOf: {
       "@type": "Organization",
       name: "NHO",

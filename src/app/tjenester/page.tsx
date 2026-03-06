@@ -11,11 +11,11 @@ import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Våre tjenester",
-  description: "Fast vask, flyttevask, kontorvask, byggvask og mer. Se priser fra 350 kr/time. Offentlig godkjent renholdsbedrift i Vestfold.",
+  description: "Fast vask, flyttevask, kontorvask, byggvask og mer. Se priser fra 550 kr. Offentlig godkjent renholdsbedrift i Vestfold.",
   alternates: { canonical: "/tjenester" },
   openGraph: {
     title: "Våre tjenester | Færder Multiservice",
-    description: "Fast vask, flyttevask, kontorvask, byggvask og mer. Se priser fra 350 kr/time.",
+    description: "Fast vask, flyttevask, kontorvask, byggvask og mer. Se priser fra 550 kr.",
     url: "/tjenester",
   },
 };

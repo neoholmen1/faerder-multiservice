@@ -127,7 +127,7 @@ export async function GET() {
               fontWeight: 500,
             }}
           >
-            Skikkelig renhold i hele Vestfold — fra 350 kr/time
+            Skikkelig renhold i hele Vestfold — fra 550 kr
           </p>
 
           {/* Trust badges */}

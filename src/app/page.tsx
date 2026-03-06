@@ -362,10 +362,21 @@ function FAQ() {
     });
   }, []);
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
+  const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!leadFields.navn.trim() || !leadFields.telefon.trim()) return;
     trackEvent("lead_submit", { service: "faq" });
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          navn: leadFields.navn,
+          telefon: leadFields.telefon,
+          tjeneste: "Generell henvendelse (FAQ)",
+        }),
+      });
+    } catch { /* show success regardless — avoid blocking UI */ }
     setLeadSent(true);
   };
 
@@ -796,7 +807,7 @@ export default function Hjem() {
 
             {/* Subtitle */}
             <p className="mx-auto mt-5 max-w-lg text-[1.0625rem] font-medium leading-[1.6] tracking-wide text-text-secondary">
-              Skikkelig renhold i hele Vestfold — <span className="font-bold text-primary">fra 350 kr/time.</span>
+              Skikkelig renhold i hele Vestfold — <span className="font-bold text-primary">fra 550 kr.</span>
             </p>
 
             {/* Buttons */}

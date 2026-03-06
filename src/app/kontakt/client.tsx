@@ -266,11 +266,11 @@ export default function KontaktClient() {
                 </div>
 
                 <div>
-                  <label htmlFor="tjeneste" className="mb-1.5 block text-[11px] font-semibold tracking-widest text-text-secondary uppercase">
+                  <label htmlFor="kontakt-tjeneste" className="mb-1.5 block text-[11px] font-semibold tracking-widest text-text-secondary uppercase">
                     Tjeneste
                   </label>
                   <select
-                    id="tjeneste"
+                    id="kontakt-tjeneste"
                     value={fields.tjeneste.value}
                     onChange={(e) => updateField("tjeneste", e.target.value)}
                     className="w-full appearance-none rounded-xl border border-gray-200 bg-background-warm px-4 py-3.5 text-[15px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"

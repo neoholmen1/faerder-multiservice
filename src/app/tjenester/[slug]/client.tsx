@@ -301,6 +301,7 @@ function LeadForm({
 
       <div className="float-field">
         <input
+          id="lead-navn"
           ref={nameRef}
           type="text"
           placeholder=" "
@@ -309,10 +310,11 @@ function LeadForm({
           onChange={(e) => setFields((p) => ({ ...p, navn: e.target.value }))}
           className={inputClass}
         />
-        <label>Navn *</label>
+        <label htmlFor="lead-navn">Navn *</label>
       </div>
       <div className="float-field">
         <input
+          id="lead-telefon"
           type="tel"
           placeholder=" "
           required
@@ -320,19 +322,22 @@ function LeadForm({
           onChange={(e) => setFields((p) => ({ ...p, telefon: e.target.value }))}
           className={inputClass}
         />
-        <label>Telefon *</label>
+        <label htmlFor="lead-telefon">Telefon *</label>
       </div>
       <div className="float-field">
         <input
+          id="lead-postnr"
           type="text"
           placeholder=" "
           value={fields.postnr}
           onChange={(e) => setFields((p) => ({ ...p, postnr: e.target.value }))}
           className={inputClass}
         />
-        <label>Postnummer</label>
+        <label htmlFor="lead-postnr">Postnummer</label>
       </div>
       <select
+        id="lead-tidspunkt"
+        aria-label="Foretrukket tidspunkt"
         value={fields.tidspunkt}
         onChange={(e) => setFields((p) => ({ ...p, tidspunkt: e.target.value }))}
         className="w-full appearance-none rounded-xl border border-gray-200 bg-background-warm px-4 py-3 text-[14px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"

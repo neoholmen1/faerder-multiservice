@@ -29,17 +29,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://faerdermultiservice.no"),
   title: {
     default: "Vaskebyrå i Vestfold | Færder Multiservice",
-    template: "%s | Færder Multiservice",
+    template: "%s | Færder Multiservice — Renhold i Vestfold",
   },
   description:
-    "Skikkelig renhold for hjem og bedrift i Vestfold. Godkjent, EV-sertifisert, fra 350 kr/t. Se priser og bestill.",
+    "Skikkelig renhold for hjem og bedrift i Vestfold. Godkjent, EV-sertifisert, fra 550 kr. Se priser og bestill.",
   openGraph: {
     type: "website",
     locale: "nb_NO",
     siteName: "Færder Multiservice AS",
     title: "Færder Multiservice — Skikkelig renhold i Vestfold",
     description:
-      "Fast vask fra 350 kr/t. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
+      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
     url: "https://faerdermultiservice.no",
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Færder Multiservice — Rent hjem. Null stress." }],
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Færder Multiservice — Vi vasker, du slipper",
     description:
-      "Fast vask fra 350 kr/t. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
+      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
     images: ["/images/og-image.jpg"],
   },
   alternates: {
