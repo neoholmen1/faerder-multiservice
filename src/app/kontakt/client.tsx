@@ -383,7 +383,7 @@ export default function KontaktClient() {
       <section className="pb-24 lg:pb-32">
         <SectionReveal className="mx-auto max-w-[1200px] px-6">
           <iframe
-            src="https://maps.google.com/maps?q=Sm%C3%B8rmeien+1,+3116+N%C3%B8tter%C3%B8y,+Norway&z=15&output=embed"
+            src="https://maps.google.com/maps?q=Rambergveien+1,+Kaldnes,+T%C3%B8nsberg,+Norway&z=15&output=embed"
             width="100%"
             height="400"
             style={{ border: 0 }}
@@ -391,7 +391,7 @@ export default function KontaktClient() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-            title="Kart til Færder Multiservice, Smørmeien 1, Nøtterøy"
+            title="Kart til Færder Multiservice, Kaldnes, Tønsberg"
           />
         </SectionReveal>
       </section>
