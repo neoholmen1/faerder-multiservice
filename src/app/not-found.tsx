@@ -11,7 +11,7 @@ export default function NotFound() {
       <span className="text-8xl font-extralight tracking-tight text-primary">
         404
       </span>
-      <h1 className="mt-6 text-2xl font-bold tracking-[-0.03em] text-text">
+      <h1 className="mt-6 text-2xl tracking-[-0.03em] text-text">
         Denne siden finnes ikke
       </h1>
       <p className="mt-3 text-[15px] text-text-secondary">

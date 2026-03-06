@@ -57,7 +57,7 @@ export default function PrislistePage() {
                 >
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <h2 className="text-[1.25rem] font-bold tracking-[-0.02em] text-text">
+                      <h2 className="text-[1.25rem] font-sans font-bold tracking-[-0.02em] text-text">
                         {service.name}
                       </h2>
                       <p className="mt-1 text-[15px] text-text-secondary">

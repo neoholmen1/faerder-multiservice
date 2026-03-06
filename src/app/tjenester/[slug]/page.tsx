@@ -80,7 +80,7 @@ export default async function TjenestePage({
       {/* FAQ — compact, max 4 */}
       <section className="py-16 lg:py-20">
         <SectionReveal className="mx-auto max-w-3xl px-6">
-          <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold tracking-[-0.03em] leading-[1.1] text-text">
+          <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] tracking-[-0.03em] leading-[1.1] text-text">
             Vanlige spørsmål
           </h2>
           <div className="mt-8">
@@ -124,7 +124,7 @@ export default async function TjenestePage({
 
           {/* CTA — tight */}
           <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-[clamp(1.25rem,3vw,1.75rem)] font-bold tracking-[-0.03em] text-text">
+            <h2 className="text-[clamp(1.25rem,3vw,1.75rem)] tracking-[-0.03em] text-text">
               Klar for {service.name.toLowerCase()}?
             </h2>
             <div className="flex items-center gap-3">

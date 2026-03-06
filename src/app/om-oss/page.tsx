@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
-import { ShieldCheck, Leaf, MapPin, Heart, Sparkles } from "lucide-react";
+import { ShieldCheck, Leaf, MapPin, Heart, Sparkles, ArrowRight, Phone } from "lucide-react";
 import { PageHero } from "@/components/DarkHero";
 import { SectionReveal } from "@/components/SectionReveal";
+import { AnimatedDivider } from "@/components/AnimatedDivider";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -84,7 +86,7 @@ export default function OmOssPage() {
       </section>
 
       {/* Verdier */}
-      <div className="section-divider" />
+      <AnimatedDivider />
       <section className="bg-[#f5f5f7] py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal className="text-center">
@@ -143,7 +145,7 @@ export default function OmOssPage() {
       </section>
 
       {/* Sertifiseringer */}
-      <div className="section-divider" />
+      <AnimatedDivider />
       <section className="py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-[1200px] px-6">
           <div className="text-center">
@@ -185,7 +187,7 @@ export default function OmOssPage() {
       </section>
 
       {/* Dekningsområde */}
-      <div className="section-divider" />
+      <AnimatedDivider />
       <section className="bg-[#f5f5f7] py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-[1200px] px-6 text-center">
           <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
@@ -204,6 +206,32 @@ export default function OmOssPage() {
                 {by}
               </span>
             ))}
+          </div>
+        </SectionReveal>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(180deg, #fdf6ef, #faf0e4)" }}>
+        <SectionReveal className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-text">
+            Vil du vite mer?
+          </h2>
+          <p className="mt-3 text-[15px] text-text-secondary">
+            Send oss en melding eller ring. Vi svarer innen 24 timer.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/kontakt"
+              className="btn-glow btn-shimmer inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-[15px] font-semibold text-white"
+            >
+              Ta kontakt <ArrowRight size={16} />
+            </Link>
+            <a
+              href="tel:+4796823647"
+              className="btn-outline inline-flex items-center gap-2 rounded-full border-2 border-gray-300 px-8 py-4 text-[15px] font-medium text-text-secondary hover:border-gray-400 hover:text-text"
+            >
+              <Phone size={15} /> 968 23 647
+            </a>
           </div>
         </SectionReveal>
       </section>

@@ -39,7 +39,7 @@ export default function TakkTilbudPage() {
           />
         </svg>
       </div>
-      <h1 className="mt-8 text-[clamp(1.75rem,4vw,3rem)] font-bold tracking-[-0.03em] leading-[1.1] text-text">
+      <h1 className="mt-8 text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.03em] leading-[1.1] text-text">
         Takk! Vi ringer deg snart.
       </h1>
       <p className="mx-auto mt-4 max-w-md text-[17px] leading-[1.7] text-text-secondary">

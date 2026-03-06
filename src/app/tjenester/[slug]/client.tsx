@@ -709,7 +709,7 @@ export function ServicePageClient({ service }: { service: Service }) {
           <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
             {service.name}
           </p>
-          <h1 className="mt-3 text-[clamp(2rem,4vw,3.25rem)] font-bold tracking-[-0.04em] leading-[1.1] text-text">
+          <h1 className="mt-3 text-[clamp(2rem,4vw,3.25rem)] tracking-[-0.04em] leading-[1.1] text-text">
             Sett sammen din{service.slug === "fast-vask" ? " faste vask" : ` ${service.name.toLowerCase()}`}
           </h1>
           <p className="mt-3 max-w-xl text-[15px] leading-[1.7] text-text-secondary line-clamp-2">

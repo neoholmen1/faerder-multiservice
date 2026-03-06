@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Briefcase, Users, Clock, ArrowRight, Check } from "lucide-react";
 import { PageHero } from "@/components/DarkHero";
 import { SectionReveal } from "@/components/SectionReveal";
+import { AnimatedDivider } from "@/components/AnimatedDivider";
 
 export default function JobbClient() {
   const [fields, setFields] = useState({
@@ -84,7 +85,7 @@ export default function JobbClient() {
         </SectionReveal>
       </section>
 
-      <div className="section-divider" />
+      <AnimatedDivider />
       <section className="bg-[#f5f5f7] py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal className="text-center">
@@ -142,7 +143,7 @@ export default function JobbClient() {
         </div>
       </section>
 
-      <div className="section-divider" />
+      <AnimatedDivider />
       <section className="py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-2xl px-6">
           <div className="text-center">
