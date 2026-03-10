@@ -447,7 +447,7 @@ function FAQ() {
                 <p className="mt-1 text-[14px] text-text-secondary">
                   Legg igjen nummeret ditt, så ringer vi.
                 </p>
-                <form onSubmit={handleLeadSubmit} className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <form onSubmit={handleLeadSubmit} className="mt-5 flex flex-col gap-4 sm:flex-row sm:gap-3">
                   <input
                     type="text"
                     placeholder="Navn"
@@ -455,7 +455,7 @@ function FAQ() {
                     required
                     value={leadFields.navn}
                     onChange={(e) => setLeadFields((p) => ({ ...p, navn: e.target.value }))}
-                    className="h-14 flex-1 rounded-xl border border-gray-200 bg-white px-5 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10 sm:h-12 sm:px-4"
+                    className="flex-1 rounded-xl border border-gray-200 bg-white px-5 py-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                   />
                   <input
                     type="tel"
@@ -464,11 +464,11 @@ function FAQ() {
                     required
                     value={leadFields.telefon}
                     onChange={(e) => setLeadFields((p) => ({ ...p, telefon: e.target.value }))}
-                    className="h-14 flex-1 rounded-xl border border-gray-200 bg-white px-5 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10 sm:h-12 sm:px-4"
+                    className="flex-1 rounded-xl border border-gray-200 bg-white px-5 py-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                   />
                   <button
                     type="submit"
-                    className="btn-glow inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-white sm:h-12 sm:w-auto"
+                    className="btn-glow inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-semibold text-white sm:w-auto"
                   >
                     Send <ArrowRight size={14} />
                   </button>
