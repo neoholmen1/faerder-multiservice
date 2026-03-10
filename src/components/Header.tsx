@@ -70,11 +70,19 @@ export function Header() {
     <header
       className="fixed top-0 right-0 left-0 z-50"
       style={{
-        background: scrolled ? "rgba(250, 248, 245, 0.85)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px) saturate(1.2)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(12px) saturate(1.2)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.05)" : "1px solid transparent",
-        transition: "background 0.3s ease, border-bottom 0.3s ease",
+        background: mobileOpen
+          ? "#faf8f5"
+          : scrolled
+            ? "rgba(250, 248, 245, 0.85)"
+            : "transparent",
+        backdropFilter: mobileOpen ? "none" : scrolled ? "blur(12px) saturate(1.2)" : "none",
+        WebkitBackdropFilter: mobileOpen ? "none" : scrolled ? "blur(12px) saturate(1.2)" : "none",
+        borderBottom: mobileOpen
+          ? "1px solid transparent"
+          : scrolled
+            ? "1px solid rgba(0,0,0,0.05)"
+            : "1px solid transparent",
+        transition: mobileOpen ? "none" : "background 0.3s ease, border-bottom 0.3s ease",
       }}
     >
       <div
