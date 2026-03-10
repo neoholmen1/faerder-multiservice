@@ -403,7 +403,7 @@ function FAQ() {
             <button
               key={i}
               onClick={() => handleClick(i)}
-              className={`flex min-h-[48px] items-center rounded-full border bg-white px-5 py-3 text-[14px] font-medium transition-all duration-200 ${
+              className={`flex min-h-[48px] items-center rounded-full border bg-white px-5 py-3 text-[15px] sm:text-[14px] font-medium transition-all duration-200 ${
                 active === i
                   ? "border-primary text-primary shadow-[0_2px_12px_rgba(232,114,28,0.1)]"
                   : "border-gray-200 text-text-secondary hover:border-primary/40 hover:text-text"
@@ -455,7 +455,7 @@ function FAQ() {
                     required
                     value={leadFields.navn}
                     onChange={(e) => setLeadFields((p) => ({ ...p, navn: e.target.value }))}
-                    className="h-12 flex-1 rounded-xl border border-gray-200 bg-white px-4 text-[14px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    className="h-12 flex-1 rounded-xl border border-gray-200 bg-white px-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                   />
                   <input
                     type="tel"
@@ -464,11 +464,11 @@ function FAQ() {
                     required
                     value={leadFields.telefon}
                     onChange={(e) => setLeadFields((p) => ({ ...p, telefon: e.target.value }))}
-                    className="h-12 flex-1 rounded-xl border border-gray-200 bg-white px-4 text-[14px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    className="h-12 flex-1 rounded-xl border border-gray-200 bg-white px-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                   />
                   <button
                     type="submit"
-                    className="btn-glow inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-7 text-[14px] font-semibold text-white sm:w-auto"
+                    className="btn-glow inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-white sm:w-auto"
                   >
                     Send <ArrowRight size={14} />
                   </button>

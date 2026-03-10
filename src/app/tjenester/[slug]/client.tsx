@@ -283,7 +283,7 @@ function LeadForm({
     }
   };
 
-  const inputClass = "h-12 w-full rounded-xl border border-gray-200 bg-background-warm px-4 text-[14px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
+  const inputClass = "h-12 w-full rounded-xl border border-gray-200 bg-background-warm px-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
@@ -340,7 +340,7 @@ function LeadForm({
         aria-label="Foretrukket tidspunkt"
         value={fields.tidspunkt}
         onChange={(e) => setFields((p) => ({ ...p, tidspunkt: e.target.value }))}
-        className="w-full appearance-none rounded-xl border border-gray-200 bg-background-warm px-4 py-3 text-[14px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+        className="w-full appearance-none rounded-xl border border-gray-200 bg-background-warm px-4 py-3 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
       >
         <option value="">Foretrukket tidspunkt (valgfritt)</option>
         {tidspunktValg.map((t) => (
@@ -350,7 +350,7 @@ function LeadForm({
       <button
         type="submit"
         disabled={sending}
-        className="btn-glow flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-[14px] font-semibold text-white disabled:opacity-50"
+        className="btn-glow flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-[15px] font-semibold text-white disabled:opacity-50"
       >
         {sending ? (
           <>

@@ -63,7 +63,7 @@ function FloatingField({
   textarea?: boolean;
 }) {
   const baseClass =
-    "w-full rounded-xl border bg-background-warm px-4 text-[15px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
+    "w-full rounded-xl border bg-background-warm px-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10";
   const stateClass = field.touched
     ? error
       ? "border-red-400"
@@ -273,7 +273,7 @@ export default function KontaktClient() {
                     id="kontakt-tjeneste"
                     value={fields.tjeneste.value}
                     onChange={(e) => updateField("tjeneste", e.target.value)}
-                    className="w-full appearance-none rounded-xl border border-gray-200 bg-background-warm px-4 py-3.5 text-[15px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    className="w-full appearance-none rounded-xl border border-gray-200 bg-background-warm px-4 py-3.5 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                   >
                     <option value="">Velg tjeneste (valgfritt)</option>
                     {tjenesteListe.map((t) => (

@@ -179,7 +179,7 @@ export default function JobbClient() {
                     placeholder=" "
                     value={fields[f.name as keyof typeof fields]}
                     onChange={(e) => update(f.name, e.target.value)}
-                    className="h-14 w-full rounded-xl border border-gray-200 bg-background-warm px-4 text-[15px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    className="h-14 w-full rounded-xl border border-gray-200 bg-background-warm px-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
                   />
                   <label htmlFor={f.id}>{f.label}</label>
                 </div>
@@ -193,7 +193,7 @@ export default function JobbClient() {
                 placeholder=" "
                 value={fields.telefon}
                 onChange={(e) => update("telefon", e.target.value)}
-                className="h-14 w-full rounded-xl border border-gray-200 bg-background-warm px-4 text-[15px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                className="h-14 w-full rounded-xl border border-gray-200 bg-background-warm px-4 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
               />
               <label htmlFor="jobb-telefon">Telefon *</label>
             </div>
@@ -204,7 +204,7 @@ export default function JobbClient() {
                 placeholder=" "
                 value={fields.melding}
                 onChange={(e) => update("melding", e.target.value)}
-                className="w-full rounded-xl border border-gray-200 bg-background-warm px-4 pt-7 pb-3 text-[15px] text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
+                className="w-full rounded-xl border border-gray-200 bg-background-warm px-4 pt-7 pb-3 text-base text-text outline-none transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/10"
               />
               <label htmlFor="jobb-melding">Melding</label>
             </div>
