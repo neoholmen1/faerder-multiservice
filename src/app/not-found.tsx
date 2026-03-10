@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArrowRight, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "404 — Siden finnes ikke",
@@ -9,30 +10,39 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-[80vh] flex-col items-center justify-center px-6 text-center">
-      <span className="text-8xl font-extralight tracking-tight text-primary">
+    <section
+      className="flex min-h-[100vh] flex-col items-center justify-center px-6 text-center"
+      style={{ background: "#faf8f5" }}
+    >
+      <span
+        className="font-serif text-[120px] leading-none tracking-tight text-primary select-none"
+        style={{ opacity: 0.15 }}
+      >
         404
       </span>
-      <h1 className="mt-6 text-2xl tracking-[-0.03em] text-text">
+
+      <h1 className="mt-6 text-[clamp(1.5rem,4vw,2.25rem)] tracking-[-0.02em] text-text">
         Denne siden finnes ikke
       </h1>
-      <p className="mt-3 text-[15px] text-text-secondary">
-        Men vi finner det du trenger:
+
+      <p className="mx-auto mt-3 max-w-sm text-[15px] leading-[1.6] text-text-secondary">
+        Siden du leter etter er flyttet eller finnes ikke lenger.
       </p>
-      <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-        <Link
-          href="/tjenester"
-          className="btn-glow inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-[15px] font-semibold text-white"
-        >
-          Se tjenester
-        </Link>
-        <Link
-          href="/kontakt"
-          className="btn-outline inline-flex items-center gap-2 rounded-full border-2 border-gray-200 px-7 py-3.5 text-[15px] font-medium text-text-secondary hover:border-gray-300 hover:text-text"
-        >
-          Kontakt oss
-        </Link>
-      </div>
+
+      <Link
+        href="/"
+        className="btn-glow mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-[15px] font-semibold text-white"
+      >
+        Tilbake til forsiden <ArrowRight size={16} />
+      </Link>
+
+      <a
+        href="tel:+4796823647"
+        className="mt-6 inline-flex items-center gap-2 text-[15px] text-text-secondary transition-colors duration-150 hover:text-primary"
+      >
+        <Phone size={15} />
+        Trenger du hjelp? Ring 968 23 647
+      </a>
     </section>
   );
 }
