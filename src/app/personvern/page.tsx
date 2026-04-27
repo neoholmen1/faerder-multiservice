@@ -30,7 +30,7 @@ export default function PersonvernPage() {
             personopplysninger som samles inn via denne nettsiden.
           </p>
           <p>
-            <strong>Adresse:</strong> Smørmeien 1, 3116 Nøtterøy<br />
+            <strong>Adresse:</strong> Rambergveien 1, Tønsberg<br />
             <strong>E-post:</strong> post@faerdermultiservice.no<br />
             <strong>Telefon:</strong> +47 968 23 647
           </p>
@@ -126,7 +126,7 @@ export default function PersonvernPage() {
           </p>
 
           <p className="mt-12 text-sm text-text-secondary">
-            Sist oppdatert: Mars 2026
+            Sist oppdatert: April 2026
           </p>
         </article>
       </section>

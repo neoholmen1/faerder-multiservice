@@ -138,7 +138,7 @@ export async function GET() {
               marginTop: 40,
             }}
           >
-            {["⭐ 4.8/5 på Google", "✓ Offentlig godkjent", "♻ EV-sertifisert"].map(
+            {["✓ Offentlig godkjent", "✓ NHO-medlem", "♻ EV-sertifisert"].map(
               (badge) => (
                 <div
                   key={badge}

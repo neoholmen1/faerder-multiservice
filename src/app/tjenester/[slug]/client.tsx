@@ -497,7 +497,7 @@ function SummaryCard({
       </div>
 
       <p className="mt-3 text-[12px] text-text-secondary">
-        Estimat eks. mva. Endelig pris kan endre seg etter befaring.
+        Estimat. Endelig pris kan endre seg etter befaring.
       </p>
 
       {/* Share estimate */}

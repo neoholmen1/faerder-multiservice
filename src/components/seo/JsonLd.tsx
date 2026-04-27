@@ -17,9 +17,8 @@ export function LocalBusinessJsonLd() {
     email: "post@faerdermultiservice.no",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Smørmeien 1",
-      addressLocality: "Nøtterøy",
-      postalCode: "3116",
+      streetAddress: "Rambergveien 1",
+      addressLocality: "Tønsberg",
       addressCountry: "NO",
     },
     geo: {
@@ -42,12 +41,6 @@ export function LocalBusinessJsonLd() {
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "08:00",
       closes: "16:00",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: 4.8,
-      bestRating: 5,
-      ratingCount: 127,
     },
     priceRange: "550-1200 NOK",
     memberOf: {

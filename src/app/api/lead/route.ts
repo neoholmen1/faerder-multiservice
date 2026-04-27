@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       const { success } = await ratelimit.limit(ip);
       if (!success) {
         return NextResponse.json(
-          { error: "For mange forespørsler. Vennligst prøv igjen senere." },
+          { error: "For mange forespørsler. Prøv igjen om litt." },
           { status: 429 }
         );
       }
@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("Lead API error:", err);
     return NextResponse.json(
-      { error: "Noe gikk galt. Vennligst prøv igjen eller ring oss direkte." },
+      { error: "Noe gikk galt. Prøv igjen eller ring oss direkte." },
       { status: 500 }
     );
   }

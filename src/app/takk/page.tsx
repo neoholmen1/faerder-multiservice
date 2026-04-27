@@ -5,7 +5,7 @@ import { Confetti } from "@/components/Confetti";
 
 export const metadata: Metadata = {
   title: "Takk for din henvendelse · Færder Multiservice",
-  description: "Vi har mottatt meldingen din og svarer vanligvis innen 1 virkedag.",
+  description: "Vi har mottatt meldingen din og svarer samme dag — senest neste virkedag.",
   robots: { index: false, follow: false },
 };
 
@@ -44,7 +44,7 @@ export default function TakkPage() {
         Takk for din henvendelse!
       </h1>
       <p className="mx-auto mt-4 max-w-md text-[17px] leading-[1.7] text-text-secondary">
-        Vi har mottatt meldingen din og svarer vanligvis innen 1 virkedag.
+        Vi har mottatt meldingen din og svarer samme dag — senest neste virkedag.
       </p>
 
       {/* Hva skjer nå? */}
@@ -53,7 +53,7 @@ export default function TakkPage() {
         <ol className="mt-4 space-y-4">
           {[
             "Vi har mottatt meldingen din",
-            "Vi svarer innen 24 timer",
+            "Vi svarer samme dag — senest neste virkedag",
             "Vi avtaler tid som passer deg",
           ].map((step, i) => (
             <li key={i} className="flex items-start gap-3">

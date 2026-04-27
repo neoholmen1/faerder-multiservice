@@ -71,7 +71,7 @@ export function Footer() {
               <li>
                 <span className="flex items-start gap-2.5 text-[15px] text-text-secondary">
                   <MapPin size={15} className="mt-0.5 shrink-0" />
-                  Smørmeien 1, 3116 Nøtterøy
+                  Rambergveien 1, Tønsberg
                 </span>
               </li>
             </ul>
@@ -110,10 +110,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Snarveier */}
+          {/* Lenker */}
           <div>
             <p className="text-lg font-bold tracking-[-0.03em] text-text">
-              Snarveier
+              Lenker
             </p>
             <ul className="mt-6 space-y-2.5">
               {[

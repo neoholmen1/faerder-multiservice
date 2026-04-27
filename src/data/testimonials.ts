@@ -19,7 +19,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Torunn G.",
     location: "Vestfold",
-    text: "Vi har i flere år benyttet Færder Multiservice til renhold på våre kontorer. Vi er veldig tilfredse med jobben de gjør, alltid forekommende og fleksible, og de stiller alltid med hyggelige flinke folk.",
+    text: "Vi har i flere år benyttet Færder Multiservice til renhold på våre kontorer. Vi er veldig tilfredse med jobben de gjør, alltid imøtekommende og fleksible, og de stiller alltid med hyggelige flinke folk.",
     rating: 5,
     date: "Pasient- og brukerombudet",
     source: "Referanse",

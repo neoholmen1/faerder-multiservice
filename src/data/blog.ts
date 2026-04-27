@@ -108,18 +108,18 @@ export const blogPosts: BlogPost[] = [
       "Et rent arbeidsmiljø øker produktivitet, reduserer sykefravær og gir et bedre inntrykk på kunder og ansatte.",
     content: `
       <h2>Førsteinntrykket teller</h2>
-      <p>Enten det er kunder, samarbeidspartnere eller potensielle ansatte — alle legger merke til et rent og velholdt lokale. Det signaliserer profesjonalitet og omsorg for detaljer.</p>
+      <p>Enten det er kunder, samarbeidspartnere eller potensielle ansatte — alle legger merke til et rent og velholdt lokale. Et rotete kontor får folk til å lure på hva annet dere slurver med.</p>
 
       <h2>Mindre sykefravær</h2>
       <p>Støv, bakterier og dårlig inneklima er blant de vanligste årsakene til forkjølelse og allergi på arbeidsplassen. Jevnlig grundig renhold reduserer sykefraværet merkbart.</p>
 
-      <h2>Økt produktivitet</h2>
-      <p>Forskning viser at ansatte jobber bedre i rene og ryddige omgivelser. Et rent kontor gir færre distraksjoner og bedre konsentrasjon.</p>
+      <h2>Bedre konsentrasjon</h2>
+      <p>De fleste merker det selv: man jobber bedre når det er ryddig rundt en. Færre distraksjoner, mindre frustrasjon over rotet på pulten ved siden av.</p>
 
       <h2>Spar tid og ressurser</h2>
       <p>Når de ansatte slipper å bruke tid på renhold, kan de fokusere på det de er best på. Overlat jobben til proffene — det lønner seg.</p>
 
-      <h2>Tilpassa for din bedrift</h2>
+      <h2>Tilpasset din bedrift</h2>
       <p>Vi legger opp vasken etter bedriftens størrelse, type lokale og behov. Alt fra daglig kontorvask til ukentlig grundig rengjøring — vi finner et opplegg som passer for dere.</p>
     `,
   },

@@ -5,7 +5,7 @@ import { Confetti } from "@/components/Confetti";
 
 export const metadata: Metadata = {
   title: "Takk! Vi ringer deg · Færder Multiservice",
-  description: "Vi ringer deg vanligvis samme dag med et tilbud. Ingen forpliktelser.",
+  description: "Vi ringer deg samme dag — senest neste virkedag — med et tilbud. Ingen forpliktelser.",
   robots: { index: false, follow: false },
 };
 
@@ -44,7 +44,7 @@ export default function TakkTilbudPage() {
         Takk! Vi ringer deg snart.
       </h1>
       <p className="mx-auto mt-4 max-w-md text-[17px] leading-[1.7] text-text-secondary">
-        Vi ringer deg vanligvis samme dag — senest neste virkedag.
+        Vi ringer deg samme dag — senest neste virkedag.
       </p>
 
       {/* Timeline */}

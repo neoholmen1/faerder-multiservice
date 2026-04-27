@@ -126,7 +126,7 @@ export default function PrislistePage() {
             Vil du ha en nøyaktig pris?
           </h2>
           <p className="mt-3 text-[15px] text-text-secondary">
-            Send oss en melding eller ring. Vi gir deg et tilbud samme dag.
+            Send oss en melding eller ring. Vi gir deg et tilbud samme dag — senest neste virkedag.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link

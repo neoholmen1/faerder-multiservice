@@ -5,7 +5,7 @@ import KontaktClient from "./client";
 export const metadata: Metadata = {
   title: "Kontakt oss — Gratis befaring",
   description:
-    "Kontakt Færder Multiservice for gratis befaring og tilbud. Ring 968 23 647 eller send oss en melding. Vi svarer innen 24 timer.",
+    "Ta kontakt — vi gir deg gratis befaring og pris. Ring 968 23 647 eller send melding. Vi svarer samme dag — senest neste virkedag.",
   alternates: { canonical: "/kontakt" },
   openGraph: {
     title: "Kontakt oss | Færder Multiservice",

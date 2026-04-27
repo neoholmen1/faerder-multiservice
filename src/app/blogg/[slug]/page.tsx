@@ -160,7 +160,7 @@ export default async function BlogPostPage({
             Trenger du hjelp med renhold?
           </h2>
           <p className="mt-3 text-[15px] text-text-secondary">
-            Send en melding eller ring. Vi svarer innen 24 timer.
+            Send en melding eller ring. Vi svarer samme dag — senest neste virkedag.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link

@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
       const { success } = await ratelimit.limit(ip);
       if (!success) {
         return NextResponse.json(
-          { error: "For mange henvendelser. Vennligst prøv igjen senere." },
+          { error: "For mange henvendelser. Prøv igjen om litt." },
           { status: 429 }
         );
       }
@@ -91,7 +91,9 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: fromEmail,
       to: notificationEmail,
-      subject: `Ny henvendelse fra ${navn} — ${tjeneste || "Generell"}`,
+      subject: tjeneste
+        ? `Ny henvendelse fra ${navn} — ${tjeneste}`
+        : `Ny henvendelse fra ${navn}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1A1A1A; margin-bottom: 24px;">Ny henvendelse fra nettsiden</h2>
@@ -133,7 +135,7 @@ export async function POST(req: NextRequest) {
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1A1A1A;">Hei ${escapeHtml(navn)}!</h2>
           <p style="color: #374151; font-size: 16px; line-height: 1.7;">
-            Takk for din henvendelse! Vi har mottatt meldingen din og svarer vanligvis innen 24 timer.
+            Takk for din henvendelse! Vi har mottatt meldingen din og svarer samme dag — senest neste virkedag.
           </p>
           <p style="color: #374151; font-size: 16px; line-height: 1.7;">
             Har du det travelt? Ring oss gjerne direkte på
@@ -141,7 +143,7 @@ export async function POST(req: NextRequest) {
           </p>
           <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 24px 0;" />
           <p style="color: #9CA3AF; font-size: 13px;">
-            Færder Multiservice AS · Smørmeien 1, 3116 Nøtterøy<br />
+            Færder Multiservice AS · Rambergveien 1, Tønsberg<br />
             <a href="https://faerdermultiservice.no" style="color: #E8721C;">faerdermultiservice.no</a>
           </p>
         </div>
@@ -152,7 +154,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("Contact API error:", err);
     return NextResponse.json(
-      { error: "Noe gikk galt. Vennligst prøv igjen eller ring oss direkte." },
+      { error: "Noe gikk galt. Prøv igjen eller ring oss direkte." },
       { status: 500 }
     );
   }

@@ -22,7 +22,7 @@ const tjenester = [
   { name: "Flyttevask", pris: "Fra 3 500 kr", slug: "flyttevask", icon: Truck },
   { name: "Kontorvask", pris: "Etter avtale", slug: "kontorvask", icon: Building2 },
   { name: "Byggvask", pris: "Fra 5 000 kr", slug: "byggvask", icon: HardHat },
-  { name: "Spesialvask", pris: "Fra 800 kr", slug: "spesialvask", icon: Sparkles },
+  { name: "Spesialvask", pris: "Fra 400 kr", slug: "spesialvask", icon: Sparkles },
   { name: "Luktsanering", pris: "Fra 3 000 kr", slug: "luktsanering", icon: Wind },
 ];
 
@@ -73,7 +73,7 @@ function Kundeanmeldelser() {
           <h2
             className="mt-5 text-[clamp(2rem,4vw,3.25rem)] tracking-[-0.02em] leading-[1.1] text-text"
           >
-            9 av 10 kunder kommer til oss via venner
+            De fleste nye kundene våre kommer via anbefalinger
           </h2>
           {/* Animated orange underline */}
           <span
@@ -82,7 +82,7 @@ function Kundeanmeldelser() {
             style={{ transform: lineVisible ? "scaleX(1)" : "scaleX(0)" }}
           />
           <p className="mx-auto mt-4 max-w-md text-[17px] leading-[1.7] text-text-secondary">
-            Det sier vel egentlig alt.
+            Hør hva noen av dem sier.
           </p>
         </div>
 
@@ -127,14 +127,22 @@ function Kundeanmeldelser() {
           ))}
         </div>
 
-        {/* Bottom link */}
-        <div className="mt-10 text-center">
+        {/* Bottom links */}
+        <div className="mt-10 flex flex-col items-center gap-3 text-center">
           <Link
             href="/kontakt"
             className="inline-flex items-center gap-2 text-[15px] font-semibold text-primary transition-colors duration-150 hover:text-primary/80"
           >
-            Vi tar gjerne en titt — helt gratis <ArrowRight size={15} />
+            Få ditt eget tilbud — helt gratis <ArrowRight size={15} />
           </Link>
+          <a
+            href="https://www.google.com/search?q=F%C3%A6rder+Multiservice+T%C3%B8nsberg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[14px] text-text-secondary transition-colors duration-150 hover:text-primary"
+          >
+            Se alle anmeldelser på Google <ArrowRight size={13} />
+          </a>
         </div>
       </div>
     </section>
@@ -154,7 +162,7 @@ const stegData = [
   {
     nr: "02",
     tittel: "Vi gir deg en pris",
-    tekst: "Du får et tilbud innen 24 timer. Ingen skjulte kostnader.",
+    tekst: "Du får et tilbud samme dag — senest neste virkedag. Ingen skjulte kostnader.",
     bilde: "/images/illustrations/steg-tilbud.webp",
     alt: "Tilbud og prisoverslag for renhold",
     rotate: "1deg",
@@ -235,22 +243,19 @@ function SlikFungererDet() {
 function TrustBar() {
   const aar = useCountUp(6, 2000);
   const ansatte = useCountUp(11, 2000);
-  const kunder = useCountUp(1000, 2000);
-  const rating = useCountUp(48, 2000);
+  const kunder = useScrollAnimation<HTMLDivElement>();
   const ref = useScrollAnimation<HTMLDivElement>();
 
   return (
     <section className="bg-[#faf8f5] py-16 md:py-24 lg:py-28">
-      <div ref={ref} className="reveal mx-auto grid max-w-[1000px] grid-cols-2 gap-6 px-5 md:px-6 sm:gap-10 lg:grid-cols-4 lg:gap-0">
+      <div ref={ref} className="reveal mx-auto grid max-w-[1000px] grid-cols-1 gap-6 px-5 md:px-6 sm:grid-cols-3 sm:gap-10 lg:gap-0">
         {[
           { ref: aar.ref, value: `${aar.count}+`, label: "Års erfaring" },
           { ref: ansatte.ref, value: `${ansatte.count}+`, label: "Ansatte" },
-          { ref: kunder.ref, value: `${kunder.count}+`, label: "Fornøyde kunder" },
-          { ref: rating.ref, value: `${(rating.count / 10).toFixed(1)}`, label: "På Google", star: true },
+          { ref: kunder, value: "Hundrevis", label: "Fornøyde kunder" },
         ].map((stat) => (
           <div key={stat.label} ref={stat.ref} className="flex flex-col items-center text-center">
             <span className="text-[clamp(2rem,5vw,3.5rem)] font-bold tracking-[-0.04em] text-text">
-              {"star" in stat && stat.star && <span className="mr-1 text-primary">★</span>}
               {stat.value}
             </span>
             <span className="mt-3 h-1 w-10 rounded-full bg-primary" />
@@ -286,7 +291,7 @@ function HvorforOss() {
             { icon: ShieldCheck, tittel: "Offentlig godkjent", tekst: "Godkjent av Arbeidstilsynet. Alt er på stell hos oss.", iconColor: "text-blue-600", bgColor: "bg-blue-50", tooltip: "Registrert i Renholdsregisteret." },
             { icon: Handshake, tittel: "Medlem av NHO", tekst: "Vi er med i NHO Service og Handel. Vi gjør ting ordentlig.", iconColor: "text-violet-600", bgColor: "bg-violet-50", tooltip: "NHO Service og Handel." },
             { icon: Leaf, tittel: "EV-sertifisert", tekst: "Vi vasker med damp — ingen sterke kjemikalier. Bra for deg og miljøet.", iconColor: "text-emerald-600", bgColor: "bg-emerald-50", tooltip: "Kun vann og varme. Ingen kjemikalier." },
-            { icon: MapPin, tittel: "Lokalt i Vestfold", tekst: "Vi holder til på Nøtterøy. Kort vei til hele Vestfold.", iconColor: "text-amber-600", bgColor: "bg-amber-50", tooltip: "Smørmeien 1, Nøtterøy." },
+            { icon: MapPin, tittel: "Lokalt i Vestfold", tekst: "Vi holder til i Tønsberg. Kort vei til hele Vestfold.", iconColor: "text-amber-600", bgColor: "bg-amber-50", tooltip: "Rambergveien 1, Tønsberg." },
           ].map((k) => {
             const Icon = k.icon;
             return (
@@ -603,7 +608,7 @@ function CTASeksjon() {
               La oss ta <span className="text-gradient italic">renholdet</span> for deg
             </h2>
             <p className="mx-auto mt-6 max-w-lg text-[17px] leading-[1.7] text-text-secondary lg:mx-0">
-              Send en melding eller bare ring. Vi svarer innen 24 timer.
+              Send en melding eller bare ring. Vi svarer samme dag — senest neste virkedag.
             </p>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
               <MagneticLink

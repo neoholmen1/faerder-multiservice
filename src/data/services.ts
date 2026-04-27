@@ -54,7 +54,7 @@ export const services: Service[] = [
     ],
     steps: [
       { title: "Si hva du trenger", description: "Fortell oss om boligen og hvor ofte du vil ha vask." },
-      { title: "Vi gir deg en pris", description: "Fast pris basert på størrelse. Ingen overraskelser." },
+      { title: "Vi gir deg en pris", description: "Du får et prisanslag med en gang, og fast pris etter befaring." },
       { title: "Vi fikser resten", description: "Samme team hver gang, til avtalt tid." },
     ],
     faq: [
@@ -93,7 +93,7 @@ export const services: Service[] = [
       "Innvendig og utvendig vindusvask med karmvask",
       "Desinfisering av knotter, håndtak og kontakter",
       "Avtrekksvifter og taklampevask",
-      "Tresiders dør- og karmvask",
+      "Vask av dører og karmer på alle sider",
     ],
     steps: [
       { title: "Si ifra", description: "Fortell oss størrelse, antall rom og når du skal flytte." },
@@ -171,7 +171,7 @@ export const services: Service[] = [
       "Tørrmopping av tak",
       "Vegg- og kontaktvask",
       "Gulvstøvsuging og vask",
-      "Tresiders dør- og karmvask",
+      "Vask av dører og karmer på alle sider",
       "Trapper, fotlister, rekkverk og glassrekkverk",
       "Innvendig og utvendig skapvask (kjøkken og bad)",
       "Rengjøring av alle sanitærinstallasjoner",
@@ -200,7 +200,7 @@ export const services: Service[] = [
     image: "/images/tjenester/spesialvask.webp",
     longDescription:
       "Gruer du deg til vindusvask? Vi tar det gjerne. Rene vinduer gir masse dagslys, og vi gjør tepperens og møbelrens også. Bare si hva du trenger.",
-    price: "Fra 800 kr",
+    price: "Fra 400 kr",
     icon: "Wind",
     frequencies: [
       { id: "windows", label: "Vindusvask", sublabel: "Inn- og utvendig", price: "Fra 800", period: "kr", popular: true },
@@ -237,7 +237,7 @@ export const services: Service[] = [
     description: "Vi fjerner vond lukt. Skikkelig, ikke bare skjuler den.",
     image: "/images/tjenester/luktsanering.webp",
     longDescription:
-      "Vond lukt blir bare verre om du lar den stå. Vi finner kilden og fjerner den ordentlig — ikke bare dekker over. Vi jobber med Inneklimaspesialisten og EV Of Norway, og bruker flere metoder for å få det helt bort.",
+      "Vond lukt blir bare verre om du lar den stå. Vi finner kilden og fjerner den ordentlig — ikke bare dekker over. Vi samarbeider med Inneklimaspesialisten og EV Of Norway — sertifiserte partnere innen inneklima og luktsanering — og bruker flere metoder for å få det helt bort.",
     price: "Fra 3 000 kr",
     icon: "Droplets",
     frequencies: [
@@ -250,7 +250,7 @@ export const services: Service[] = [
       "Behandling av berørte overflater",
       "Ozonsanering ved behov",
       "Tekstilbehandling",
-      "Samarbeid med Inneklimaspesialisten",
+      "Samarbeid med Inneklimaspesialisten og EV Of Norway (sertifiserte inneklima-partnere)",
       "Oppfølging og kontroll",
     ],
     steps: [
@@ -261,7 +261,7 @@ export const services: Service[] = [
     faq: [
       { question: "Hva slags lukt kan dere fjerne?", answer: "Røyk, kjæledyr, fukt, mugg, brann — du nevner det. Vi fikser det." },
       { question: "Hvor lang tid tar det?", answer: "Vanligvis 1–3 dager. Vi gir deg et estimat etter at vi har sett på det." },
-      { question: "Hvilke metoder bruker dere?", answer: "Ozon, tekstilbehandling, ventilasjonssanering — vi bruker det som trengs. Vi jobber med Inneklimaspesialisten og EV Of Norway." },
+      { question: "Hvilke metoder bruker dere?", answer: "Ozon, tekstilbehandling, ventilasjonssanering — vi bruker det som trengs. Vi samarbeider med Inneklimaspesialisten og EV Of Norway — sertifiserte partnere innen inneklima og luktsanering." },
     ],
     coverageText:
       "Vi gjør luktsanering i hele Vestfold. Ofte ledig innen få dager.",

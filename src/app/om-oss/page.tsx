@@ -117,7 +117,7 @@ export default function OmOssPage() {
               {
                 icon: Heart,
                 title: "Lokalt og personlig",
-                text: "Basert på Nøtterøy. Kort reisevei, kjente fjes, personlig oppfølging.",
+                text: "Basert i Tønsberg. Kort reisevei, kjente fjes, personlig oppfølging.",
                 color: "text-rose-500",
                 bg: "bg-rose-50",
               },
@@ -217,7 +217,7 @@ export default function OmOssPage() {
             Vil du vite mer?
           </h2>
           <p className="mt-3 text-[15px] text-text-secondary">
-            Send oss en melding eller ring. Vi svarer innen 24 timer.
+            Send oss en melding eller ring. Vi svarer samme dag — senest neste virkedag.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
