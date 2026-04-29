@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.105.1",
+    "@uiw/react-md-editor": "^4.1.0",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.36.2",
     "@vercel/analytics": "^1.6.1",
@@ -16,6 +18,7 @@
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-markdown": "^10.1.0",
     "resend": "^6.9.2"
   },
   "devDependencies": {

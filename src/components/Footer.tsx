@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Phone, Mail, MapPin, ShieldCheck, Leaf, Handshake } from "lucide-react";
 import { trackEvent } from "@/lib/tracking";
 import { copyAndToast } from "@/lib/toast";
+import { SITE_SETTINGS_FALLBACK, type SiteSettings, type Badge } from "@/lib/site";
 
 const tjenester = [
   { name: "Fast vask", href: "/tjenester/fast-vask" },
@@ -18,12 +19,22 @@ const tjenester = [
   { name: "Borettslag", href: "/tjenester/borettslag" },
 ];
 
-const dekningsomrader = [
-  "Tønsberg", "Nøtterøy", "Tjøme", "Færder",
-  "Sandefjord", "Horten", "Holmestrand", "Larvik",
-];
+const BADGE_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  godkjent: ShieldCheck,
+  nho: Handshake,
+  ev: Leaf,
+};
 
-export function Footer() {
+export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
+  const s = settings ?? SITE_SETTINGS_FALLBACK;
+  const phone = s.phone ?? SITE_SETTINGS_FALLBACK.phone ?? "";
+  const phoneDigits = phone.replace(/\s/g, "");
+  const phoneIntl = phoneDigits.startsWith("+") ? phoneDigits : `+47${phoneDigits}`;
+  const email = s.email_general ?? SITE_SETTINGS_FALLBACK.email_general ?? "";
+  const address = s.visit_address ?? SITE_SETTINGS_FALLBACK.visit_address ?? "";
+  const dekningsomrader =
+    s.coverage_areas.length > 0 ? s.coverage_areas : SITE_SETTINGS_FALLBACK.coverage_areas;
+  const badges: Badge[] = s.badges.length > 0 ? s.badges : SITE_SETTINGS_FALLBACK.badges;
   return (
     <footer className="bg-[#faf0e4]">
       <div className="mx-auto max-w-[1200px] px-6 pt-20 pb-8 lg:px-8">
@@ -45,33 +56,33 @@ export function Footer() {
             <ul className="mt-6 space-y-3">
               <li>
                 <a
-                  href="tel:+4796823647"
+                  href={`tel:${phoneIntl}`}
                   onClick={(e) => {
                     if (window.innerWidth >= 768) {
                       e.preventDefault();
-                      copyAndToast("968 23 647", "Telefonnummer kopiert!");
+                      copyAndToast(phone, "Telefonnummer kopiert!");
                     }
                     trackEvent("phone_click", { location: "footer" });
                   }}
                   className="flex items-center gap-2.5 text-[15px] text-text-secondary transition-colors duration-150 hover:text-primary"
                 >
                   <Phone size={15} className="shrink-0" />
-                  +47 968 23 647
+                  {phoneIntl.replace(/^\+47/, "+47 ")}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:post@faerdermultiservice.no"
+                  href={`mailto:${email}`}
                   className="flex items-center gap-2.5 text-[15px] text-text-secondary transition-colors duration-150 hover:text-primary"
                 >
                   <Mail size={15} className="shrink-0" />
-                  post@faerdermultiservice.no
+                  {email}
                 </a>
               </li>
               <li>
                 <span className="flex items-start gap-2.5 text-[15px] text-text-secondary">
                   <MapPin size={15} className="mt-0.5 shrink-0" />
-                  Rambergveien 1, Tønsberg
+                  {address}
                 </span>
               </li>
             </ul>
@@ -140,21 +151,21 @@ export function Footer() {
         <div className="mt-20 border-t border-black/[0.06] pt-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <div className="flex flex-wrap items-center gap-4">
-              <span className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]">
-                <ShieldCheck size={13} className="text-primary" />
-                Offentlig godkjent renholdsbedrift
-                <span className="tooltip hidden sm:block">Godkjent av Arbeidstilsynet. Registrert i Renholdsregisteret.</span>
-              </span>
-              <span className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]">
-                <Handshake size={13} className="text-primary" />
-                Medlem av NHO Service og Handel
-                <span className="tooltip hidden sm:block">NHO Service og Handel: Norges ledende arbeidsgiverorganisasjon for servicenæringen.</span>
-              </span>
-              <span className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]">
-                <Leaf size={13} className="text-primary" />
-                EV-sertifisert
-                <span className="tooltip hidden sm:block">EV-dampmaskin: Ingen sterke kjemikalier. Skånsomt for miljøet.</span>
-              </span>
+              {badges.map((b) => {
+                const Icon = BADGE_ICONS[b.key] ?? ShieldCheck;
+                return (
+                  <span
+                    key={b.key + b.label}
+                    className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]"
+                  >
+                    <Icon size={13} className="text-primary" />
+                    {b.label}
+                    {b.tooltip && (
+                      <span className="tooltip hidden sm:block">{b.tooltip}</span>
+                    )}
+                  </span>
+                );
+              })}
             </div>
             <p className="text-xs text-[#9CA3AF]">
               &copy; {new Date().getFullYear()} Færder Multiservice AS &middot; Org.nr 824 779 392

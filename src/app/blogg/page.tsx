@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { getCurrentSite } from "@/lib/site";
+import { getBlogPostsOrFallback, formatBlogDate } from "@/lib/cms-fallback";
 import BlogClient from "./client";
 
 export const metadata: Metadata = {
@@ -15,7 +17,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BloggPage() {
+export default async function BloggPage() {
+  const site = await getCurrentSite();
+  const posts = await getBlogPostsOrFallback(site?.id ?? null);
+  const cards = posts.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    image: p.cover_image_url ?? "/images/illustrations/blogg-fast-vask.webp",
+    date: formatBlogDate(p),
+    tags: p.tags,
+  }));
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -24,7 +37,7 @@ export default function BloggPage() {
           { name: "Blogg", href: "/blogg" },
         ]}
       />
-      <BlogClient />
+      <BlogClient posts={cards} />
     </>
   );
 }

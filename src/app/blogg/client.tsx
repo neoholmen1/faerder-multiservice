@@ -1,20 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/components/DarkHero";
 import { SectionReveal } from "@/components/SectionReveal";
-import { blogPosts, getAllTags } from "@/data/blog";
 
-const allTags = getAllTags();
+export type BlogCard = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  date: string;
+  tags: string[];
+};
 
-export default function BlogClient() {
+export default function BlogClient({ posts }: { posts: BlogCard[] }) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
-  const filtered = activeTag
-    ? blogPosts.filter((p) => p.tags.includes(activeTag))
-    : blogPosts;
+  const allTags = useMemo(() => {
+    const set = new Set<string>();
+    for (const p of posts) for (const t of p.tags) set.add(t);
+    return Array.from(set);
+  }, [posts]);
+
+  const filtered = activeTag ? posts.filter((p) => p.tags.includes(activeTag)) : posts;
 
   return (
     <>

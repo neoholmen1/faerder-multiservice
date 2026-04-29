@@ -3,11 +3,17 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Phone, ArrowLeft } from "lucide-react";
-import { blogPosts, getBlogPostBySlug } from "@/data/blog";
+import { blogPosts as fallbackBlogPosts } from "@/data/blog";
+import { getCurrentSite } from "@/lib/site";
+import {
+  getBlogPostOrFallback,
+  getBlogPostsOrFallback,
+  formatBlogDate,
+} from "@/lib/cms-fallback";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
-  return blogPosts.map((p) => ({ slug: p.slug }));
+  return fallbackBlogPosts.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -16,15 +22,16 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const site = await getCurrentSite();
+  const post = await getBlogPostOrFallback(site?.id ?? null, slug);
   if (!post) return {};
   return {
-    title: post.seoTitle,
-    description: post.seoDescription,
+    title: post.seo_title ?? post.title,
+    description: post.seo_description ?? post.excerpt,
     alternates: { canonical: `/blogg/${post.slug}` },
     openGraph: {
-      title: post.seoTitle,
-      description: post.seoDescription,
+      title: post.seo_title ?? post.title,
+      description: post.seo_description ?? post.excerpt,
       url: `/blogg/${post.slug}`,
       type: "article",
     },
@@ -37,11 +44,14 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const site = await getCurrentSite();
+  const post = await getBlogPostOrFallback(site?.id ?? null, slug);
   if (!post) notFound();
 
   // Related posts: all other posts, exclude current
-  const related = blogPosts.filter((p) => p.slug !== post.slug);
+  const all = await getBlogPostsOrFallback(site?.id ?? null);
+  const related = all.filter((p) => p.slug !== post.slug);
+  const postDate = formatBlogDate(post);
 
   return (
     <>
@@ -76,7 +86,7 @@ export default async function BlogPostPage({
                 {tag}
               </span>
             ))}
-            <span className="text-[0.8rem] text-[#9CA3AF]">{post.date}</span>
+            <span className="text-[0.8rem] text-[#9CA3AF]">{postDate}</span>
           </div>
         </div>
       </section>
@@ -85,7 +95,7 @@ export default async function BlogPostPage({
       <div className="mx-auto max-w-[680px] px-6">
         <div className="-mt-2 overflow-hidden rounded-[16px]">
           <Image
-            src={post.image}
+            src={post.cover_image_url ?? "/images/illustrations/blogg-fast-vask.webp"}
             alt={post.title}
             width={680}
             height={383}
@@ -99,7 +109,7 @@ export default async function BlogPostPage({
       <article className="mx-auto max-w-[680px] px-6 py-12 lg:py-16">
         <div
           className="prose-custom"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: post.body }}
         />
       </article>
 
@@ -119,7 +129,7 @@ export default async function BlogPostPage({
                 >
                   <div className="aspect-[16/9] overflow-hidden">
                     <Image
-                      src={r.image}
+                      src={r.cover_image_url ?? "/images/illustrations/blogg-fast-vask.webp"}
                       alt={r.title}
                       width={400}
                       height={225}
@@ -139,7 +149,7 @@ export default async function BlogPostPage({
                         </span>
                       ))}
                       <span className="ml-auto text-[0.78rem] text-[#9CA3AF]">
-                        {r.date}
+                        {formatBlogDate(r)}
                       </span>
                     </div>
                     <h3 className="mt-3 text-[1.05rem] leading-snug text-text">

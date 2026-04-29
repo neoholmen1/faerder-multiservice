@@ -4,7 +4,8 @@ import {
   Sparkles, Truck, Building2, HardHat, Wind,
   Home, ArrowRight, Phone,
 } from "lucide-react";
-import { services } from "@/data/services";
+import { getCurrentSite } from "@/lib/site";
+import { getServicesOrFallback } from "@/lib/cms-fallback";
 import { PageHero } from "@/components/DarkHero";
 import { SectionReveal } from "@/components/SectionReveal";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
@@ -33,9 +34,11 @@ const slugToIcon: Record<string, string> = {
   "luktsanering": "Wind",
 };
 
-const visibleSlugs = new Set(["fast-vask", "flyttevask", "kontorvask", "byggvask", "spesialvask", "luktsanering"]);
+export default async function TjenesterPage() {
+  const site = await getCurrentSite();
+  const allServices = await getServicesOrFallback(site?.id ?? null);
+  const services = allServices.filter((s) => s.visible_on_homepage);
 
-export default function TjenesterPage() {
   return (
     <>
       <BreadcrumbJsonLd items={[
@@ -48,8 +51,8 @@ export default function TjenesterPage() {
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-              {services.filter((s) => visibleSlugs.has(s.slug)).map((s) => {
-                const iconName = slugToIcon[s.slug] || s.icon;
+              {services.map((s) => {
+                const iconName = slugToIcon[s.slug] || s.icon || "Sparkles";
                 const Icon = iconMap[iconName] || Sparkles;
                 return (
                   <Link
@@ -59,8 +62,8 @@ export default function TjenesterPage() {
                   >
                     <Icon size={48} strokeWidth={1.2} className="text-primary" />
                     <h2 className="mt-4 text-[16px] font-semibold tracking-tight text-text">{s.name}</h2>
-                    <p className="mt-1 text-[14px] leading-[1.6] text-text-secondary">{s.description}</p>
-                    <p className="mt-3 text-[13px] font-medium text-primary">{s.price}</p>
+                    <p className="mt-1 text-[14px] leading-[1.6] text-text-secondary">{s.short_description}</p>
+                    <p className="mt-3 text-[13px] font-medium text-primary">{s.price_label}</p>
                     <ArrowRight size={14} className="mt-3 text-text-secondary/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary" />
                   </Link>
                 );

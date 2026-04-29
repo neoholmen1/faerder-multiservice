@@ -9,6 +9,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
+import { getCurrentSite, getSiteSettings } from "@/lib/site";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -59,11 +60,14 @@ export const viewport: Viewport = {
   themeColor: "#E8721C",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const site = await getCurrentSite();
+  const settings = site ? await getSiteSettings(site.id) : null;
+
   return (
     <html lang="no">
       <body className={`${dmSans.variable} ${dmSerif.variable} antialiased`}>
@@ -72,7 +76,7 @@ export default function RootLayout({
         <main>
           <PageTransition>{children}</PageTransition>
         </main>
-        <Footer />
+        <Footer settings={settings} />
         <ScrollToTop />
         <CookieBanner />
         <GoogleAnalytics />
