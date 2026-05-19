@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Phone, Mail, MapPin, ShieldCheck, Leaf, Handshake } from "lucide-react";
 import { trackEvent } from "@/lib/tracking";
 import { copyAndToast } from "@/lib/toast";
@@ -26,6 +27,8 @@ const BADGE_ICONS: Record<string, React.ComponentType<{ size?: number; className
 };
 
 export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
   const s = settings ?? SITE_SETTINGS_FALLBACK;
   const phone = s.phone ?? SITE_SETTINGS_FALLBACK.phone ?? "";
   const phoneDigits = phone.replace(/\s/g, "");
@@ -173,14 +176,21 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
           </div>
         </div>
 
-        {/* Back to top */}
-        <div className="mt-6 text-center">
+        {/* Back to top + diskret admin-link */}
+        <div className="mt-6 flex items-center justify-center gap-4">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-xs text-[#9CA3AF] transition-colors duration-200 hover:text-primary"
           >
             ↑ Tilbake til toppen
           </button>
+          <span className="text-xs text-[#9CA3AF]/40">·</span>
+          <Link
+            href="/admin"
+            className="text-xs text-[#9CA3AF] transition-colors duration-200 hover:text-primary"
+          >
+            Logg inn
+          </Link>
         </div>
       </div>
     </footer>

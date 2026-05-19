@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const STORAGE_KEY = "cookie-consent";
 
 export function CookieBanner() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [leaving, setLeaving] = useState(false);
 
@@ -13,6 +15,8 @@ export function CookieBanner() {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) setVisible(true);
   }, []);
+
+  if (pathname?.startsWith("/admin")) return null;
 
   function respond(value: "granted" | "denied") {
     localStorage.setItem(STORAGE_KEY, value);

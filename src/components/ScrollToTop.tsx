@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { ChevronUp } from "lucide-react";
 
 export function ScrollToTop() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -12,6 +14,8 @@ export function ScrollToTop() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <button

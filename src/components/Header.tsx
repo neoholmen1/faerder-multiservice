@@ -27,6 +27,9 @@ export function Header({ openStatus, phone }: { openStatus?: OpenStatus; phone?:
 
   const close = useCallback(() => setMobileOpen(false), []);
 
+  // Skjul header på admin-ruter
+  if (pathname?.startsWith("/admin")) return null;
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
