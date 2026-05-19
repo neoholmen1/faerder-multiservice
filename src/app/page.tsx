@@ -710,60 +710,121 @@ function AnimatedDivider() {
 /* ── Firmabil showcase — framed, animated, reactive ── */
 function FirmabilShowcase() {
   const ref = useScrollAnimation<HTMLDivElement>();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0, mx: 50, my: 50 });
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    // Forsiktig 3D-tilt — kun 2-3 grader, mer enn det blir grelt
+    setTilt({
+      rx: (0.5 - py) * 4,
+      ry: (px - 0.5) * 5,
+      mx: px * 100,
+      my: py * 100,
+    });
+  }
+
+  function handleMouseLeave() {
+    setTilt({ rx: 0, ry: 0, mx: 50, my: 50 });
+  }
+
   return (
     <section
-      className="relative overflow-hidden bg-[#faf8f5] py-10 md:py-14 lg:py-16"
-      style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #faf8f5 100%)" }}
+      className="relative overflow-hidden py-10 md:py-12 lg:py-14"
+      style={{
+        background: "linear-gradient(180deg, #f5f0ea 0%, #faf8f5 100%)",
+        perspective: "1400px",
+      }}
     >
-      <div className="mx-auto max-w-[1200px] px-5 md:px-6">
-        <div
-          ref={ref}
-          className="reveal group relative aspect-[16/8] w-full overflow-hidden rounded-[20px] bg-[#f5f0ea] shadow-[0_20px_60px_-20px_rgba(232,114,28,0.25),0_4px_12px_rgba(0,0,0,0.05)] ring-1 ring-black/[0.04] transition-all duration-[600ms] ease-out hover:shadow-[0_30px_80px_-20px_rgba(232,114,28,0.32),0_8px_20px_rgba(0,0,0,0.06)] md:rounded-[28px] lg:rounded-[32px]"
-        >
-          {/* Image with slow Ken Burns zoom */}
-          <Image
-            src="/images/firmabil-hero.webp"
-            alt="Færder Multiservice firmabil"
-            fill
-            priority
-            quality={95}
-            sizes="(max-width: 1200px) 100vw, 1200px"
-            className="hero-image-zoom object-cover"
-            style={{ objectPosition: "center 62%" }}
-          />
+      {/* Bakgrunns-blob, beveger seg svakt med musen */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-20 left-1/2 h-[400px] w-[600px] -translate-x-1/2 rounded-full opacity-40 blur-3xl transition-transform duration-[800ms] ease-out"
+        style={{
+          background: "radial-gradient(circle, rgba(232,114,28,0.18), transparent 70%)",
+          transform: `translate(${(tilt.mx - 50) * 0.4}px, ${(tilt.my - 50) * 0.2}px) translateX(-50%)`,
+        }}
+      />
 
-          {/* Subtle warm color overlay — knytter bildet til brand-fargene */}
+      <div ref={ref} className="reveal relative mx-auto max-w-[1200px] px-5 md:px-6">
+        <div
+          ref={cardRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="showcase-shimmer group relative aspect-[16/7] w-full overflow-hidden rounded-[20px] bg-[#f5f0ea] shadow-[0_20px_60px_-20px_rgba(232,114,28,0.25),0_4px_12px_rgba(0,0,0,0.05)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-300 ease-out will-change-transform hover:shadow-[0_30px_80px_-20px_rgba(232,114,28,0.35),0_8px_20px_rgba(0,0,0,0.08)] md:aspect-[21/8] md:rounded-[28px] lg:aspect-[21/7.5] lg:rounded-[32px]"
+          style={{
+            transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
+            transformStyle: "preserve-3d",
+          }}
+        >
+          {/* Bilde med slow Ken Burns + parallax */}
+          <div
+            className="absolute inset-0 transition-transform duration-[400ms] ease-out"
+            style={{
+              transform: `translate3d(${(50 - tilt.mx) * 0.15}px, ${(50 - tilt.my) * 0.1}px, 0)`,
+            }}
+          >
+            <Image
+              src="/images/firmabil-hero.webp"
+              alt="Færder Multiservice firmabil"
+              fill
+              priority
+              quality={95}
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className="hero-image-zoom object-cover"
+              style={{ objectPosition: "center 62%" }}
+            />
+          </div>
+
+          {/* Spotlight som følger musen */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 transition-opacity duration-700 group-hover:opacity-80"
+            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             style={{
-              background:
-                "linear-gradient(135deg, rgba(232,114,28,0.06) 0%, transparent 35%, transparent 70%, rgba(232,114,28,0.10) 100%)",
+              background: `radial-gradient(400px circle at ${tilt.mx}% ${tilt.my}%, rgba(255,255,255,0.18), transparent 60%)`,
             }}
           />
 
-          {/* Bottom gradient for depth */}
+          {/* Varm overlay — knytter bildet til brand-fargene */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(232,114,28,0.05) 0%, transparent 35%, transparent 70%, rgba(232,114,28,0.10) 100%)",
+            }}
+          />
+
+          {/* Bunn-gradient for dybde */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3"
-            style={{
-              background: "linear-gradient(to top, rgba(0,0,0,0.18), transparent)",
-            }}
+            style={{ background: "linear-gradient(to top, rgba(0,0,0,0.20), transparent)" }}
           />
 
-          {/* Decorative corner accent — animated on appear */}
+          {/* Hjørne-aksenter */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-5 top-5 h-10 w-10 rounded-tl-2xl border-l-2 border-t-2 border-white/60 opacity-0 transition-all duration-700 ease-out [.visible_&]:opacity-100 md:left-7 md:top-7 md:h-14 md:w-14"
+            className="pointer-events-none absolute left-4 top-4 h-9 w-9 rounded-tl-2xl border-l-2 border-t-2 border-white/60 opacity-0 transition-opacity duration-700 ease-out [.visible_&]:opacity-100 md:left-6 md:top-6 md:h-12 md:w-12"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute right-5 bottom-5 h-10 w-10 rounded-br-2xl border-b-2 border-r-2 border-white/60 opacity-0 transition-all duration-700 ease-out [.visible_&]:opacity-100 md:right-7 md:bottom-7 md:h-14 md:w-14"
+            className="pointer-events-none absolute bottom-4 right-4 h-9 w-9 rounded-br-2xl border-b-2 border-r-2 border-white/60 opacity-0 transition-opacity duration-700 ease-out [.visible_&]:opacity-100 md:bottom-6 md:right-6 md:h-12 md:w-12"
           />
 
-          {/* Floating badge — "Færder Multiservice" branding */}
-          <div className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-text shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur transition-all duration-500 md:right-6 md:top-6 md:px-4 md:py-2 md:text-[12.5px]">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          {/* Flytende dekorprikk */}
+          <span
+            aria-hidden="true"
+            className="showcase-float pointer-events-none absolute right-12 top-12 hidden h-2 w-2 rounded-full bg-primary opacity-70 md:block"
+          />
+
+          {/* Branding-badge med pulserende prikk */}
+          <div className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-text shadow-[0_4px_16px_rgba(0,0,0,0.10)] backdrop-blur transition-transform duration-300 group-hover:scale-105 md:right-6 md:top-6 md:px-4 md:py-2 md:text-[12.5px]">
+            <span className="badge-dot-pulse h-2 w-2 rounded-full bg-primary" />
             Vi vasker i Vestfold
           </div>
         </div>
