@@ -707,6 +707,71 @@ function AnimatedDivider() {
   return <div ref={ref} className="section-divider" />;
 }
 
+/* ── Firmabil showcase — framed, animated, reactive ── */
+function FirmabilShowcase() {
+  const ref = useScrollAnimation<HTMLDivElement>();
+  return (
+    <section
+      className="relative overflow-hidden bg-[#faf8f5] py-10 md:py-14 lg:py-16"
+      style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #faf8f5 100%)" }}
+    >
+      <div className="mx-auto max-w-[1200px] px-5 md:px-6">
+        <div
+          ref={ref}
+          className="reveal group relative aspect-[16/8] w-full overflow-hidden rounded-[20px] bg-[#f5f0ea] shadow-[0_20px_60px_-20px_rgba(232,114,28,0.25),0_4px_12px_rgba(0,0,0,0.05)] ring-1 ring-black/[0.04] transition-all duration-[600ms] ease-out hover:shadow-[0_30px_80px_-20px_rgba(232,114,28,0.32),0_8px_20px_rgba(0,0,0,0.06)] md:rounded-[28px] lg:rounded-[32px]"
+        >
+          {/* Image with slow Ken Burns zoom */}
+          <Image
+            src="/images/firmabil-hero.webp"
+            alt="Færder Multiservice firmabil"
+            fill
+            priority
+            quality={95}
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            className="hero-image-zoom object-cover"
+            style={{ objectPosition: "center 62%" }}
+          />
+
+          {/* Subtle warm color overlay — knytter bildet til brand-fargene */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 transition-opacity duration-700 group-hover:opacity-80"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(232,114,28,0.06) 0%, transparent 35%, transparent 70%, rgba(232,114,28,0.10) 100%)",
+            }}
+          />
+
+          {/* Bottom gradient for depth */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3"
+            style={{
+              background: "linear-gradient(to top, rgba(0,0,0,0.18), transparent)",
+            }}
+          />
+
+          {/* Decorative corner accent — animated on appear */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-5 top-5 h-10 w-10 rounded-tl-2xl border-l-2 border-t-2 border-white/60 opacity-0 transition-all duration-700 ease-out [.visible_&]:opacity-100 md:left-7 md:top-7 md:h-14 md:w-14"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute right-5 bottom-5 h-10 w-10 rounded-br-2xl border-b-2 border-r-2 border-white/60 opacity-0 transition-all duration-700 ease-out [.visible_&]:opacity-100 md:right-7 md:bottom-7 md:h-14 md:w-14"
+          />
+
+          {/* Floating badge — "Færder Multiservice" branding */}
+          <div className="absolute right-4 top-4 z-10 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-text shadow-[0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur transition-all duration-500 md:right-6 md:top-6 md:px-4 md:py-2 md:text-[12.5px]">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Vi vasker i Vestfold
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── Trust badge stripe (under firmabil image) ── */
 function TrustStripe() {
   const ref = useScrollAnimation<HTMLDivElement>();
@@ -845,27 +910,7 @@ export default function Hjem() {
       </section>
 
       {/* Firmabil image — seamless visual break */}
-      <div
-        className="relative overflow-hidden"
-        style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #faf8f5 100%)" }}
-      >
-        <Image
-          src="/images/firmabil-hero.webp"
-          alt="Færder Multiservice firmabil"
-          width={1920}
-          height={600}
-          priority
-          quality={90}
-          sizes="100vw"
-          className="w-full object-cover"
-          style={{
-            height: "clamp(300px, 35vw, 440px)",
-            objectPosition: "center 70%",
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 70%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 20%, black 70%, transparent 100%)",
-          }}
-        />
-      </div>
+      <FirmabilShowcase />
 
       {/* Trust badge stripe */}
       <TrustStripe />
