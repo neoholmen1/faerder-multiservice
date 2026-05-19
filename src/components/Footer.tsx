@@ -176,21 +176,14 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
           </div>
         </div>
 
-        {/* Back to top + diskret admin-link */}
-        <div className="mt-6 flex items-center justify-center gap-4">
+        {/* Back to top */}
+        <div className="mt-6 text-center">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="text-xs text-[#9CA3AF] transition-colors duration-200 hover:text-primary"
           >
             ↑ Tilbake til toppen
           </button>
-          <span className="text-xs text-[#9CA3AF]/40">·</span>
-          <Link
-            href="/admin"
-            className="text-xs text-[#9CA3AF] transition-colors duration-200 hover:text-primary"
-          >
-            Logg inn
-          </Link>
         </div>
       </div>
     </footer>
