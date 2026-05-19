@@ -47,7 +47,7 @@ export default async function TjenesterPage() {
       ]} />
       <PageHero label="Tjenester" title="Våre tjenester" subtitle="Vi vasker for folk og bedrifter i hele Vestfold." />
 
-      <section className="py-28 lg:py-36">
+      <section className="py-16 md:py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
@@ -74,7 +74,7 @@ export default async function TjenesterPage() {
       </section>
 
       <div className="section-divider" />
-      <section className="bg-[#f5f5f7] py-28 lg:py-36">
+      <section className="bg-[#f5f5f7] py-16 md:py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
             Usikker på hva du trenger?

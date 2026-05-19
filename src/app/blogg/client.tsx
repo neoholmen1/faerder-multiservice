@@ -34,7 +34,7 @@ export default function BlogClient({ posts }: { posts: BlogCard[] }) {
         subtitle="Alt du trenger å vite om renhold, vedlikehold og et renere hjem."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="py-16 md:py-20 lg:py-28">
         <div className="mx-auto max-w-[1200px] px-6">
           {/* Tag filters */}
           <SectionReveal>

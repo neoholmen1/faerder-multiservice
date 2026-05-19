@@ -8,8 +8,10 @@ import { PageTransition } from "@/components/PageTransition";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { MobileCtaSticky } from "@/components/MobileCtaSticky";
 import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
-import { getCurrentSite, getSiteSettings } from "@/lib/site";
+import { getCurrentSite, getSiteSettings, SITE_SETTINGS_FALLBACK } from "@/lib/site";
+import { getOpenStatus } from "@/lib/openHours";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Færder Multiservice AS",
     title: "Færder Multiservice — Skikkelig renhold i Vestfold",
     description:
-      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
+      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. Godkjent og EV-sertifisert.",
     url: "https://faerdermultiservice.no",
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Færder Multiservice — Rent hjem. Null stress." }],
   },
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Færder Multiservice — Vi vasker, du slipper",
     description:
-      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. 4.8/5 på Google.",
+      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. Godkjent og EV-sertifisert.",
     images: ["/images/og-image.jpg"],
   },
   alternates: {
@@ -67,16 +69,19 @@ export default async function RootLayout({
 }>) {
   const site = await getCurrentSite();
   const settings = site ? await getSiteSettings(site.id) : null;
+  const phone = settings?.phone ?? SITE_SETTINGS_FALLBACK.phone ?? "968 23 647";
+  const openStatus = getOpenStatus();
 
   return (
     <html lang="no">
       <body className={`${dmSans.variable} ${dmSerif.variable} antialiased`}>
         <LocalBusinessJsonLd />
-        <Header />
+        <Header openStatus={openStatus} phone={phone} />
         <main>
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer settings={settings} />
+        <MobileCtaSticky phone={phone} />
         <ScrollToTop />
         <CookieBanner />
         <GoogleAnalytics />

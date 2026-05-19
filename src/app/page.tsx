@@ -87,7 +87,7 @@ function Kundeanmeldelser() {
         </div>
 
         {/* Grid layout — 2 cols on tablet, 4 on desktop */}
-        <div ref={gridRef} className="reveal-stagger mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={gridRef} className="reveal-stagger mt-12 sm:mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t, i) => (
             <div
               key={t.name}
@@ -195,7 +195,7 @@ function SlikFungererDet() {
           </h2>
         </div>
 
-        <div ref={gridRef} className="reveal-stagger mt-20 grid gap-10 sm:grid-cols-3 sm:gap-6">
+        <div ref={gridRef} className="reveal-stagger mt-14 sm:mt-20 grid gap-10 sm:grid-cols-3 sm:gap-6">
           {stegData.map((steg, i) => (
             <div key={steg.nr} className="relative text-center">
               {/* Dashed connector line (between steps, desktop only) */}
@@ -633,55 +633,6 @@ function CTASeksjon() {
   );
 }
 
-/* ── Sticky Mobile CTA ── */
-function MobileCTA() {
-  const [heroGone, setHeroGone] = useState(false);
-  const [footerVisible, setFooterVisible] = useState(false);
-
-  useEffect(() => {
-    const hero = document.querySelector("[data-hero]");
-    const footer = document.querySelector("footer");
-
-    const heroObs = new IntersectionObserver(
-      ([entry]) => setHeroGone(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-
-    const footerObs = new IntersectionObserver(
-      ([entry]) => setFooterVisible(entry.isIntersecting),
-      { threshold: 0 }
-    );
-
-    if (hero) heroObs.observe(hero);
-    if (footer) footerObs.observe(footer);
-
-    return () => {
-      heroObs.disconnect();
-      footerObs.disconnect();
-    };
-  }, []);
-
-  const show = heroGone && !footerVisible;
-
-  return (
-    <div
-      className={`fixed right-0 bottom-0 left-0 z-40 bg-white py-3 px-5 shadow-[0_-2px_12px_rgba(0,0,0,0.08)] transition-all duration-300 md:hidden ${
-        show ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-      }`}
-      style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
-    >
-      <a
-        href="tel:+4796823647"
-        onClick={() => trackEvent("phone_click", { location: "mobile_sticky" })}
-        className="flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 text-base font-semibold text-white"
-      >
-        <Phone size={16} />
-        Ring oss — 968 23 647
-      </a>
-    </div>
-  );
-}
-
 /* ── Hero typewriter ── */
 const typewriterWords = ["hjem.", "kontor.", "bygg.", "borettslag.", "fra dag én."];
 
@@ -754,6 +705,52 @@ function HeroTypewriter() {
 function AnimatedDivider() {
   const ref = useScrollAnimation<HTMLDivElement>();
   return <div ref={ref} className="section-divider" />;
+}
+
+/* ── Trust badge stripe (under firmabil image) ── */
+function TrustStripe() {
+  const ref = useScrollAnimation<HTMLDivElement>();
+  return (
+    <section className="bg-[#faf8f5]">
+      <div
+        ref={ref}
+        className="reveal mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 py-7 text-[12.5px] text-text-secondary md:px-6 md:py-9 md:text-[13px]"
+      >
+        <span className="inline-flex items-center gap-2">
+          <ShieldCheck size={15} className="text-primary" strokeWidth={2} />
+          Offentlig godkjent
+        </span>
+        <span className="hidden h-3 w-px bg-text-secondary/20 sm:block" />
+        <span className="inline-flex items-center gap-2">
+          <Handshake size={15} className="text-primary" strokeWidth={2} />
+          NHO-medlem
+        </span>
+        <span className="hidden h-3 w-px bg-text-secondary/20 sm:block" />
+        <span className="inline-flex items-center gap-2">
+          <Leaf size={15} className="text-primary" strokeWidth={2} />
+          EV-sertifisert
+        </span>
+        <span className="hidden h-3 w-px bg-text-secondary/20 sm:block" />
+        <a
+          href="https://www.google.com/search?q=F%C3%A6rder+Multiservice+T%C3%B8nsberg"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 transition-colors hover:text-text"
+        >
+          <span className="flex gap-0.5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} size={13} className="fill-primary text-primary" strokeWidth={1} />
+            ))}
+          </span>
+          <span className="font-medium">Anmeldelser på Google</span>
+          <ArrowRight
+            size={12}
+            className="opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100"
+          />
+        </a>
+      </div>
+    </section>
+  );
 }
 
 /* ── Homepage ── */
@@ -870,6 +867,9 @@ export default function Hjem() {
         />
       </div>
 
+      {/* Trust badge stripe */}
+      <TrustStripe />
+
       {/* Tjenester */}
       <section id="tjenester" className="bg-[#faf8f5] pt-16 pb-16 md:pt-28 md:pb-28 lg:pb-36">
         <div className="mx-auto max-w-[1200px] px-5 md:px-6">
@@ -923,9 +923,6 @@ export default function Hjem() {
 
       {/* CTA */}
       <CTASeksjon />
-
-      {/* Sticky Mobile CTA */}
-      <MobileCTA />
     </>
   );
 }

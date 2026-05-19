@@ -248,6 +248,11 @@ h1, h2, h3 {
   box-shadow: 0 8px 25px -5px rgba(232, 114, 28, 0.35);
 }
 
+.btn-glow:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+}
+
 .btn-glow::after {
   content: '';
   position: absolute;
@@ -272,6 +277,11 @@ h1, h2, h3 {
 .btn-outline:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.btn-outline:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
 }
 
 /* ── Service card ── */

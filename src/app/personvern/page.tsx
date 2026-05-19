@@ -22,7 +22,7 @@ export default function PersonvernPage() {
       ]} />
       <PageHero title="Personvernerklæring" />
 
-      <section className="py-24 lg:py-32">
+      <section className="py-16 md:py-24 lg:py-32">
         <article className="prose-custom mx-auto max-w-3xl px-6">
           <h2>Behandlingsansvarlig</h2>
           <p>

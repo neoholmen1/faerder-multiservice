@@ -38,7 +38,7 @@ export default function OmOssPage() {
       />
 
       {/* Vår historie */}
-      <section className="py-28 lg:py-36">
+      <section className="py-16 md:py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-4xl px-6">
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-16">
             {/* Aleksandra portrait */}
@@ -51,6 +51,7 @@ export default function OmOssPage() {
                   width={200}
                   height={200}
                   quality={90}
+                  priority
                   className="h-[200px] w-[200px] object-cover"
                 />
               </div>
@@ -87,7 +88,7 @@ export default function OmOssPage() {
 
       {/* Verdier */}
       <AnimatedDivider />
-      <section className="bg-[#f5f5f7] py-28 lg:py-36">
+      <section className="bg-[#f5f5f7] py-16 md:py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
@@ -98,7 +99,7 @@ export default function OmOssPage() {
             </h2>
           </SectionReveal>
 
-          <SectionReveal className="mt-20 grid gap-6 sm:grid-cols-3">
+          <SectionReveal className="mt-12 md:mt-20 grid gap-6 sm:grid-cols-3">
             {[
               {
                 icon: Sparkles,
@@ -146,7 +147,7 @@ export default function OmOssPage() {
 
       {/* Sertifiseringer */}
       <AnimatedDivider />
-      <section className="py-28 lg:py-36">
+      <section className="py-16 md:py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-[1200px] px-6">
           <div className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
@@ -157,7 +158,7 @@ export default function OmOssPage() {
             </h2>
           </div>
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2">
+          <div className="mt-10 md:mt-16 grid gap-6 sm:grid-cols-2">
             <div className="feature-card rounded-3xl bg-white p-8 lg:p-10">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50">
                 <ShieldCheck size={26} strokeWidth={1.5} className="text-blue-600" />
@@ -188,7 +189,7 @@ export default function OmOssPage() {
 
       {/* Dekningsområde */}
       <AnimatedDivider />
-      <section className="bg-[#f5f5f7] py-28 lg:py-36">
+      <section className="bg-[#f5f5f7] py-16 md:py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-[1200px] px-6 text-center">
           <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
             Dekningsområde

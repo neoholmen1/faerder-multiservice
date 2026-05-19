@@ -199,7 +199,7 @@ export default function KontaktClient() {
         subtitle="Vi svarer samme dag — senest neste virkedag."
       />
 
-      <section className="py-28 lg:py-36">
+      <section className="py-16 md:py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
             <SectionReveal className="lg:col-span-3">
@@ -380,7 +380,7 @@ export default function KontaktClient() {
         </div>
       </section>
 
-      <section className="pb-24 lg:pb-32">
+      <section className="pb-16 md:pb-24 lg:pb-32">
         <SectionReveal className="mx-auto max-w-[1200px] px-6">
           <iframe
             src="https://maps.google.com/maps?q=Rambergveien+1,+T%C3%B8nsberg,+Norway&z=15&output=embed"

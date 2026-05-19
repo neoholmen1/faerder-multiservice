@@ -100,6 +100,7 @@ export default async function BlogPostPage({
             width={680}
             height={383}
             quality={90}
+            priority
             className="aspect-[16/9] w-full object-cover"
           />
         </div>

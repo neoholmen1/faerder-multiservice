@@ -7,6 +7,8 @@ import Image from "next/image";
 import { Phone, ArrowRight } from "lucide-react";
 import { trackEvent } from "@/lib/tracking";
 import { copyAndToast } from "@/lib/toast";
+import { OpenStatusBadge } from "./OpenStatusBadge";
+import type { OpenStatus } from "@/lib/openHours";
 
 const navItems = [
   { href: "/prisliste", label: "Priser" },
@@ -15,7 +17,10 @@ const navItems = [
   { href: "/jobb", label: "Jobb hos oss" },
 ];
 
-export function Header() {
+export function Header({ openStatus, phone }: { openStatus?: OpenStatus; phone?: string } = {}) {
+  const phoneDisplay = phone ?? "968 23 647";
+  const phoneDigits = phoneDisplay.replace(/\s/g, "");
+  const phoneIntl = phoneDigits.startsWith("+") ? phoneDigits : `+47${phoneDigits}`;
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -125,7 +130,10 @@ export function Header() {
         </nav>
 
         {/* Right CTAs */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 lg:gap-4">
+          {/* Åpent nå-badge — desktop only */}
+          {openStatus && <OpenStatusBadge status={openStatus} className="hidden lg:inline-flex" />}
+
           {/* Gratis befaring — plain text link, desktop only */}
           <Link
             href="/kontakt"
@@ -136,26 +144,26 @@ export function Header() {
 
           {/* Phone CTA — orange pill, desktop only */}
           <a
-            href="tel:+4796823647"
+            href={`tel:${phoneIntl}`}
             onClick={(e) => {
               e.preventDefault();
-              copyAndToast("968 23 647", "Telefonnummer kopiert!");
+              copyAndToast(phoneDisplay, "Telefonnummer kopiert!");
               trackEvent("phone_click", { location: "header" });
             }}
-            className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-[0.82rem] font-medium text-white transition-opacity duration-200 hover:opacity-90 md:flex cursor-pointer"
+            className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-[0.82rem] font-medium text-white transition-all duration-200 hover:opacity-90 active:scale-95 md:flex cursor-pointer"
           >
             <Phone size={13} />
-            968 23 647
+            {phoneDisplay}
           </a>
 
           {/* Mobile: orange phone pill */}
           <a
-            href="tel:+4796823647"
+            href={`tel:${phoneIntl}`}
             onClick={() => trackEvent("phone_click", { location: "header" })}
-            className="relative z-50 flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-[13px] font-medium text-white md:hidden"
+            className="relative z-50 flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-[13px] font-medium text-white transition-transform active:scale-95 md:hidden"
           >
             <Phone size={14} />
-            968 23 647
+            {phoneDisplay}
           </a>
 
           {/* Hamburger */}
@@ -219,10 +227,15 @@ export function Header() {
 
           {/* CTA buttons */}
           <div className="mt-10 flex w-full flex-col gap-3">
+            {openStatus && (
+              <div className="flex justify-center">
+                <OpenStatusBadge status={openStatus} />
+              </div>
+            )}
             <Link
               href="/kontakt"
               onClick={close}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-[15px] font-semibold text-white transition-opacity duration-200 hover:opacity-90"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-[15px] font-semibold text-white transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
               style={mobileOpen ? {
                 animation: "hero-in 0.5s cubic-bezier(0.16,1,0.3,1) 0.3s both",
               } : undefined}
@@ -230,18 +243,18 @@ export function Header() {
               Gratis befaring <ArrowRight size={15} />
             </Link>
             <a
-              href="tel:+4796823647"
+              href={`tel:${phoneIntl}`}
               onClick={() => {
                 trackEvent("phone_click", { location: "header" });
                 close();
               }}
-              className="flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-text/20 px-6 py-4 text-[15px] font-medium text-text transition-colors duration-200 hover:border-text/40"
+              className="flex w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-text/20 px-6 py-4 text-[15px] font-medium text-text transition-all duration-200 hover:border-text/40 active:scale-[0.98]"
               style={mobileOpen ? {
                 animation: "hero-in 0.5s cubic-bezier(0.16,1,0.3,1) 0.35s both",
               } : undefined}
             >
               <Phone size={16} />
-              968 23 647
+              {phoneDisplay}
             </a>
           </div>
         </nav>

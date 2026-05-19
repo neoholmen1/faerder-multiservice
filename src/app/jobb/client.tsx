@@ -67,6 +67,7 @@ export default function JobbClient() {
               width={700}
               height={450}
               quality={90}
+              priority
               sizes="(max-width: 768px) 100vw, 700px"
               className="w-full"
             />
@@ -86,7 +87,7 @@ export default function JobbClient() {
       </section>
 
       <AnimatedDivider />
-      <section className="bg-[#f5f5f7] py-28 lg:py-36">
+      <section className="bg-[#f5f5f7] py-16 md:py-28 lg:py-36">
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
@@ -97,7 +98,7 @@ export default function JobbClient() {
             </h2>
           </SectionReveal>
 
-          <SectionReveal className="mt-20 grid gap-6 sm:grid-cols-3">
+          <SectionReveal className="mt-12 md:mt-20 grid gap-6 sm:grid-cols-3">
             {[
               {
                 icon: Users,
@@ -144,7 +145,7 @@ export default function JobbClient() {
       </section>
 
       <AnimatedDivider />
-      <section className="py-28 lg:py-36">
+      <section className="py-16 md:py-28 lg:py-36">
         <SectionReveal className="mx-auto max-w-2xl px-6">
           <div className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
