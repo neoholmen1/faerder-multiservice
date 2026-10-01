@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronUp } from "lucide-react";
+import { isChromelessRoute } from "@/lib/chrome-routes";
 
 export function ScrollToTop() {
   const pathname = usePathname();
@@ -15,7 +16,7 @@ export function ScrollToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname?.startsWith("/admin")) return null;
+  if (isChromelessRoute(pathname)) return null;
 
   return (
     <button

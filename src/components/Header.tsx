@@ -9,6 +9,7 @@ import { trackEvent } from "@/lib/tracking";
 import { copyAndToast } from "@/lib/toast";
 import { OpenStatusBadge } from "./OpenStatusBadge";
 import type { OpenStatus } from "@/lib/openHours";
+import { isChromelessRoute } from "@/lib/chrome-routes";
 
 const navItems = [
   { href: "/prisliste", label: "Priser" },
@@ -26,9 +27,6 @@ export function Header({ openStatus, phone }: { openStatus?: OpenStatus; phone?:
   const [scrolled, setScrolled] = useState(false);
 
   const close = useCallback(() => setMobileOpen(false), []);
-
-  // Skjul header på admin-ruter
-  if (pathname?.startsWith("/admin")) return null;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -73,6 +71,11 @@ export function Header({ openStatus, phone }: { openStatus?: OpenStatus; phone?:
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen, close]);
+
+  // Skjul header på admin-ruter. MÅ stå etter alle hooks — en tidlig return
+  // over dem endrer hook-antallet mellom renders og krasjer React ved
+  // klientside-navigasjon /admin → offentlig side.
+  if (isChromelessRoute(pathname)) return null;
 
   return (
     <header

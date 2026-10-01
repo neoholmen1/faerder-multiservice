@@ -7,6 +7,7 @@ import { Phone, Mail, MapPin, ShieldCheck, Leaf, Handshake } from "lucide-react"
 import { trackEvent } from "@/lib/tracking";
 import { copyAndToast } from "@/lib/toast";
 import { SITE_SETTINGS_FALLBACK, type SiteSettings, type Badge } from "@/lib/site";
+import { isChromelessRoute } from "@/lib/chrome-routes";
 
 const tjenester = [
   { name: "Fast vask", href: "/tjenester/fast-vask" },
@@ -28,7 +29,7 @@ const BADGE_ICONS: Record<string, React.ComponentType<{ size?: number; className
 
 export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
   const pathname = usePathname();
-  if (pathname?.startsWith("/admin")) return null;
+  if (isChromelessRoute(pathname)) return null;
   const s = settings ?? SITE_SETTINGS_FALLBACK;
   const phone = s.phone ?? SITE_SETTINGS_FALLBACK.phone ?? "";
   const phoneDigits = phone.replace(/\s/g, "");
@@ -70,7 +71,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
                   className="flex items-center gap-2.5 text-[15px] text-text-secondary transition-colors duration-150 hover:text-primary"
                 >
                   <Phone size={15} className="shrink-0" />
-                  {phoneIntl.replace(/^\+47/, "+47 ")}
+                  {phone.startsWith("+") ? phone : `+47 ${phone}`}
                 </a>
               </li>
               <li>
@@ -172,6 +173,9 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
             </div>
             <p className="text-xs text-[#9CA3AF]">
               &copy; {new Date().getFullYear()} Færder Multiservice AS &middot; Org.nr 824 779 392
+              {process.env.NEXT_PUBLIC_DEMO_MODE === "1" && (
+                <> &middot; <span className="opacity-70">Utkast laget av Axaro</span></>
+              )}
             </p>
           </div>
         </div>

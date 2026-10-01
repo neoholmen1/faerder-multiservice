@@ -5,13 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone, ArrowRight } from "lucide-react";
 import { trackEvent } from "@/lib/tracking";
+import { isChromelessRoute } from "@/lib/chrome-routes";
 
 /**
  * Global, mobil-kun sticky CTA. Vises når brukeren har scrollet litt
  * (slik at den ikke konkurrerer med hero), og skjules når footer er synlig
  * eller når man er på sider hvor CTA-en er overflødig.
  */
-const HIDDEN_PATHS = ["/admin", "/kontakt", "/takk"];
+const HIDDEN_PATHS = ["/kontakt", "/takk"];
 
 export function MobileCtaSticky({ phone }: { phone: string }) {
   const pathname = usePathname();
@@ -35,7 +36,9 @@ export function MobileCtaSticky({ phone }: { phone: string }) {
     return () => obs.disconnect();
   }, [pathname]);
 
-  const isHidden = HIDDEN_PATHS.some((p) => pathname === p || pathname.startsWith(p + "/"));
+  const isHidden =
+    isChromelessRoute(pathname) ||
+    HIDDEN_PATHS.some((p) => pathname === p || pathname.startsWith(p + "/"));
   const show = scrolledPast && !footerVisible && !isHidden;
 
   const phoneDigits = phone.replace(/\s/g, "");
@@ -47,7 +50,9 @@ export function MobileCtaSticky({ phone }: { phone: string }) {
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
       }`}
       style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom, 0px))" }}
-      aria-hidden={!show}
+      // `inert` tar bort både fokus og skjermleser-tilgang. Med bare
+      // aria-hidden kunne man fortsatt tabbe seg inn i den usynlige baren.
+      inert={!show}
     >
       <div className="flex items-center gap-2">
         <Link

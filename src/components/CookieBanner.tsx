@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isChromelessRoute } from "@/lib/chrome-routes";
 
 const STORAGE_KEY = "cookie-consent";
 
@@ -13,10 +14,18 @@ export function CookieBanner() {
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
+    // "all"/"none" er verdier fra en tidligere versjon av banneret. De ble aldri
+    // lest av GoogleAnalytics (som ser etter "granted"), så samtykket var i
+    // praksis tapt. Migrer dem i stedet for å vise banneret på nytt.
+    if (stored === "all" || stored === "none") {
+      localStorage.setItem(STORAGE_KEY, stored === "all" ? "granted" : "denied");
+      window.dispatchEvent(new Event("cookie-consent-change"));
+      return;
+    }
     if (!stored) setVisible(true);
   }, []);
 
-  if (pathname?.startsWith("/admin")) return null;
+  if (isChromelessRoute(pathname)) return null;
 
   function respond(value: "granted" | "denied") {
     localStorage.setItem(STORAGE_KEY, value);

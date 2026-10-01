@@ -633,7 +633,7 @@ export function ServicePageClient({ service }: { service: Service }) {
 
       return next;
     });
-  }, [config]);
+  }, [config, service.slug]);
 
   const toggleAddon = useCallback((addonId: string) => {
     setAddons((prev) => {
@@ -651,20 +651,9 @@ export function ServicePageClient({ service }: { service: Service }) {
     setAddons((prev) => ({ ...prev, [addonId]: subId }));
   }, []);
 
-  if (!config) {
-    return (
-      <section className="bg-background-warm pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <div className="mx-auto max-w-[1200px] px-6">
-          <h1 className="text-3xl font-bold text-text">{service.name}</h1>
-          <p className="mt-4 text-text-secondary">{service.longDescription}</p>
-        </div>
-      </section>
-    );
-  }
-
   // Build effective selections (include auto-values)
   const effectiveSelections = { ...selections };
-  for (const step of config.steps) {
+  for (const step of config?.steps ?? []) {
     if (step.dependsOn && step.autoValue) {
       const depVal = effectiveSelections[step.dependsOn];
       if (depVal && step.autoValue[depVal]) {
@@ -673,8 +662,8 @@ export function ServicePageClient({ service }: { service: Service }) {
     }
   }
 
-  const price = config.calculatePrice(effectiveSelections, addons);
-  const requiredSteps = config.steps.filter((s) => s.required);
+  const price = config ? config.calculatePrice(effectiveSelections, addons) : null;
+  const requiredSteps = config?.steps.filter((s) => s.required) ?? [];
   const completedRequired = requiredSteps.filter((s) => effectiveSelections[s.id]).length;
   const allRequiredDone = completedRequired === requiredSteps.length;
   const progress = requiredSteps.length > 0 ? completedRequired / requiredSteps.length : 0;
@@ -690,6 +679,18 @@ export function ServicePageClient({ service }: { service: Service }) {
       trackEvent("estimator_complete", { service: service.slug, price: priceStr });
     }
   }, [allRequiredDone, price, service.slug]);
+
+  // Fallback for tjenester uten kalkulator-oppsett. MÅ stå etter alle hooks.
+  if (!config) {
+    return (
+      <section className="bg-background-warm pt-32 pb-20 lg:pt-40 lg:pb-28">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <h1 className="text-3xl font-bold text-text">{service.name}</h1>
+          <p className="mt-4 text-text-secondary">{service.longDescription}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-background-warm pt-32 pb-20 lg:pt-40 lg:pb-28">

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Database, Sparkles } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
@@ -72,12 +73,12 @@ export default function AdminLogin() {
               <span>Restart dev-serveren</span>
             </li>
           </ul>
-          <a
+          <Link
             href="/"
             className="mt-7 inline-flex items-center gap-1.5 text-[13.5px] font-medium text-[#E8721C] hover:text-[#a64f0d]"
           >
             ← Tilbake til forsiden
-          </a>
+          </Link>
         </div>
       </div>
     );
