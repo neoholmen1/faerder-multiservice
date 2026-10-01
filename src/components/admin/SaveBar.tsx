@@ -5,6 +5,8 @@ export default function SaveBar({
   status,
   error,
   dirty,
+  alwaysEnabled = false,
+  autosaveHint = false,
   onSave,
   onDiscard,
 }: {
@@ -12,19 +14,28 @@ export default function SaveBar({
   status: "idle" | "saved" | "error";
   error?: string | null;
   dirty: boolean;
+  alwaysEnabled?: boolean;
+  autosaveHint?: boolean;
   onSave: () => void;
   onDiscard?: () => void;
 }) {
+  const disabled = saving || (!alwaysEnabled && !dirty);
   return (
     <div className="sticky bottom-0 z-20 flex items-center justify-between gap-4 border-t border-[#ececec] bg-white/95 px-8 py-4 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="text-[12.5px]">
-        {dirty && (
+        {autosaveHint && status !== "error" && (
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#fafaf9] px-2.5 py-0.5 font-medium text-[#737373]">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            {saving ? "Lagrer..." : status === "saved" ? "Lagret" : "Endringer lagres automatisk"}
+          </span>
+        )}
+        {!autosaveHint && dirty && (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 font-medium text-amber-700">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
             Ulagrede endringer
           </span>
         )}
-        {status === "saved" && !dirty && (
+        {!autosaveHint && status === "saved" && !dirty && (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-0.5 font-medium text-emerald-700">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
             Lagret
@@ -47,10 +58,10 @@ export default function SaveBar({
         )}
         <button
           onClick={onSave}
-          disabled={!dirty || saving}
+          disabled={disabled}
           className="inline-flex items-center gap-1.5 rounded-full bg-[#171717] px-5 py-2 text-[13px] font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.08)] transition-all hover:bg-[#000] disabled:cursor-not-allowed disabled:bg-[#e5e5e4] disabled:text-[#a3a3a3] disabled:shadow-none"
         >
-          {saving ? "Lagrer..." : "Lagre endringer"}
+          {saving ? "Lagrer..." : alwaysEnabled ? "Lagre nå" : "Lagre endringer"}
         </button>
       </div>
     </div>

@@ -3,7 +3,7 @@
 import { createElement, useEffect, useRef, useState, type CSSProperties } from "react";
 import { useEditable } from "./EditableContext";
 
-type Tag = "h1" | "h2" | "h3" | "h4" | "p" | "span" | "div";
+type Tag = "h1" | "h2" | "h3" | "h4" | "p" | "span" | "div" | "footer" | "blockquote" | "li";
 
 export default function EditableText({
   fieldKey,
@@ -59,11 +59,7 @@ export default function EditableText({
   }
 
   const editableClasses =
-    "outline-none rounded-md transition-[box-shadow,background-color] duration-150 " +
-    "ring-0 ring-offset-0 " +
-    "hover:bg-orange-50/50 hover:shadow-[inset_0_0_0_1px_rgba(232,114,28,0.25)] " +
-    "focus:bg-white focus:shadow-[inset_0_0_0_1.5px_#E8721C] " +
-    "data-[empty=true]:text-[#a3a3a3] data-[empty=true]:italic";
+    "inline-editable data-[empty=true]:text-[#a3a3a3] data-[empty=true]:italic";
 
   const styleWithBreaks: CSSProperties | undefined = preserveLineBreaks
     ? { ...style, whiteSpace: "pre-line" }

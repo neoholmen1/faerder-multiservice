@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from "react";
 
 export type EditableValues = Record<string, string | null>;
 
@@ -18,17 +18,27 @@ const EditableContextInternal = createContext<Ctx | null>(null);
 
 export function EditableProvider({
   initial,
+  onAutoSave,
   children,
 }: {
   initial: EditableValues;
+  onAutoSave?: (key: string, value: string | null) => Promise<void> | void;
   children: ReactNode;
 }) {
   const [values, setValues] = useState<EditableValues>(initial);
+  const onAutoSaveRef = useRef(onAutoSave);
+  onAutoSaveRef.current = onAutoSave;
 
   const get = useCallback((key: string) => values[key] ?? null, [values]);
 
   const set = useCallback((key: string, value: string | null) => {
-    setValues((prev) => ({ ...prev, [key]: value }));
+    setValues((prev) => {
+      if ((prev[key] ?? null) === (value ?? null)) return prev;
+      return { ...prev, [key]: value };
+    });
+    if (onAutoSaveRef.current) {
+      void onAutoSaveRef.current(key, value);
+    }
   }, []);
 
   const reset = useCallback(() => setValues(initial), [initial]);

@@ -225,15 +225,19 @@ export default function BloggEditorRoute({ params }: { params: Promise<{ id: str
             </Field>
           </Section>
 
-          <Section title="Brødtekst" description="Bruk markdown eller HTML.">
+          <Section title="Brødtekst" description="Slik ser teksten ut for besøkende. Du kan skrive vanlig norsk — overskrifter blir automatisk større.">
             <div data-color-mode="light">
               <MDEditor
                 value={draft.body}
                 onChange={(v) => update("body", v ?? "")}
                 height={500}
-                preview="edit"
+                preview="preview"
+                hideToolbar={false}
               />
             </div>
+            <p className="text-[11.5px] text-[#a3a3a3]">
+              Klikk &laquo;Edit&raquo;-knappen i toolbar for å bytte til redigeringsmodus.
+            </p>
           </Section>
 
           <Section title="SEO">
