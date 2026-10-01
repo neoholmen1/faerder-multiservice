@@ -12,7 +12,7 @@ import { SectionReveal } from "@/components/SectionReveal";
 const kontaktInfo = [
   { icon: Phone, label: "Telefon", value: "+47 968 23 647", href: "tel:+4796823647" },
   { icon: Mail, label: "E-post", value: "post@faerdermultiservice.no", href: "mailto:post@faerdermultiservice.no" },
-  { icon: MapPin, label: "Adresse", value: "Rambergveien 1, Tønsberg", href: null },
+  { icon: MapPin, label: "Adresse", value: "Stensarmen 3A, 3112 Tønsberg", href: null },
   { icon: Clock, label: "Åpningstider", value: "Man–Fre 08:00–16:00", href: null },
 ];
 
@@ -114,7 +114,17 @@ function FloatingField({
   );
 }
 
-export default function KontaktClient() {
+export default function KontaktClient({
+  heroEyebrow = "Kontakt",
+  heroTitle = "Kontakt oss",
+  heroSubtitle = "Vi svarer samme dag — senest neste virkedag.",
+  formTitle = "Skriv til oss",
+}: {
+  heroEyebrow?: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+  formTitle?: string;
+} = {}) {
   const router = useRouter();
   const [fields, setFields] = useState({
     navn: { value: "", touched: false },
@@ -194,9 +204,9 @@ export default function KontaktClient() {
   return (
     <>
       <PageHero
-        label="Kontakt"
-        title="Kontakt oss"
-        subtitle="Vi svarer samme dag — senest neste virkedag."
+        label={heroEyebrow}
+        title={heroTitle}
+        subtitle={heroSubtitle}
       />
 
       <section className="py-16 md:py-28 lg:py-36">
@@ -204,7 +214,7 @@ export default function KontaktClient() {
           <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
             <SectionReveal className="lg:col-span-3">
               <h2 className="text-2xl tracking-[-0.02em] text-text">
-                Skriv til oss
+                {formTitle}
               </h2>
               <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
                 <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -383,7 +393,7 @@ export default function KontaktClient() {
       <section className="pb-16 md:pb-24 lg:pb-32">
         <SectionReveal className="mx-auto max-w-[1200px] px-6">
           <iframe
-            src="https://maps.google.com/maps?q=Rambergveien+1,+T%C3%B8nsberg,+Norway&z=15&output=embed"
+            src="https://maps.google.com/maps?q=Stensarmen+3A,+3112+T%C3%B8nsberg,+Norway&z=15&output=embed"
             width="100%"
             height="400"
             style={{ border: 0 }}

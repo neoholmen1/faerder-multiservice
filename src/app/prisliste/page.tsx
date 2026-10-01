@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
-import { services } from "@/data/services";
+import { getServices } from "@/lib/cms";
+import { getCurrentSite } from "@/lib/site";
+import { services as staticServices } from "@/data/services";
 import { PageHero } from "@/components/DarkHero";
 import { SectionReveal } from "@/components/SectionReveal";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Priser — Renhold i Vestfold",
@@ -19,17 +23,36 @@ export const metadata: Metadata = {
   },
 };
 
-const visibleSlugs = [
-  "fast-vask",
-  "flyttevask",
-  "kontorvask",
-  "byggvask",
-  "spesialvask",
-  "luktsanering",
-];
-
-export default function PrislistePage() {
-  const visibleServices = services.filter((s) => visibleSlugs.includes(s.slug));
+export default async function PrislistePage() {
+  const site = await getCurrentSite();
+  const dbServices = site ? await getServices(site.id) : [];
+  const visibleServices = dbServices.length > 0
+    ? dbServices
+        .filter((s) => s.visible_on_pricelist)
+        .map((s) => ({
+          slug: s.slug,
+          name: s.name,
+          description: s.short_description,
+          price: s.price_label,
+          frequencies: s.frequencies.map((f, i) => ({
+            id: `${s.slug}-${i}`,
+            label: f.label,
+            sublabel: f.sublabel,
+            price: f.price,
+            period: f.period,
+          })),
+        }))
+    : staticServices
+        .filter((s) =>
+          ["fast-vask", "flyttevask", "kontorvask", "byggvask", "spesialvask", "luktsanering"].includes(s.slug),
+        )
+        .map((s) => ({
+          slug: s.slug,
+          name: s.name,
+          description: s.description,
+          price: s.price,
+          frequencies: s.frequencies,
+        }));
 
   return (
     <>

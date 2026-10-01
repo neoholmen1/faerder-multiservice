@@ -79,23 +79,29 @@ export async function POST(req: NextRequest) {
     const resend = getResend();
     if (!resend) {
       return NextResponse.json(
-        { error: "E-post er ikke konfigurert." },
+        { error: "Vi får ikke sendt meldingen akkurat nå. Ring oss gjerne på 968 23 647, så tar vi det med en gang." },
         { status: 503 }
       );
     }
 
-    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
     const notificationEmail = process.env.NOTIFICATION_EMAIL ?? "post@faerdermultiservice.no";
+    // Så lenge vi sender fra resend.dev er ikke kundens domene verifisert
+    // ennå — da er dette en demo-oppsett, og varslene merkes deretter.
+    const isDemo = fromEmail.endsWith("@resend.dev");
+    const tag = isDemo ? "[DEMO] " : "";
 
-    // 1. Send notification to the business
+    // 1. Varsel til bedriften. Denne MÅ gå gjennom.
     await resend.emails.send({
       from: fromEmail,
       to: notificationEmail,
+      replyTo: epost,
       subject: tjeneste
-        ? `Ny henvendelse fra ${navn} — ${tjeneste}`
-        : `Ny henvendelse fra ${navn}`,
+        ? `${tag}Ny henvendelse fra ${navn} — ${tjeneste}`
+        : `${tag}Ny henvendelse fra ${navn}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
+          ${isDemo ? `<p style="margin:0 0 16px;padding:10px 14px;background:#FEF3C7;border-radius:8px;color:#92400E;font-size:13px;">DEMO — sendt fra utviklingsoppsettet for faerdermultiservice.no, ikke en ekte kunde.</p>` : ""}
           <h2 style="color: #1A1A1A; margin-bottom: 24px;">Ny henvendelse fra nettsiden</h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
@@ -126,35 +132,41 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    // 2. Send confirmation to the customer
-    await resend.emails.send({
-      from: fromEmail,
-      to: epost,
-      subject: "Takk for din henvendelse — Færder Multiservice",
-      html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1A1A1A;">Hei ${escapeHtml(navn)}!</h2>
-          <p style="color: #374151; font-size: 16px; line-height: 1.7;">
-            Takk for din henvendelse! Vi har mottatt meldingen din og svarer samme dag — senest neste virkedag.
-          </p>
-          <p style="color: #374151; font-size: 16px; line-height: 1.7;">
-            Har du det travelt? Ring oss gjerne direkte på
-            <a href="tel:+4796823647" style="color: #E8721C; font-weight: 500;">968 23 647</a>.
-          </p>
-          <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 24px 0;" />
-          <p style="color: #9CA3AF; font-size: 13px;">
-            Færder Multiservice AS · Rambergveien 1, Tønsberg<br />
-            <a href="https://faerdermultiservice.no" style="color: #E8721C;">faerdermultiservice.no</a>
-          </p>
-        </div>
-      `,
-    });
+    // 2. Bekreftelse til kunden. Best-effort: uten verifisert domene nekter
+    //    Resend å sende til andre enn kontoeieren, og da skal ikke HELE
+    //    innsendingen feile — varselet over har allerede kommet fram.
+    try {
+      await resend.emails.send({
+        from: fromEmail,
+        to: epost,
+        subject: "Takk for din henvendelse — Færder Multiservice",
+        html: `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #1A1A1A;">Hei ${escapeHtml(navn)}!</h2>
+            <p style="color: #374151; font-size: 16px; line-height: 1.7;">
+              Takk for din henvendelse! Vi har mottatt meldingen din og svarer samme dag — senest neste virkedag.
+            </p>
+            <p style="color: #374151; font-size: 16px; line-height: 1.7;">
+              Har du det travelt? Ring oss gjerne direkte på
+              <a href="tel:+4796823647" style="color: #E8721C; font-weight: 500;">968 23 647</a>.
+            </p>
+            <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 24px 0;" />
+            <p style="color: #9CA3AF; font-size: 13px;">
+              Færder Multiservice AS · Stensarmen 3A, 3112 Tønsberg<br />
+              <a href="https://faerdermultiservice.no" style="color: #E8721C;">faerdermultiservice.no</a>
+            </p>
+          </div>
+        `,
+      });
+    } catch (confirmErr) {
+      console.warn("Kundebekreftelse kunne ikke sendes:", confirmErr);
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Contact API error:", err);
     return NextResponse.json(
-      { error: "Noe gikk galt. Prøv igjen eller ring oss direkte." },
+      { error: "Noe gikk galt. Prøv igjen, eller ring oss på 968 23 647." },
       { status: 500 }
     );
   }

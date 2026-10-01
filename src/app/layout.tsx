@@ -9,6 +9,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { CookieBanner } from "@/components/CookieBanner";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { MobileCtaSticky } from "@/components/MobileCtaSticky";
+import { PreviewModeDetector } from "@/components/PreviewModeDetector";
 import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 import { getCurrentSite, getSiteSettings, SITE_SETTINGS_FALLBACK } from "@/lib/site";
 import { getOpenStatus } from "@/lib/openHours";
@@ -35,14 +36,14 @@ export const metadata: Metadata = {
     template: "%s | Færder Multiservice — Renhold i Vestfold",
   },
   description:
-    "Skikkelig renhold for hjem og bedrift i Vestfold. Godkjent, EV-sertifisert, fra 550 kr. Se priser og bestill.",
+    "Skikkelig renhold for hjem og bedrift i Vestfold. Godkjent, EV-sertifisert, fast vask fra 470 kr. Se priser og bestill.",
   openGraph: {
     type: "website",
     locale: "nb_NO",
     siteName: "Færder Multiservice AS",
     title: "Færder Multiservice — Skikkelig renhold i Vestfold",
     description:
-      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. Godkjent og EV-sertifisert.",
+      "Fast vask fra 470 kr. Flyttevask, kontorvask og mer. Godkjent og EV-sertifisert.",
     url: "https://faerdermultiservice.no",
     images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Færder Multiservice — Rent hjem. Null stress." }],
   },
@@ -50,12 +51,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Færder Multiservice — Vi vasker, du slipper",
     description:
-      "Fast vask fra 550 kr. Flyttevask, kontorvask og mer. Godkjent og EV-sertifisert.",
+      "Fast vask fra 470 kr. Flyttevask, kontorvask og mer. Godkjent og EV-sertifisert.",
     images: ["/images/og-image.jpg"],
   },
   alternates: {
     canonical: "https://faerdermultiservice.no",
   },
+  // Utkast-deployen skal aldri indekseres. Settes via NEXT_PUBLIC_DEMO_MODE,
+  // og forsterkes av X-Robots-Tag fra src/proxy.ts.
+  ...(process.env.NEXT_PUBLIC_DEMO_MODE === "1"
+    ? { robots: { index: false, follow: false, nocache: true } }
+    : {}),
 };
 
 export const viewport: Viewport = {
@@ -73,8 +79,9 @@ export default async function RootLayout({
   const openStatus = getOpenStatus();
 
   return (
-    <html lang="no">
+    <html lang="nb" data-scroll-behavior="smooth">
       <body className={`${dmSans.variable} ${dmSerif.variable} antialiased`}>
+        <PreviewModeDetector />
         <LocalBusinessJsonLd />
         <Header openStatus={openStatus} phone={phone} />
         <main>

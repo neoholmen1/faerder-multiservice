@@ -7,7 +7,37 @@ import { PageHero } from "@/components/DarkHero";
 import { SectionReveal } from "@/components/SectionReveal";
 import { AnimatedDivider } from "@/components/AnimatedDivider";
 
-export default function JobbClient() {
+type JobbCms = {
+  heroEyebrow: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  quote: string;
+  quoteAuthor: string;
+  fordelerEyebrow: string;
+  fordelerTitle: string;
+  fordelerCards: { title: string; text: string }[];
+  soknadEyebrow: string;
+  soknadTitle: string;
+};
+
+const fallbackCms: JobbCms = {
+  heroEyebrow: "Karriere",
+  heroTitle: "Bli en del av teamet",
+  heroSubtitle: "Vi er alltid på utkikk etter flinke folk.",
+  quote: "Vi ønsker oss alltid nye og trivelige kollegaer i Færder Multiservice.",
+  quoteAuthor: "Aleksandra, daglig leder og eier",
+  fordelerEyebrow: "Fordeler",
+  fordelerTitle: "Hvorfor jobbe hos oss",
+  fordelerCards: [
+    { title: "Godt miljø", text: "Vi er et tett team. God stemning og folk som bryr seg." },
+    { title: "God lønn", text: "Vi betaler godt. Gjør du en bra jobb, merker du det." },
+    { title: "Fleksible tider", text: "Vi finner tider som passer. Hverdagen skal gå opp." },
+  ],
+  soknadEyebrow: "Søk",
+  soknadTitle: "Høres bra ut? Si hei!",
+};
+
+export default function JobbClient({ cms = fallbackCms }: { cms?: JobbCms } = {}) {
   const [fields, setFields] = useState({
     navn: "",
     epost: "",
@@ -51,9 +81,9 @@ export default function JobbClient() {
   return (
     <>
       <PageHero
-        label="Karriere"
-        title="Bli en del av teamet"
-        subtitle="Vi er alltid på utkikk etter flinke folk."
+        label={cms.heroEyebrow}
+        title={cms.heroTitle}
+        subtitle={cms.heroSubtitle}
       />
 
       {/* Team hero image */}
@@ -72,15 +102,15 @@ export default function JobbClient() {
               className="w-full"
             />
             <span className="absolute bottom-4 right-4 z-10 rounded-full bg-white px-3 py-1 text-sm font-semibold text-primary shadow-md">
-              11+ ansatte
+              Et etablert team
             </span>
           </div>
           <blockquote className="mx-auto mt-10 max-w-lg border-l-4 border-primary pl-6">
             <p className="text-[17px] leading-[1.7] text-text-secondary italic">
-              &ldquo;Vi ønsker oss alltid nye og trivelige kollegaer i Færder Multiservice.&rdquo;
+              &ldquo;{cms.quote}&rdquo;
             </p>
             <footer className="mt-3 text-[14px] font-semibold text-text">
-              — Aleksandra, daglig leder og eier
+              — {cms.quoteAuthor}
             </footer>
           </blockquote>
         </SectionReveal>
@@ -91,51 +121,33 @@ export default function JobbClient() {
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
-              Fordeler
+              {cms.fordelerEyebrow}
             </p>
             <h2 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
-              Hvorfor jobbe hos oss
+              {cms.fordelerTitle}
             </h2>
           </SectionReveal>
 
           <SectionReveal className="mt-12 md:mt-20 grid gap-6 sm:grid-cols-3">
             {[
-              {
-                icon: Users,
-                title: "Godt miljø",
-                text: "Vi er et tett team. God stemning og folk som bryr seg.",
-                color: "text-blue-600",
-                bg: "bg-blue-50",
-              },
-              {
-                icon: Briefcase,
-                title: "God lønn",
-                text: "Vi betaler godt. Gjør du en bra jobb, merker du det.",
-                color: "text-emerald-600",
-                bg: "bg-emerald-50",
-              },
-              {
-                icon: Clock,
-                title: "Fleksible tider",
-                text: "Vi finner tider som passer. Hverdagen skal gå opp.",
-                color: "text-amber-600",
-                bg: "bg-amber-50",
-              },
-            ].map((v) => {
+              { icon: Users, color: "text-blue-600", bg: "bg-blue-50" },
+              { icon: Briefcase, color: "text-emerald-600", bg: "bg-emerald-50" },
+              { icon: Clock, color: "text-amber-600", bg: "bg-amber-50" },
+            ].map((v, i) => {
               const Icon = v.icon;
               return (
                 <div
-                  key={v.title}
+                  key={i}
                   className="feature-card group rounded-3xl bg-white p-8 lg:p-10"
                 >
                   <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${v.bg} transition-transform duration-500 group-hover:scale-110`}>
                     <Icon size={26} strokeWidth={1.5} className={v.color} />
                   </div>
                   <h3 className="mt-7 text-[19px] tracking-[-0.02em] text-text">
-                    {v.title}
+                    {cms.fordelerCards[i].title}
                   </h3>
                   <p className="mt-3 text-[15px] leading-[1.7] text-text-secondary">
-                    {v.text}
+                    {cms.fordelerCards[i].text}
                   </p>
                 </div>
               );
@@ -149,10 +161,10 @@ export default function JobbClient() {
         <SectionReveal className="mx-auto max-w-2xl px-6">
           <div className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
-              Søk
+              {cms.soknadEyebrow}
             </p>
             <h2 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
-              Høres bra ut? Si hei!
+              {cms.soknadTitle}
             </h2>
           </div>
 

@@ -6,15 +6,18 @@ import { PageHero } from "@/components/DarkHero";
 import { SectionReveal } from "@/components/SectionReveal";
 import { AnimatedDivider } from "@/components/AnimatedDivider";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { getPageContent, pick, pickHero } from "@/lib/page-cms";
+
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Om oss — Lokalt i Vestfold siden 2020",
   description:
-    "Vi er 11 ansatte som vasker i hele Vestfold. Godkjent, EV-sertifisert, og med siden 2020. Bli kjent med oss.",
+    "Et etablert renholdsteam som vasker i hele Vestfold. Godkjent, EV-sertifisert, og med siden 2020. Bli kjent med oss.",
   alternates: { canonical: "/om-oss" },
   openGraph: {
     title: "Om oss | Færder Multiservice",
-    description: "Vi er 11 ansatte som vasker i hele Vestfold. Godkjent, EV-sertifisert, og med siden 2020.",
+    description: "Et etablert renholdsteam som vasker i hele Vestfold. Godkjent, EV-sertifisert, og med siden 2020.",
     url: "/om-oss",
   },
 };
@@ -24,7 +27,40 @@ const dekningsomrader = [
   "Sandefjord", "Horten", "Holmestrand", "Larvik",
 ];
 
-export default function OmOssPage() {
+export default async function OmOssPage() {
+  const content = await getPageContent("om-oss");
+
+  const heroEyebrow = pickHero(content, "hero_eyebrow", "Om oss");
+  const heroTitle = pickHero(content, "hero_title", "Om Færder Multiservice");
+  const heroSubtitle = pickHero(content, "hero_subtitle", "Vi har vasket i Vestfold siden 2020.");
+
+  const leaderName = pick(content, "historie", "leader_name", 0, "Aleksandra");
+  const leaderTitle = pick(content, "historie", "leader_title", 0, "Daglig leder");
+  const histEyebrow = pick(content, "historie", "eyebrow", 0, "Vår historie");
+  const histTitle = pick(content, "historie", "title", 0, "Slik startet det");
+  const p0 = pick(content, "historie", "paragraph", 0,
+    "Vi startet i 2020 med en enkel idé: å vaske skikkelig og behandle folk ordentlig. Det gjør vi fortsatt.");
+  const p1 = pick(content, "historie", "paragraph", 1,
+    "I dag er vi et etablert team. Vi vasker for folk, bedrifter, borettslag og utbyggere i hele Vestfold — fra Holmestrand til Larvik.");
+  const p2 = pick(content, "historie", "paragraph", 2,
+    "Vi gjør heller én jobb grundig enn ti halvveis. Vi er ikke fornøyde før du er det.");
+
+  const verdiEyebrow = pick(content, "verdier", "eyebrow", 0, "Våre verdier");
+  const verdiTitle = pick(content, "verdier", "title", 0, "Det vi står for");
+  const verdiDefaults = [
+    { tittel: "Grundig, alltid", tekst: "Ingen snarveier. Ingen halvgjort jobb. Sånn er det bare." },
+    { tittel: "Bra for miljøet", tekst: "Vi vasker med damp. Ingen sterke kjemikalier. Bra for deg og naturen." },
+    { tittel: "Lokalt og personlig", tekst: "Basert i Tønsberg. Kort reisevei, kjente fjes, personlig oppfølging." },
+  ];
+  const verdiCards = [0, 1, 2].map((i) => ({
+    title: pick(content, "verdier", "card_title", i, verdiDefaults[i].tittel),
+    text: pick(content, "verdier", "card_text", i, verdiDefaults[i].tekst),
+  }));
+
+  const ctaTitle = pick(content, "cta_final", "title", 0, "Vil du vite mer?");
+  const ctaBody = pick(content, "cta_final", "body", 0,
+    "Send oss en melding eller ring. Vi svarer samme dag — senest neste virkedag.");
+
   return (
     <>
       <BreadcrumbJsonLd items={[
@@ -32,9 +68,9 @@ export default function OmOssPage() {
         { name: "Om oss", href: "/om-oss" },
       ]} />
       <PageHero
-        label="Om oss"
-        title="Om Færder Multiservice"
-        subtitle="Vi har vasket i Vestfold siden 2020."
+        label={heroEyebrow}
+        title={heroTitle}
+        subtitle={heroSubtitle}
       />
 
       {/* Vår historie */}
@@ -47,7 +83,7 @@ export default function OmOssPage() {
                 <div className="photo-frame-bg !rounded-full" />
                 <Image
                   src="/images/aleksandra-portrett.webp"
-                  alt="Aleksandra, daglig leder i Færder Multiservice, Tønsberg"
+                  alt={`${leaderName}, ${leaderTitle.toLowerCase()} i Færder Multiservice, Tønsberg`}
                   width={200}
                   height={200}
                   quality={90}
@@ -55,31 +91,22 @@ export default function OmOssPage() {
                   className="h-[200px] w-[200px] object-cover"
                 />
               </div>
-              <p className="mt-4 text-[15px] font-semibold text-text">Aleksandra</p>
-              <p className="text-[13px] text-text-secondary">Daglig leder</p>
+              <p className="mt-4 text-[15px] font-semibold text-text">{leaderName}</p>
+              <p className="text-[13px] text-text-secondary">{leaderTitle}</p>
             </div>
 
             {/* Text */}
             <div>
               <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
-                Vår historie
+                {histEyebrow}
               </p>
               <h2 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
-                Slik startet det
+                {histTitle}
               </h2>
               <div className="mt-8 space-y-6 text-[17px] leading-[1.7] text-text-secondary">
-                <p>
-                  Vi startet i 2020 med en enkel idé: å vaske skikkelig og
-                  behandle folk ordentlig. Det gjør vi fortsatt.
-                </p>
-                <p>
-                  I dag er vi over 11 ansatte. Vi vasker for folk, bedrifter,
-                  borettslag og utbyggere i hele Vestfold — fra Holmestrand til Larvik.
-                </p>
-                <p>
-                  Vi gjør heller én jobb grundig enn ti halvveis.
-                  Vi er ikke fornøyde før du er det.
-                </p>
+                <p>{p0}</p>
+                <p>{p1}</p>
+                <p>{p2}</p>
               </div>
             </div>
           </div>
@@ -92,51 +119,33 @@ export default function OmOssPage() {
         <div className="mx-auto max-w-[1200px] px-6">
           <SectionReveal className="text-center">
             <p className="text-[13px] font-medium tracking-widest text-primary uppercase">
-              Våre verdier
+              {verdiEyebrow}
             </p>
             <h2 className="mt-5 text-[clamp(1.75rem,4vw,3rem)] tracking-[-0.02em] leading-[1.1] text-text">
-              Det vi står for
+              {verdiTitle}
             </h2>
           </SectionReveal>
 
           <SectionReveal className="mt-12 md:mt-20 grid gap-6 sm:grid-cols-3">
             {[
-              {
-                icon: Sparkles,
-                title: "Grundig, alltid",
-                text: "Ingen snarveier. Ingen halvgjort jobb. Sånn er det bare.",
-                color: "text-primary",
-                bg: "bg-accent",
-              },
-              {
-                icon: Leaf,
-                title: "Bra for miljøet",
-                text: "Vi vasker med damp. Ingen sterke kjemikalier. Bra for deg og naturen.",
-                color: "text-emerald-600",
-                bg: "bg-emerald-50",
-              },
-              {
-                icon: Heart,
-                title: "Lokalt og personlig",
-                text: "Basert i Tønsberg. Kort reisevei, kjente fjes, personlig oppfølging.",
-                color: "text-rose-500",
-                bg: "bg-rose-50",
-              },
-            ].map((v) => {
+              { icon: Sparkles, color: "text-primary", bg: "bg-accent" },
+              { icon: Leaf, color: "text-emerald-600", bg: "bg-emerald-50" },
+              { icon: Heart, color: "text-rose-500", bg: "bg-rose-50" },
+            ].map((v, i) => {
               const Icon = v.icon;
               return (
                 <div
-                  key={v.title}
+                  key={i}
                   className="feature-card group rounded-3xl bg-white p-8 lg:p-10"
                 >
                   <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${v.bg} transition-transform duration-500 group-hover:scale-110`}>
                     <Icon size={26} strokeWidth={1.5} className={v.color} />
                   </div>
                   <h3 className="mt-7 text-[19px] tracking-[-0.02em] text-text">
-                    {v.title}
+                    {verdiCards[i].title}
                   </h3>
                   <p className="mt-3 text-[15px] leading-[1.7] text-text-secondary">
-                    {v.text}
+                    {verdiCards[i].text}
                   </p>
                 </div>
               );
@@ -215,10 +224,10 @@ export default function OmOssPage() {
       <section className="py-16 lg:py-20" style={{ background: "linear-gradient(180deg, #fdf6ef, #faf0e4)" }}>
         <SectionReveal className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-[clamp(1.5rem,3vw,2rem)] tracking-[-0.02em] text-text">
-            Vil du vite mer?
+            {ctaTitle}
           </h2>
           <p className="mt-3 text-[15px] text-text-secondary">
-            Send oss en melding eller ring. Vi svarer samme dag — senest neste virkedag.
+            {ctaBody}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link

@@ -42,8 +42,10 @@ export const SITE_SETTINGS_FALLBACK: SiteSettings = {
   site_id: "",
   phone: "968 23 647",
   email_general: "post@faerdermultiservice.no",
-  visit_address: "Rambergveien 1, Tønsberg",
-  postal_address: "Rambergveien 1, Tønsberg",
+  // TODO(kunde): bekreft besøksadresse. Kilde: Brønnøysundregistrene
+  // (forretningsadresse), 1881 og proff — alle tre oppgir Stensarmen 3A.
+  visit_address: "Stensarmen 3A, 3112 Tønsberg",
+  postal_address: "Stensarmen 3A, 3112 Tønsberg",
   opening_hours: "Mandag–fredag: 08:00–16:00\nLørdag–søndag: Stengt",
   social: {},
   coverage_areas: [

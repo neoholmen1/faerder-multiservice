@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 
-const GA_ID = "G-XXXXXXXXXX"; // TODO: Bytt ut med din GA4 Measurement ID
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 const STORAGE_KEY = "cookie-consent";
 
 export function GoogleAnalytics() {
@@ -18,7 +18,9 @@ export function GoogleAnalytics() {
     return () => window.removeEventListener("cookie-consent-change", check);
   }, []);
 
-  if (!consent) return null;
+  // Uten en ekte GA4-ID skal ingenting lastes — ellers fyrer vi en request
+  // til Google med en ugyldig ID, uten å få statistikk tilbake.
+  if (!consent || !GA_ID) return null;
 
   return (
     <>

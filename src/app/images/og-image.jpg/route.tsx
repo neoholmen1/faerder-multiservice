@@ -127,7 +127,7 @@ export async function GET() {
               fontWeight: 500,
             }}
           >
-            Skikkelig renhold i hele Vestfold — fra 550 kr
+            Fast vask i hele Vestfold — fra 470 kr
           </p>
 
           {/* Trust badges */}

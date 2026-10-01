@@ -17,21 +17,22 @@ export function LocalBusinessJsonLd() {
     email: "post@faerdermultiservice.no",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Rambergveien 1",
+      streetAddress: "Stensarmen 3A",
+      postalCode: "3112",
       addressLocality: "Tønsberg",
       addressCountry: "NO",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 59.2256,
-      longitude: 10.4186,
+      latitude: 59.261025,
+      longitude: 10.418237,
     },
     areaServed: {
       "@type": "GeoCircle",
       geoMidpoint: {
         "@type": "GeoCoordinates",
-        latitude: 59.2264,
-        longitude: 10.4044,
+        latitude: 59.261025,
+        longitude: 10.418237,
       },
       geoRadius: "50000",
     },

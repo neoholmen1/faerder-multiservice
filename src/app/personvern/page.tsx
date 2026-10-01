@@ -30,7 +30,7 @@ export default function PersonvernPage() {
             personopplysninger som samles inn via denne nettsiden.
           </p>
           <p>
-            <strong>Adresse:</strong> Rambergveien 1, Tønsberg<br />
+            <strong>Adresse:</strong> Stensarmen 3A, 3112 Tønsberg<br />
             <strong>E-post:</strong> post@faerdermultiservice.no<br />
             <strong>Telefon:</strong> +47 968 23 647
           </p>

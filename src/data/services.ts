@@ -32,7 +32,9 @@ export const services: Service[] = [
     image: "/images/tjenester/fast-vask.webp",
     longDescription:
       "Vi tar oss av vasken, så slipper du. Samme team kommer hver gang, og de lærer seg hjemmet ditt fort. Du velger selv hvor ofte — ukentlig, annenhver uke eller månedlig. Vi er godkjent av Arbeidstilsynet og med i NHO.",
-    price: "Fra 550 kr",
+    // TODO(kunde): bekreft «fra»-pris. 470 = laveste faktiske trinn
+    // (ukentlig, hybel under 25 m²). Må matche frequencies[] under.
+    price: "Fra 470 kr",
     icon: "Sparkles",
     frequencies: [
       { id: "weekly", label: "Ukentlig", sublabel: "Spar 15 %", price: "Fra 470", period: "kr/gang", popular: true },
@@ -65,9 +67,9 @@ export const services: Service[] = [
     ],
     coverageText:
       "Vi vasker fast i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold. Vi er aldri langt unna.",
-    seoTitle: "Fast vaskehjelp i Vestfold · Fra 550 kr/gang",
+    seoTitle: "Fast vaskehjelp i Vestfold · Fra 470 kr/gang",
     seoDescription:
-      "Fast vaskehjelp i Tønsberg og Vestfold. Vi kommer fast — du slipper å tenke på det. Godkjent og NHO-medlem. Få tilbud i dag.",
+      "Fast vaskehjelp i Tønsberg og Vestfold fra 470 kr/gang. Vi kommer fast — du slipper å tenke på det. Godkjent og NHO-medlem.",
   },
   {
     slug: "flyttevask",
@@ -229,7 +231,7 @@ export const services: Service[] = [
       "Vi gjør spesialvask og vindusvask i Tønsberg, Nøtterøy, Tjøme og hele Vestfold.",
     seoTitle: "Spesialvask i Vestfold · Vindusvask & tepperens",
     seoDescription:
-      "Vindusvask og spesialvask i Vestfold fra 800 kr. Vi tar det du ikke gidder. Ring for tilbud.",
+      "Vindusvask og spesialvask i Vestfold fra 400 kr. Vi tar det du ikke gidder. Ring for tilbud.",
   },
   {
     slug: "luktsanering",
@@ -276,7 +278,7 @@ export const services: Service[] = [
     image: "/images/tjenester/hovedrengjoring.webp",
     longDescription:
       "Noen ganger trenger hjemmet en skikkelig omgang. Vi tar alt — innvendig i skap, bak møbler, stekeovn, kjøleskap, fliser. Det hele. Fint å gjøre 1–2 ganger i året.",
-    price: "Fra 1 100 kr",
+    price: "Fra 1 000 kr",
     icon: "Home",
     frequencies: [
       { id: "once", label: "Engangsvask", sublabel: "Grundig dyprengjøring", price: "Fra 1 100", period: "kr", popular: true },
@@ -306,7 +308,7 @@ export const services: Service[] = [
       "Vi gjør hovedrengjøring i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold.",
     seoTitle: "Hovedrengjøring i Vestfold · Dyprengjøring",
     seoDescription:
-      "Hovedrengjøring i Tønsberg og Vestfold fra 1 100 kr. Grundig fra topp til bunn. Bestill i dag.",
+      "Hovedrengjøring i Tønsberg og Vestfold fra 1 000 kr. Grundig fra topp til bunn. Bestill i dag.",
   },
   {
     slug: "visningsvask",

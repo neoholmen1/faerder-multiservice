@@ -66,12 +66,14 @@ export async function POST(req: NextRequest) {
     const resend = getResend();
     if (!resend) {
       return NextResponse.json(
-        { error: "E-post er ikke konfigurert." },
+        { error: "Vi får ikke sendt meldingen akkurat nå. Ring oss gjerne på 968 23 647, så tar vi det med en gang." },
         { status: 503 }
       );
     }
 
-    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+    const isDemo = fromEmail.endsWith("@resend.dev");
+    const tag = isDemo ? "[DEMO] " : "";
     const notificationEmail = process.env.NOTIFICATION_EMAIL ?? "post@faerdermultiservice.no";
 
     // Build details rows
@@ -99,9 +101,10 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: fromEmail,
       to: notificationEmail,
-      subject: `Ny lead: ${tjeneste} — ${navn}`,
+      subject: `${tag}Ny lead: ${tjeneste} — ${navn}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
+          ${isDemo ? `<p style="margin:0 0 16px;padding:10px 14px;background:#FEF3C7;border-radius:8px;color:#92400E;font-size:13px;">DEMO — sendt fra utviklingsoppsettet for faerdermultiservice.no, ikke en ekte kunde.</p>` : ""}
           <h2 style="color: #1A1A1A; margin-bottom: 8px;">Ny lead fra prisestimatoren</h2>
           <p style="color: #6B7280; font-size: 14px; margin: 0 0 24px;">Kunden har brukt prisestimatoren og ønsker et tilbud.</p>
           <table style="width: 100%; border-collapse: collapse;">
@@ -116,7 +119,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("Lead API error:", err);
     return NextResponse.json(
-      { error: "Noe gikk galt. Prøv igjen eller ring oss direkte." },
+      { error: "Noe gikk galt. Prøv igjen, eller ring oss på 968 23 647." },
       { status: 500 }
     );
   }
