@@ -32,9 +32,10 @@ export const services: Service[] = [
     image: "/images/tjenester/fast-vask.webp",
     longDescription:
       "Vi tar oss av vasken, så slipper du. Samme team kommer hver gang, og de lærer seg hjemmet ditt fort. Du velger selv hvor ofte — ukentlig, annenhver uke eller månedlig. Vi er godkjent av Arbeidstilsynet og med i NHO.",
-    // TODO(kunde): bekreft «fra»-pris. 470 = laveste faktiske trinn
-    // (ukentlig, hybel under 25 m²). Må matche frequencies[] under.
-    price: "Fra 470 kr",
+    // TODO(kunde): prismodell ikke avklart. Masterplan v3.2 sier 350 kr/time,
+    // kalkulatoren under er bygget på stykkpris. Pris-pakkene i frequencies[]
+    // er beholdt — sett price tilbake til et tall for å ta dem i bruk igjen.
+    price: "Pris etter befaring",
     icon: "Sparkles",
     frequencies: [
       { id: "weekly", label: "Ukentlig", sublabel: "Spar 15 %", price: "Fra 470", period: "kr/gang", popular: true },
@@ -67,9 +68,9 @@ export const services: Service[] = [
     ],
     coverageText:
       "Vi vasker fast i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold. Vi er aldri langt unna.",
-    seoTitle: "Fast vaskehjelp i Vestfold · Fra 470 kr/gang",
+    seoTitle: "Fast vaskehjelp i Vestfold · Gratis befaring",
     seoDescription:
-      "Fast vaskehjelp i Tønsberg og Vestfold fra 470 kr/gang. Vi kommer fast — du slipper å tenke på det. Godkjent og NHO-medlem.",
+      "Fast vaskehjelp i Tønsberg og Vestfold. Vi kommer fast — du slipper å tenke på det. Godkjent og NHO-medlem. Gratis befaring.",
   },
   {
     slug: "flyttevask",
@@ -161,7 +162,7 @@ export const services: Service[] = [
     image: "/images/tjenester/byggvask.webp",
     longDescription:
       "Byggstøv setter seg overalt. Vi tar alt — grundig — så du ikke ser spor etter håndverkerne. Er du ikke fornøyd, kommer vi tilbake gratis. Vi henter nøkkel om du trenger det.",
-    price: "Fra 5 000 kr",
+    price: "Pris etter befaring",
     icon: "HardHat",
     frequencies: [
       { id: "small", label: "Liten jobb", sublabel: "Under 80 m²", price: "5 000", period: "kr", popular: true },
@@ -193,7 +194,7 @@ export const services: Service[] = [
       "Vi utfører byggvask i hele Vestfold — fra Holmestrand i nord til Larvik i sør. Tar prosjekter av alle størrelser.",
     seoTitle: "Byggvask i Vestfold · 100 % fornøydgaranti",
     seoDescription:
-      "Byggvask i Vestfold fra 5 000 kr. Vi fjerner byggstøvet grundig. Garanti. Få tilbud i dag.",
+      "Byggvask i Vestfold. Vi fjerner byggstøvet grundig. 100 % fornøydgaranti. Gratis befaring.",
   },
   {
     slug: "spesialvask",
@@ -202,7 +203,7 @@ export const services: Service[] = [
     image: "/images/tjenester/spesialvask.webp",
     longDescription:
       "Gruer du deg til vindusvask? Vi tar det gjerne. Rene vinduer gir masse dagslys, og vi gjør tepperens og møbelrens også. Bare si hva du trenger.",
-    price: "Fra 400 kr",
+    price: "Pris etter befaring",
     icon: "Wind",
     frequencies: [
       { id: "windows", label: "Vindusvask", sublabel: "Inn- og utvendig", price: "Fra 800", period: "kr", popular: true },
@@ -231,7 +232,7 @@ export const services: Service[] = [
       "Vi gjør spesialvask og vindusvask i Tønsberg, Nøtterøy, Tjøme og hele Vestfold.",
     seoTitle: "Spesialvask i Vestfold · Vindusvask & tepperens",
     seoDescription:
-      "Vindusvask og spesialvask i Vestfold fra 400 kr. Vi tar det du ikke gidder. Ring for tilbud.",
+      "Vindusvask og spesialvask i Vestfold. Vi tar det du ikke gidder. Ring for tilbud.",
   },
   {
     slug: "luktsanering",
@@ -240,7 +241,7 @@ export const services: Service[] = [
     image: "/images/tjenester/luktsanering.webp",
     longDescription:
       "Vond lukt blir bare verre om du lar den stå. Vi finner kilden og fjerner den ordentlig — ikke bare dekker over. Vi samarbeider med Inneklimaspesialisten og EV Of Norway — sertifiserte partnere innen inneklima og luktsanering — og bruker flere metoder for å få det helt bort.",
-    price: "Fra 3 000 kr",
+    price: "Pris etter befaring",
     icon: "Droplets",
     frequencies: [
       { id: "room", label: "Enkeltrom", sublabel: "1–2 rom", price: "3 000", period: "kr" },
@@ -269,7 +270,7 @@ export const services: Service[] = [
       "Vi gjør luktsanering i hele Vestfold. Ofte ledig innen få dager.",
     seoTitle: "Luktsanering i Vestfold · Fjern vond lukt",
     seoDescription:
-      "Luktsanering i Vestfold fra 3 000 kr. Vi fjerner lukten ordentlig. Ring for befaring.",
+      "Luktsanering i Vestfold. Vi fjerner lukten ordentlig. Ring for befaring.",
   },
   {
     slug: "hovedrengjoring",
@@ -278,7 +279,7 @@ export const services: Service[] = [
     image: "/images/tjenester/hovedrengjoring.webp",
     longDescription:
       "Noen ganger trenger hjemmet en skikkelig omgang. Vi tar alt — innvendig i skap, bak møbler, stekeovn, kjøleskap, fliser. Det hele. Fint å gjøre 1–2 ganger i året.",
-    price: "Fra 1 000 kr",
+    price: "Pris etter befaring",
     icon: "Home",
     frequencies: [
       { id: "once", label: "Engangsvask", sublabel: "Grundig dyprengjøring", price: "Fra 1 100", period: "kr", popular: true },
@@ -308,7 +309,7 @@ export const services: Service[] = [
       "Vi gjør hovedrengjøring i Tønsberg, Nøtterøy, Tjøme, Sandefjord og hele Vestfold.",
     seoTitle: "Hovedrengjøring i Vestfold · Dyprengjøring",
     seoDescription:
-      "Hovedrengjøring i Tønsberg og Vestfold fra 1 000 kr. Grundig fra topp til bunn. Bestill i dag.",
+      "Hovedrengjøring i Tønsberg og Vestfold. Grundig fra topp til bunn. Gratis befaring.",
   },
   {
     slug: "visningsvask",
@@ -317,7 +318,7 @@ export const services: Service[] = [
     image: "/images/tjenester/visningsvask.webp",
     longDescription:
       "Førsteinntrykket teller. En skikkelig vask før visning gjør boligen innbydende — og kan faktisk øke salgsprisen. Vi er alltid ferdige i god tid.",
-    price: "Fra 900 kr",
+    price: "Pris etter befaring",
     icon: "Eye",
     frequencies: [
       { id: "small", label: "Hybel / liten leilighet", sublabel: "Under 50 m²", price: "Fra 900", period: "kr", popular: true },
@@ -346,7 +347,7 @@ export const services: Service[] = [
       "Vi gjør visningsvask i Tønsberg, Nøtterøy, Sandefjord og hele Vestfold. Vi vet at visningsdatoer ikke venter.",
     seoTitle: "Visningsvask i Vestfold · Klar for visning",
     seoDescription:
-      "Visningsvask i Vestfold fra 900 kr. Boligen klar for visning. Godt førsteinntrykk. Bestill i dag.",
+      "Visningsvask i Vestfold. Boligen klar for visning. Godt førsteinntrykk. Gratis befaring.",
   },
   {
     slug: "borettslag",

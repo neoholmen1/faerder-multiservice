@@ -92,8 +92,11 @@ export default async function PrislistePage() {
                     </p>
                   </div>
 
-                  {/* Frequency breakdown */}
-                  {service.frequencies.length > 0 && (
+                  {/* Frequency breakdown — skjules når etiketten sier «etter
+                      befaring». Ellers ville kortet motsagt seg selv: «Pris
+                      etter befaring» med konkrete tall rett under. */}
+                  {service.frequencies.length > 0 &&
+                    !/etter befaring/i.test(service.price) && (
                     <div className="mt-5 border-t border-gray-50 pt-5">
                       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                         {service.frequencies.map((f) => (

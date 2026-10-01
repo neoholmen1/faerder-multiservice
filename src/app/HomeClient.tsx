@@ -20,12 +20,12 @@ import { blogPosts } from "@/data/blog";
 import { PageCmsProvider, useCms, useCmsHero, type PageCmsContent } from "@/components/cms/PageCmsContext";
 
 const tjenester = [
-  { name: "Fast vask", pris: "Fra 470 kr", slug: "fast-vask", icon: Home },
+  { name: "Fast vask", pris: "Pris etter befaring", slug: "fast-vask", icon: Home },
   { name: "Flyttevask", pris: "Fra 3 500 kr", slug: "flyttevask", icon: Truck },
   { name: "Kontorvask", pris: "Etter avtale", slug: "kontorvask", icon: Building2 },
-  { name: "Byggvask", pris: "Fra 5 000 kr", slug: "byggvask", icon: HardHat },
-  { name: "Spesialvask", pris: "Fra 400 kr", slug: "spesialvask", icon: Sparkles },
-  { name: "Luktsanering", pris: "Fra 3 000 kr", slug: "luktsanering", icon: Wind },
+  { name: "Byggvask", pris: "Pris etter befaring", slug: "byggvask", icon: HardHat },
+  { name: "Spesialvask", pris: "Pris etter befaring", slug: "spesialvask", icon: Sparkles },
+  { name: "Luktsanering", pris: "Pris etter befaring", slug: "luktsanering", icon: Wind },
 ];
 
 /* ── Service card — icon + text, no images ── */
@@ -1012,7 +1012,7 @@ function HjemInner() {
               {heroSubtitle ? (
                 heroSubtitle
               ) : (
-                <>Fast vask i hele Vestfold — <span className="font-bold text-primary">fra 470 kr.</span></>
+                <>Skikkelig renhold i hele Vestfold — <span className="font-bold text-primary">pris etter befaring.</span></>
               )}
             </p>
 

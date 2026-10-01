@@ -20,12 +20,12 @@ import EditableImage from "@/components/admin/inline/EditableImage";
 import { sectionKey } from "@/components/admin/inline/save";
 
 const tjenester = [
-  { name: "Fast vask", pris: "Fra 470 kr", slug: "fast-vask", icon: Home },
+  { name: "Fast vask", pris: "Pris etter befaring", slug: "fast-vask", icon: Home },
   { name: "Flyttevask", pris: "Fra 3 500 kr", slug: "flyttevask", icon: Truck },
   { name: "Kontorvask", pris: "Etter avtale", slug: "kontorvask", icon: Building2 },
-  { name: "Byggvask", pris: "Fra 5 000 kr", slug: "byggvask", icon: HardHat },
-  { name: "Spesialvask", pris: "Fra 400 kr", slug: "spesialvask", icon: Sparkles },
-  { name: "Luktsanering", pris: "Fra 3 000 kr", slug: "luktsanering", icon: Wind },
+  { name: "Byggvask", pris: "Pris etter befaring", slug: "byggvask", icon: HardHat },
+  { name: "Spesialvask", pris: "Pris etter befaring", slug: "spesialvask", icon: Sparkles },
+  { name: "Luktsanering", pris: "Pris etter befaring", slug: "luktsanering", icon: Wind },
 ];
 
 /**
@@ -63,7 +63,7 @@ export function EditableForsiden({ siteId }: { siteId: string }) {
           </h1>
           <EditableText
             fieldKey="hero_subtitle"
-            fallback="Fast vask i hele Vestfold — fra 470 kr."
+            fallback="Skikkelig renhold i hele Vestfold — pris etter befaring."
             as="p"
             className="mx-auto mt-5 max-w-lg text-[1.0625rem] font-medium leading-[1.6] text-text-secondary"
             multiline
