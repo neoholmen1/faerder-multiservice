@@ -711,6 +711,7 @@ h1, h2, h3 {
 }
 
 .page-enter {
+  opacity: 1; /* Fallback hvis animasjonen ikke fyrer */
   animation: page-enter 0.3s ease-out both;
 }
 
@@ -973,6 +974,75 @@ a:focus-visible {
   h2 {
     font-size: clamp(1.5rem, 5vw, 1.75rem);
   }
+}
+
+/* ── Inline-editor: vis at felter er redigerbare ── */
+.inline-editable {
+  position: relative;
+  border-radius: 4px;
+  cursor: text;
+  background-image: linear-gradient(
+    transparent calc(100% - 1.5px),
+    rgba(232, 114, 28, 0.55) 1.5px
+  );
+  background-size: 100% 100%;
+  transition: background-color 150ms, background-image 150ms;
+}
+
+.inline-editable:hover {
+  background-color: rgba(255, 247, 237, 0.7);
+  background-image: linear-gradient(
+    transparent calc(100% - 1.5px),
+    #e8721c 1.5px
+  );
+}
+
+.inline-editable:focus {
+  outline: none;
+  background-color: rgba(255, 247, 237, 1);
+  caret-color: #e8721c;
+  background-image: linear-gradient(
+    transparent calc(100% - 2px),
+    #e8721c 2px
+  );
+}
+
+/* ── Preview-modus (i iframe fra admin) — slå av tunge animasjoner ── */
+html[data-preview="true"] *,
+html[data-preview="true"] *::before,
+html[data-preview="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+html[data-preview="true"] .reveal,
+html[data-preview="true"] .reveal-stagger > *,
+html[data-preview="true"] .hero-animate > * {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+html[data-preview="true"] .section-divider {
+  transform: scaleX(1) !important;
+}
+
+html[data-preview="true"] .marquee-track {
+  animation-play-state: paused !important;
+}
+
+html[data-preview="true"] .showcase-shimmer::before,
+html[data-preview="true"] .hero-image-zoom,
+html[data-preview="true"] .badge-dot-pulse,
+html[data-preview="true"] .showcase-float,
+html[data-preview="true"] .typing-cursor::after {
+  animation: none !important;
+}
+
+html[data-preview="true"] .star-pop,
+html[data-preview="true"] .popular-badge {
+  opacity: 1 !important;
+  animation: none !important;
 }
 
 /* ── Prefers reduced motion ── */
