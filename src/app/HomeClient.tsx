@@ -37,7 +37,7 @@ function TjenesteKort({ t }: { t: (typeof tjenester)[number] }) {
       href={`/tjenester/${t.slug}`}
       className="service-card group relative flex flex-col items-center rounded-[16px] bg-white px-6 py-8 text-center"
     >
-      <Icon size={48} strokeWidth={1.2} className="text-primary" />
+      <Icon size={34} strokeWidth={1.6} className="ikon-flate" />
 
       <h3 className="mt-4 text-[16px] font-semibold tracking-tight text-text">{t.name}</h3>
       <p className="mt-1.5 text-[13px] font-medium text-primary">{t.pris}</p>
@@ -180,7 +180,7 @@ function SlikFungererDet() {
   ];
 
   return (
-    <section className="bg-[#f5f5f7] py-16 md:py-28 lg:py-36">
+    <section className="flate-oransje py-16 md:py-28 lg:py-36">
       <div className="mx-auto max-w-[1200px] px-5 md:px-6">
         <div ref={ref} className="reveal text-center">
           <p className="text-[13px] font-medium tracking-widest text-primary uppercase">

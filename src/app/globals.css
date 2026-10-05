@@ -1114,3 +1114,47 @@ html[data-preview="true"] .popular-badge {
     content: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Oransje flater — «klassisk oransje», valgt 05.10.2026
+
+   Dagens faerdermultiservice.no bruker oransje tre steder: strek-ikonene,
+   logoen og et fullbredde footer-bånd (#F08105). Det er den gjenkjennelige
+   signaturen. Siden her hadde ingen oransje flater i det hele tatt.
+
+   Tekst på oransje er #2A1403, ikke hvit: hvit gir 3,06:1 mot #E8721C og
+   stryker på 4,5-kravet. #2A1403 gir 5,68:1.
+   (Deres egen footer har hvit tekst på 2,68:1 — den feilen er ikke kopiert.)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.flate-oransje {
+  background: var(--color-primary);
+  color: #2A1403;
+}
+/* Arver mørk tekst ned til alt som ellers ville brukt grå/primær-farger */
+.flate-oransje .text-text-secondary,
+.flate-oransje .text-text,
+.flate-oransje .text-primary,
+.flate-oransje p,
+.flate-oransje li,
+.flate-oransje span,
+.flate-oransje a,
+.flate-oransje h2,
+.flate-oransje h3,
+.flate-oransje h4 { color: #2A1403; }
+
+.flate-oransje a:hover { color: #000; }
+/* Tooltipen har hvit bakgrunn — den mørke teksten fra flaten passer der
+   også (#2A1403 på hvitt = 15,1:1), så den trenger ingen egen regel. */
+.flate-oransje svg { color: #2A1403; }
+.flate-oransje hr,
+.flate-oransje [class*="border-"] { border-color: rgba(0,0,0,.16); }
+
+/* Tjenesteikoner: fylt oransje flate med hvitt ikon. Ikoner er grafikk,
+   så grensen er 3:1 — hvit på #E8721C gir 3,06:1 og er innenfor. */
+.ikon-flate {
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 18px;
+  padding: 11px;
+}

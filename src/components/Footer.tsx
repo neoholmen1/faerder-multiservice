@@ -40,7 +40,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
     s.coverage_areas.length > 0 ? s.coverage_areas : SITE_SETTINGS_FALLBACK.coverage_areas;
   const badges: Badge[] = s.badges.length > 0 ? s.badges : SITE_SETTINGS_FALLBACK.badges;
   return (
-    <footer className="bg-[#faf0e4]">
+    <footer className="flate-oransje">
       <div className="mx-auto max-w-[1200px] px-6 pt-20 pb-8 lg:px-8">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-16">
           {/* Kontaktinfo */}
@@ -160,7 +160,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
                 return (
                   <span
                     key={b.key + b.label}
-                    className="tooltip-trigger flex items-center gap-2 text-xs text-[#9CA3AF]"
+                    className="tooltip-trigger flex items-center gap-2 text-xs"
                   >
                     <Icon size={13} className="text-primary" />
                     {b.label}
@@ -171,7 +171,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
                 );
               })}
             </div>
-            <p className="text-xs text-[#9CA3AF]">
+            <p className="text-xs">
               &copy; {new Date().getFullYear()} Færder Multiservice AS &middot; Org.nr 824 779 392
               {process.env.NEXT_PUBLIC_DEMO_MODE === "1" && (
                 <> &middot; <span className="opacity-70">Utkast laget av Axaro</span></>
@@ -184,7 +184,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
         <div className="mt-6 text-center">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xs text-[#9CA3AF] transition-colors duration-200 hover:text-primary"
+            className="text-xs transition-colors duration-200 hover:text-primary"
           >
             ↑ Tilbake til toppen
           </button>
