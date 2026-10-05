@@ -174,7 +174,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
             <p className="text-xs">
               &copy; {new Date().getFullYear()} Færder Multiservice AS &middot; Org.nr 824 779 392
               {process.env.NEXT_PUBLIC_DEMO_MODE === "1" && (
-                <> &middot; <span className="opacity-70">Utkast laget av Axaro</span></>
+                <> &middot; <span>Utkast laget av Axaro</span></>
               )}
             </p>
           </div>
