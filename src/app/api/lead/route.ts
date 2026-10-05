@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
     // Build details rows
     const detailRows: string[] = [];
     detailRows.push(row("Navn", navn));
-    detailRows.push(row("Telefon", `<a href="tel:${esc(telefon)}" style="color:#E57100;">${esc(telefon)}</a>`));
+    detailRows.push(row("Telefon", `<a href="tel:${esc(telefon)}" style="color:#E8721C;">${esc(telefon)}</a>`));
     if (postnummer) detailRows.push(row("Postnummer", postnummer));
     if (tidspunkt) detailRows.push(row("Foretrukket tidspunkt", tidspunkt));
     detailRows.push(row("Tjeneste", `<strong>${esc(tjeneste)}</strong>`));
@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
     }
 
     if (estimertPris) {
-      detailRows.push(row("Estimert pris", `<strong style="color:#E57100;">${esc(estimertPris)}</strong>`));
+      detailRows.push(row("Estimert pris", `<strong style="color:#E8721C;">${esc(estimertPris)}</strong>`));
     }
 
     await resend.emails.send({

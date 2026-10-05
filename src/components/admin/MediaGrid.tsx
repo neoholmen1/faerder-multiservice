@@ -24,7 +24,7 @@ export default function MediaGrid({
         <button
           key={m.id}
           onClick={() => onSelect(m)}
-          className="group relative aspect-square overflow-hidden rounded-xl border border-[#ececec] bg-white transition-all duration-150 hover:border-[#E57100] hover:shadow-[0_2px_8px_rgba(229,113,0,0.12)]"
+          className="group relative aspect-square overflow-hidden rounded-xl border border-[#ececec] bg-white transition-all duration-150 hover:border-[#E8721C] hover:shadow-[0_2px_8px_rgba(232,114,28,0.12)]"
         >
           <Image
             src={m.url}

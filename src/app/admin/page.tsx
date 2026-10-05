@@ -75,7 +75,7 @@ export default function AdminLogin() {
           </ul>
           <Link
             href="/"
-            className="mt-7 inline-flex items-center gap-1.5 text-[13.5px] font-medium text-[#E57100] hover:text-[#a64f0d]"
+            className="mt-7 inline-flex items-center gap-1.5 text-[13.5px] font-medium text-[#E8721C] hover:text-[#a64f0d]"
           >
             ← Tilbake til forsiden
           </Link>
@@ -88,7 +88,7 @@ export default function AdminLogin() {
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#fafafa] p-6">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#E57100] to-[#a64f0d] text-[15px] font-bold text-white">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#E8721C] to-[#a64f0d] text-[15px] font-bold text-white">
             <Sparkles className="h-5 w-5" strokeWidth={1.75} />
           </div>
           <div>
@@ -114,7 +114,7 @@ export default function AdminLogin() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1.5 h-11 w-full rounded-lg border border-[#ececec] bg-white px-3 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E57100] focus:ring-2 focus:ring-[#E57100]/10"
+              className="mt-1.5 h-11 w-full rounded-lg border border-[#ececec] bg-white px-3 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E8721C] focus:ring-2 focus:ring-[#E8721C]/10"
             />
           </div>
           <div>
@@ -127,7 +127,7 @@ export default function AdminLogin() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1.5 h-11 w-full rounded-lg border border-[#ececec] bg-white px-3 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E57100] focus:ring-2 focus:ring-[#E57100]/10"
+              className="mt-1.5 h-11 w-full rounded-lg border border-[#ececec] bg-white px-3 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E8721C] focus:ring-2 focus:ring-[#E8721C]/10"
             />
           </div>
           {error && (

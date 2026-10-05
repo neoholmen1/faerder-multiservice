@@ -83,7 +83,7 @@ export default function InnstillingerPage() {
       <>
         <PageHeader title="Innstillinger" subtitle="Kontaktinfo, sosiale medier og testimonials." />
         <div className="flex flex-1 items-center justify-center">
-          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E57100] border-t-transparent" />
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E8721C] border-t-transparent" />
         </div>
       </>
     );
@@ -419,7 +419,7 @@ function BadgesEditor({
       ))}
       <button
         onClick={() => onChange([...badges, { key: "", label: "" }])}
-        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E57100] hover:text-[#E57100]"
+        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E8721C] hover:text-[#E8721C]"
       >
         <Plus className="h-3.5 w-3.5" /> Legg til badge
       </button>
@@ -540,7 +540,7 @@ function TestimonialsEditor({
             },
           ])
         }
-        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E57100] hover:text-[#E57100]"
+        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E8721C] hover:text-[#E8721C]"
       >
         <Plus className="h-3.5 w-3.5" /> Legg til anmeldelse
       </button>

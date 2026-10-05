@@ -78,7 +78,7 @@ export default function PageEditorRoute({ params }: { params: Promise<{ slug: st
   if (!siteId || !initial) {
     return (
       <div className="flex flex-1 items-center justify-center">
-        <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E57100] border-t-transparent" />
+        <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E8721C] border-t-transparent" />
       </div>
     );
   }
@@ -213,7 +213,7 @@ function Editor({
         <Link
           href={liveUrl}
           target="_blank"
-          className="inline-flex items-center gap-2 rounded-full bg-[#E57100] px-4 py-2 text-[12.5px] font-semibold text-white transition-all hover:bg-[#a64f0d] active:scale-95"
+          className="inline-flex items-center gap-2 rounded-full bg-[#E8721C] px-4 py-2 text-[12.5px] font-semibold text-white transition-all hover:bg-[#a64f0d] active:scale-95"
         >
           Se siden live <ExternalLink className="h-3.5 w-3.5" strokeWidth={2} />
         </Link>

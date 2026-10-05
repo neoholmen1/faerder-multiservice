@@ -80,7 +80,7 @@ export default function InlineSaveBar({
           </button>
         </div>
       </div>
-      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#E57100]/15 to-transparent" />
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#E8721C]/15 to-transparent" />
     </div>
   );
 }

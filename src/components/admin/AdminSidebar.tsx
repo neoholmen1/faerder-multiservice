@@ -35,7 +35,7 @@ export default function AdminSidebar({ userEmail }: { userEmail: string | null }
     <aside className="relative flex w-[260px] shrink-0 flex-col border-r border-[#ececec] bg-gradient-to-b from-white to-[#fafaf9]">
       <div className="border-b border-[#ececec] px-4 py-4">
         <div className="flex items-center gap-2.5">
-          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#E57100] to-[#a64f0d] text-[15px] font-bold tracking-tight text-white shadow-[0_2px_8px_-2px_rgba(229,113,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]">
+          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#E8721C] to-[#a64f0d] text-[15px] font-bold tracking-tight text-white shadow-[0_2px_8px_-2px_rgba(232,114,28,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]">
             F
           </div>
           <div className="min-w-0 flex-1">
@@ -81,11 +81,11 @@ export default function AdminSidebar({ userEmail }: { userEmail: string | null }
                 }`}
               >
                 {active && (
-                  <span className="absolute left-0 top-1/2 h-5 w-[2.5px] -translate-y-1/2 rounded-r-full bg-[#E57100]" />
+                  <span className="absolute left-0 top-1/2 h-5 w-[2.5px] -translate-y-1/2 rounded-r-full bg-[#E8721C]" />
                 )}
                 <Icon
                   className={`h-[17px] w-[17px] shrink-0 transition-colors duration-150 ${
-                    active ? "text-[#E57100]" : "text-[#a3a3a3] group-hover:text-[#525252]"
+                    active ? "text-[#E8721C]" : "text-[#a3a3a3] group-hover:text-[#525252]"
                   }`}
                   strokeWidth={1.75}
                 />
@@ -121,7 +121,7 @@ export default function AdminSidebar({ userEmail }: { userEmail: string | null }
             onClick={() => supabase?.auth.signOut()}
             title="Logg ut"
             aria-label="Logg ut"
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-[#a3a3a3] transition-all duration-150 hover:bg-white hover:text-[#E57100] hover:shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
+            className="flex h-7 w-7 items-center justify-center rounded-lg text-[#a3a3a3] transition-all duration-150 hover:bg-white hover:text-[#E8721C] hover:shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
           >
             <LogOut className="h-3.5 w-3.5" strokeWidth={1.75} />
           </button>

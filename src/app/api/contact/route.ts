@@ -110,11 +110,11 @@ export async function POST(req: NextRequest) {
             </tr>
             <tr>
               <td style="padding: 10px 0; color: #6B7280; vertical-align: top;">E-post</td>
-              <td style="padding: 10px 0;"><a href="mailto:${escapeHtml(epost)}" style="color: #E57100;">${escapeHtml(epost)}</a></td>
+              <td style="padding: 10px 0;"><a href="mailto:${escapeHtml(epost)}" style="color: #E8721C;">${escapeHtml(epost)}</a></td>
             </tr>
             <tr>
               <td style="padding: 10px 0; color: #6B7280; vertical-align: top;">Telefon</td>
-              <td style="padding: 10px 0;"><a href="tel:${escapeHtml(telefon)}" style="color: #E57100;">${escapeHtml(telefon)}</a></td>
+              <td style="padding: 10px 0;"><a href="tel:${escapeHtml(telefon)}" style="color: #E8721C;">${escapeHtml(telefon)}</a></td>
             </tr>
             ${sted ? `<tr><td style="padding: 10px 0; color: #6B7280; vertical-align: top;">Sted</td><td style="padding: 10px 0; color: #1A1A1A;">${escapeHtml(sted)}</td></tr>` : ""}
             ${tjeneste ? `<tr><td style="padding: 10px 0; color: #6B7280; vertical-align: top;">Tjeneste</td><td style="padding: 10px 0; color: #1A1A1A; font-weight: 500;">${escapeHtml(tjeneste)}</td></tr>` : ""}
@@ -148,12 +148,12 @@ export async function POST(req: NextRequest) {
             </p>
             <p style="color: #374151; font-size: 16px; line-height: 1.7;">
               Har du det travelt? Ring oss gjerne direkte på
-              <a href="tel:+4796823647" style="color: #E57100; font-weight: 500;">968 23 647</a>.
+              <a href="tel:+4796823647" style="color: #E8721C; font-weight: 500;">968 23 647</a>.
             </p>
             <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 24px 0;" />
             <p style="color: #9CA3AF; font-size: 13px;">
               Færder Multiservice AS · Stensarmen 3A, 3112 Tønsberg<br />
-              <a href="https://faerdermultiservice.no" style="color: #E57100;">faerdermultiservice.no</a>
+              <a href="https://faerdermultiservice.no" style="color: #E8721C;">faerdermultiservice.no</a>
             </p>
           </div>
         `,

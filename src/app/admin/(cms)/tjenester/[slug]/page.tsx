@@ -39,7 +39,7 @@ export default function TjenesteEditorRoute({ params }: { params: Promise<{ slug
   if (!siteId || !draft || !original) {
     return (
       <div className="flex flex-1 items-center justify-center">
-        <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E57100] border-t-transparent" />
+        <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E8721C] border-t-transparent" />
       </div>
     );
   }
@@ -107,7 +107,7 @@ export default function TjenesteEditorRoute({ params }: { params: Promise<{ slug
         <Link
           href={liveUrl}
           target="_blank"
-          className="inline-flex items-center gap-2 rounded-full bg-[#E57100] px-4 py-2 text-[12.5px] font-semibold text-white transition-all hover:bg-[#a64f0d] active:scale-95"
+          className="inline-flex items-center gap-2 rounded-full bg-[#E8721C] px-4 py-2 text-[12.5px] font-semibold text-white transition-all hover:bg-[#a64f0d] active:scale-95"
         >
           Se siden live <ExternalLink className="h-3.5 w-3.5" strokeWidth={2} />
         </Link>
@@ -315,11 +315,11 @@ function Toggle({
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className="relative inline-flex shrink-0 rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E57100]/30 focus-visible:ring-offset-2"
+        className="relative inline-flex shrink-0 rounded-full transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E8721C]/30 focus-visible:ring-offset-2"
         style={{
           width: "40px",
           height: "22px",
-          backgroundColor: checked ? "#E57100" : "#d4d4d4",
+          backgroundColor: checked ? "#E8721C" : "#d4d4d4",
         }}
       >
         <span
@@ -371,7 +371,7 @@ function ListEditor({
       ))}
       <button
         onClick={() => onChange([...items, ""])}
-        className="rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E57100] hover:text-[#E57100]"
+        className="rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E8721C] hover:text-[#E8721C]"
       >
         + Legg til
       </button>
@@ -446,7 +446,7 @@ function FrequenciesEditor({ items, onChange }: { items: Frequency[]; onChange: 
         onClick={() =>
           onChange([...items, { id: `freq-${Date.now()}`, label: "", price: "", period: "kr" }])
         }
-        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E57100] hover:text-[#E57100]"
+        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E8721C] hover:text-[#E8721C]"
       >
         + Legg til pakke
       </button>
@@ -496,7 +496,7 @@ function StepsEditor({ items, onChange }: { items: Step[]; onChange: (v: Step[])
       ))}
       <button
         onClick={() => onChange([...items, { title: "", description: "" }])}
-        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E57100] hover:text-[#E57100]"
+        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E8721C] hover:text-[#E8721C]"
       >
         + Legg til steg
       </button>
@@ -543,7 +543,7 @@ function FaqEditor({ items, onChange }: { items: Faq[]; onChange: (v: Faq[]) => 
       ))}
       <button
         onClick={() => onChange([...items, { question: "", answer: "" }])}
-        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E57100] hover:text-[#E57100]"
+        className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-[#d4d4d4] bg-white px-4 py-2 text-[12.5px] font-medium text-[#525252] transition-colors hover:border-[#E8721C] hover:text-[#E8721C]"
       >
         + Legg til spørsmål
       </button>

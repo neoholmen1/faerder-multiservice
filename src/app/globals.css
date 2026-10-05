@@ -1,21 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── Merkevareoransje ───────────────────────────────────────────────
-     --color-brand er den eksakte fargen fra logofila
-     (public/images/faerder-logo.webp — 11 134 av 450x166 px er #E57100).
-     Den måler 3,14:1 mot hvit. Det er nok for grafikk og stor tekst
-     (WCAG-grense 3:1), men ikke for tekst under 18,66px (grense 4,5:1),
-     og siden har ~116 små oransje tekster mot én stor overskrift.
-
-     --color-primary er derfor samme fargetone (H 30°, S 100%) mørknet til
-     L 34%. Den klarer 4,5:1 mot alle fem bakgrunnene siden bruker:
-     hvit 5,08 · #FAF8F5 4,80 · #FAF0E4 4,51 · #F5F5F7 4,67 · #FDF6EF 4,75.
-     Standard for tekst, lenker og knappeflater som bærer hvit tekst.
-     Bruk text-brand / bg-brand der fargen er stor tekst eller ren dekor. */
-  --color-brand: #E57100;
-  --color-primary: #AE5600;
-  --color-primary-dark: #8E4600;
+  --color-primary: #E8721C;
+  --color-primary-dark: #C45E15;
   --color-text: #1A1A1A;
   --color-text-secondary: #6B7280;
   --color-background: #FFFFFF;
@@ -170,7 +157,7 @@ h1, h2, h3 {
 }
 
 .iphone-glow-border {
-  background: conic-gradient(from var(--angle), #E57100 0%, transparent 30%, transparent 70%, #E57100 100%);
+  background: conic-gradient(from var(--angle), #E8721C 0%, transparent 30%, transparent 70%, #E8721C 100%);
   animation: iphone-rotate 3s linear infinite;
 }
 
@@ -231,8 +218,8 @@ h1, h2, h3 {
 
 /* ── Badge pulse (orange dot) ── */
 @keyframes badge-dot-pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229,113,0, 0.5); }
-  50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(229,113,0, 0); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 114, 28, 0.5); }
+  50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(232, 114, 28, 0); }
 }
 
 .badge-dot-pulse {
@@ -255,7 +242,7 @@ h1, h2, h3 {
 
 /* ── Gradient text ── */
 .text-gradient {
-  background: linear-gradient(135deg, #E57100 0%, #F4A261 100%);
+  background: linear-gradient(135deg, #E8721C 0%, #F4A261 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -299,7 +286,7 @@ h1, h2, h3 {
 
 .btn-glow:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(229,113,0, 0.35);
+  box-shadow: 0 8px 25px -5px rgba(232, 114, 28, 0.35);
 }
 
 .btn-glow:active {
@@ -813,7 +800,7 @@ a:focus-visible {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(105deg, transparent 40%, rgba(229,113,0,0.12) 50%, transparent 60%);
+  background: linear-gradient(105deg, transparent 40%, rgba(232,114,28,0.12) 50%, transparent 60%);
   transform: translateX(-100%);
   animation: price-shimmer-sweep 0.6s ease-out;
   pointer-events: none;
@@ -909,7 +896,7 @@ a:focus-visible {
   width: var(--confetti-size, 8px);
   height: var(--confetti-size, 8px);
   border-radius: 50%;
-  background: var(--confetti-color, #E57100);
+  background: var(--confetti-color, #E8721C);
   left: var(--confetti-x, 50%);
   animation: confetti-fall var(--confetti-dur, 1.5s) cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--confetti-delay, 0s) forwards;
 }
@@ -949,7 +936,7 @@ a:focus-visible {
 .photo-frame-bg {
   position: absolute;
   inset: -12px;
-  background: #E57100;
+  background: #E8721C;
   opacity: 0.06;
   border-radius: 1rem;
   transform: rotate(1deg);
@@ -961,7 +948,7 @@ a:focus-visible {
   position: relative;
   z-index: 1;
   border-radius: 1rem;
-  border: 1px solid rgba(229,113,0, 0.1);
+  border: 1px solid rgba(232, 114, 28, 0.1);
   box-shadow: 0 25px 50px -12px rgba(0, 25, 50, 0.08);
   object-fit: cover;
   filter: brightness(1.04) saturate(0.93);
@@ -996,7 +983,7 @@ a:focus-visible {
   cursor: text;
   background-image: linear-gradient(
     transparent calc(100% - 1.5px),
-    rgba(229,113,0, 0.55) 1.5px
+    rgba(232, 114, 28, 0.55) 1.5px
   );
   background-size: 100% 100%;
   transition: background-color 150ms, background-image 150ms;
@@ -1006,17 +993,17 @@ a:focus-visible {
   background-color: rgba(255, 247, 237, 0.7);
   background-image: linear-gradient(
     transparent calc(100% - 1.5px),
-    #e57100 1.5px
+    #e8721c 1.5px
   );
 }
 
 .inline-editable:focus {
   outline: none;
   background-color: rgba(255, 247, 237, 1);
-  caret-color: #e57100;
+  caret-color: #e8721c;
   background-image: linear-gradient(
     transparent calc(100% - 2px),
-    #e57100 2px
+    #e8721c 2px
   );
 }
 

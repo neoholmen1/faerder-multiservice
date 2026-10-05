@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const COLORS = ["#E57100", "#F4A261", "#22c55e", "#E57100", "#F4A261"];
+const COLORS = ["#E8721C", "#F4A261", "#22c55e", "#E8721C", "#F4A261"];
 
 function randomPieces(count: number) {
   return Array.from({ length: count }, (_, i) => ({

@@ -101,7 +101,7 @@ export function EditableForsiden({ siteId }: { siteId: string }) {
             fallback="/images/firmabil-hero.webp"
           >
             {(url) => (
-              <div className="relative aspect-[21/8] w-full overflow-hidden rounded-[24px] bg-[#f5f0ea] shadow-[0_20px_60px_-20px_rgba(229,113,0,0.25)] ring-1 ring-black/[0.04]">
+              <div className="relative aspect-[21/8] w-full overflow-hidden rounded-[24px] bg-[#f5f0ea] shadow-[0_20px_60px_-20px_rgba(232,114,28,0.25)] ring-1 ring-black/[0.04]">
                 <Image
                   src={url ?? "/images/firmabil-hero.webp"}
                   alt="Færder Multiservice firmabil"

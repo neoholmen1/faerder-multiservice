@@ -81,7 +81,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
           </p>
           <Link
             href="/"
-            className="mt-7 inline-flex items-center gap-1.5 text-[13.5px] font-medium text-[#E57100] hover:text-[#a64f0d]"
+            className="mt-7 inline-flex items-center gap-1.5 text-[13.5px] font-medium text-[#E8721C] hover:text-[#a64f0d]"
           >
             ← Tilbake til forsiden
           </Link>
@@ -93,7 +93,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
   if (!authReady || (user && accessChecking)) {
     return (
       <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#E57100] border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#E8721C] border-t-transparent" />
       </div>
     );
   }
@@ -108,7 +108,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
           </p>
           <Link
             href="/admin"
-            className="mt-6 inline-flex w-full justify-center rounded-full bg-[#E57100] py-3 font-semibold text-white transition-colors hover:bg-[#a64f0d]"
+            className="mt-6 inline-flex w-full justify-center rounded-full bg-[#E8721C] py-3 font-semibold text-white transition-colors hover:bg-[#a64f0d]"
           >
             Til innlogging
           </Link>
@@ -129,7 +129,7 @@ export default function CmsLayout({ children }: { children: React.ReactNode }) {
           </p>
           <button
             onClick={() => supabase?.auth.signOut()}
-            className="mt-6 w-full rounded-full bg-[#E57100] py-3 font-semibold text-white transition-colors hover:bg-[#a64f0d]"
+            className="mt-6 w-full rounded-full bg-[#E8721C] py-3 font-semibold text-white transition-colors hover:bg-[#a64f0d]"
           >
             Logg ut
           </button>

@@ -71,7 +71,7 @@ function OptionCard({
       onClick={onClick}
       className={`relative rounded-2xl border-2 px-4 py-4 text-left transition-all duration-200 ${
         selected
-          ? "border-primary bg-white shadow-[0_2px_12px_rgba(229,113,0,0.1)]"
+          ? "border-primary bg-white shadow-[0_2px_12px_rgba(232,114,28,0.1)]"
           : "border-gray-100 bg-white hover:border-gray-200"
       }`}
     >

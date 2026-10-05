@@ -18,7 +18,7 @@ export default function NettsidePage() {
             <Link
               key={p.slug}
               href={`/admin/nettside/${p.slug}`}
-              className="group flex items-center justify-between gap-4 rounded-xl border border-[#ececec] bg-white px-5 py-4 transition-all duration-150 hover:border-[#E57100] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
+              className="group flex items-center justify-between gap-4 rounded-xl border border-[#ececec] bg-white px-5 py-4 transition-all duration-150 hover:border-[#E8721C] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
             >
               <div className="min-w-0">
                 <h3 className="text-[15px] font-semibold tracking-tight text-[#171717]">
@@ -31,7 +31,7 @@ export default function NettsidePage() {
                 </p>
               </div>
               <ChevronRight
-                className="h-4 w-4 text-[#a3a3a3] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-[#E57100]"
+                className="h-4 w-4 text-[#a3a3a3] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-[#E8721C]"
                 strokeWidth={2}
               />
             </Link>
