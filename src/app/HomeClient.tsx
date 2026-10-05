@@ -37,7 +37,7 @@ function TjenesteKort({ t }: { t: (typeof tjenester)[number] }) {
       href={`/tjenester/${t.slug}`}
       className="service-card group relative flex flex-col items-center rounded-[16px] bg-white px-6 py-8 text-center"
     >
-      <Icon size={48} strokeWidth={1.2} className="text-primary" />
+      <Icon size={48} strokeWidth={1.2} className="text-brand" />
 
       <h3 className="mt-4 text-[16px] font-semibold tracking-tight text-text">{t.name}</h3>
       <p className="mt-1.5 text-[13px] font-medium text-primary">{t.pris}</p>
@@ -99,7 +99,7 @@ function Kundeanmeldelser() {
               className="group relative rounded-2xl bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)]"
             >
               {/* Large decorative quote mark */}
-              <span aria-hidden="true" className="absolute top-4 right-5 text-[4rem] leading-none font-serif text-primary/[0.06] select-none transition-all duration-500 group-hover:text-primary/[0.12]">
+              <span aria-hidden="true" className="absolute top-4 right-5 text-[4rem] leading-none font-serif text-brand/[0.06] select-none transition-all duration-500 group-hover:text-brand/[0.12]">
                 &rdquo;
               </span>
 
@@ -206,7 +206,7 @@ function SlikFungererDet() {
                 {/* Decorative blob behind */}
                 <div
                   className="absolute -top-2 -left-2 h-[120px] w-[120px] rounded-full sm:-top-[10px] sm:-left-[10px] sm:h-[160px] sm:w-[160px]"
-                  style={{ background: "radial-gradient(circle, rgba(232,114,28,0.06) 0%, transparent 70%)" }}
+                  style={{ background: "radial-gradient(circle, rgba(229,113,0,0.06) 0%, transparent 70%)" }}
                 />
                 <Image
                   src={steg.bilde}
@@ -457,7 +457,7 @@ function FAQ() {
               onClick={() => handleClick(i)}
               className={`flex min-h-[48px] items-center rounded-full border bg-white px-5 py-3 text-[15px] sm:text-[14px] font-medium transition-all duration-200 ${
                 active === i
-                  ? "border-primary text-primary shadow-[0_2px_12px_rgba(232,114,28,0.1)]"
+                  ? "border-primary text-primary shadow-[0_2px_12px_rgba(229,113,0,0.1)]"
                   : "border-gray-200 text-text-secondary hover:border-primary/40 hover:text-text"
               }`}
             >
@@ -490,7 +490,7 @@ function FAQ() {
 
         {/* Lead Capture — shown after 2 unique clicks */}
         {showLead && (
-          <div className="faq-lead-enter mt-10 rounded-2xl bg-[#FFF8F3] p-6 shadow-[0_4px_24px_rgba(232,114,28,0.06)] sm:p-8">
+          <div className="faq-lead-enter mt-10 rounded-2xl bg-[#FFF8F3] p-6 shadow-[0_4px_24px_rgba(229,113,0,0.06)] sm:p-8">
             {!leadSent ? (
               <>
                 <p className="text-[16px] font-semibold tracking-tight text-text">
@@ -745,7 +745,7 @@ function HeroTypewriter() {
           className="inline-block w-[2px] align-middle"
           style={{
             height: "0.7em",
-            background: "#E8721C",
+            background: "#E57100",
             marginLeft: "3px",
             marginBottom: "0.05em",
             animation: "blink 0.8s step-end infinite",
@@ -802,7 +802,7 @@ function FirmabilShowcase() {
         aria-hidden="true"
         className="pointer-events-none absolute -top-20 left-1/2 h-[400px] w-[600px] -translate-x-1/2 rounded-full opacity-40 blur-3xl transition-transform duration-[800ms] ease-out"
         style={{
-          background: "radial-gradient(circle, rgba(232,114,28,0.18), transparent 70%)",
+          background: "radial-gradient(circle, rgba(229,113,0,0.18), transparent 70%)",
           transform: `translate(${(tilt.mx - 50) * 0.4}px, ${(tilt.my - 50) * 0.2}px) translateX(-50%)`,
         }}
       />
@@ -812,7 +812,7 @@ function FirmabilShowcase() {
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="showcase-shimmer group relative aspect-[16/7] w-full overflow-hidden rounded-[20px] bg-[#f5f0ea] shadow-[0_20px_60px_-20px_rgba(232,114,28,0.25),0_4px_12px_rgba(0,0,0,0.05)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-300 ease-out will-change-transform hover:shadow-[0_30px_80px_-20px_rgba(232,114,28,0.35),0_8px_20px_rgba(0,0,0,0.08)] md:aspect-[21/8] md:rounded-[28px] lg:aspect-[21/7.5] lg:rounded-[32px]"
+          className="showcase-shimmer group relative aspect-[16/7] w-full overflow-hidden rounded-[20px] bg-[#f5f0ea] shadow-[0_20px_60px_-20px_rgba(229,113,0,0.25),0_4px_12px_rgba(0,0,0,0.05)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-300 ease-out will-change-transform hover:shadow-[0_30px_80px_-20px_rgba(229,113,0,0.35),0_8px_20px_rgba(0,0,0,0.08)] md:aspect-[21/8] md:rounded-[28px] lg:aspect-[21/7.5] lg:rounded-[32px]"
           style={{
             transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
             transformStyle: "preserve-3d",
@@ -852,7 +852,7 @@ function FirmabilShowcase() {
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(135deg, rgba(232,114,28,0.05) 0%, transparent 35%, transparent 70%, rgba(232,114,28,0.10) 100%)",
+                "linear-gradient(135deg, rgba(229,113,0,0.05) 0%, transparent 35%, transparent 70%, rgba(229,113,0,0.10) 100%)",
             }}
           />
 
@@ -967,9 +967,9 @@ function HjemInner() {
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <svg viewBox="0 0 300 300" fill="none" className="absolute -top-10 -right-16 w-[320px] opacity-40">
             <defs><filter id="wb1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="18"/></filter></defs>
-            <ellipse cx="150" cy="130" rx="110" ry="90" fill="#E8721C" opacity="0.25" filter="url(#wb1)"/>
+            <ellipse cx="150" cy="130" rx="110" ry="90" fill="#E57100" opacity="0.25" filter="url(#wb1)"/>
             <ellipse cx="170" cy="170" rx="90" ry="75" fill="#F4A261" opacity="0.2" filter="url(#wb1)"/>
-            <ellipse cx="130" cy="150" rx="70" ry="60" fill="#E8721C" opacity="0.15" filter="url(#wb1)"/>
+            <ellipse cx="130" cy="150" rx="70" ry="60" fill="#E57100" opacity="0.15" filter="url(#wb1)"/>
           </svg>
           <svg viewBox="0 0 250 250" fill="none" className="absolute -bottom-12 -left-12 w-[280px] opacity-30">
             <defs><filter id="wb2a" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="20"/></filter></defs>
@@ -1002,7 +1002,7 @@ function HjemInner() {
             <h1>
               <HeroTypewriter />
               {/* tagline — serif italic orange */}
-              <span className="block font-serif italic text-[clamp(2rem,8vw,2.5rem)] leading-[1.05] tracking-[-0.02em] text-primary md:text-[clamp(2.25rem,8vw,5rem)]">
+              <span className="block font-serif italic text-[clamp(2rem,8vw,2.5rem)] leading-[1.05] tracking-[-0.02em] text-brand md:text-[clamp(2.25rem,8vw,5rem)]">
                 {heroTagline}
               </span>
             </h1>

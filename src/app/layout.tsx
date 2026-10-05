@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#E8721C",
+  themeColor: "#E57100",
 };
 
 export default async function RootLayout({
@@ -94,8 +94,8 @@ export default async function RootLayout({
         <GoogleAnalytics />
         <Analytics />
         <Script id="easter-egg" strategy="afterInteractive">{`
-          console.log('%c\\u{1f9f9} Færder Multiservice','font-size:16px;font-weight:bold;color:#E8721C');
-          console.log('%c\\u{1f4bc} Utvikler? Vi leter alltid etter flinke folk \\u2192 faerdermultiservice.no/jobb','font-size:12px;color:#E8721C');
+          console.log('%c\\u{1f9f9} Færder Multiservice','font-size:16px;font-weight:bold;color:#E57100');
+          console.log('%c\\u{1f4bc} Utvikler? Vi leter alltid etter flinke folk \\u2192 faerdermultiservice.no/jobb','font-size:12px;color:#E57100');
         `}</Script>
       </body>
     </html>

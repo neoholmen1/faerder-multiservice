@@ -32,7 +32,7 @@ export default function TjenesterListPage() {
       <div className="flex-1 overflow-y-auto bg-[#fafaf9] px-8 py-7">
         {services === null ? (
           <div className="flex h-40 items-center justify-center">
-            <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E8721C] border-t-transparent" />
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E57100] border-t-transparent" />
           </div>
         ) : services.length === 0 ? (
           <div className="rounded-xl border border-dashed border-[#d4d4d4] bg-white p-8 text-center">
@@ -46,7 +46,7 @@ export default function TjenesterListPage() {
               <Link
                 key={s.slug}
                 href={`/admin/tjenester/${s.slug}`}
-                className="group flex items-center gap-4 rounded-xl border border-[#ececec] bg-white p-4 transition-all duration-150 hover:border-[#E8721C] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
+                className="group flex items-center gap-4 rounded-xl border border-[#ececec] bg-white p-4 transition-all duration-150 hover:border-[#E57100] hover:shadow-[0_4px_12px_rgba(0,0,0,0.04)]"
               >
                 {s.image_url ? (
                   <div className="relative h-14 w-20 shrink-0 overflow-hidden rounded-lg bg-[#fafaf9]">
@@ -69,10 +69,10 @@ export default function TjenesterListPage() {
                   <p className="mt-0.5 truncate text-[12.5px] text-[#737373]">
                     {s.short_description}
                   </p>
-                  <p className="mt-0.5 text-[12.5px] font-medium text-[#E8721C]">{s.price_label}</p>
+                  <p className="mt-0.5 text-[12.5px] font-medium text-[#E57100]">{s.price_label}</p>
                 </div>
                 <ChevronRight
-                  className="h-4 w-4 shrink-0 text-[#a3a3a3] transition-transform group-hover:translate-x-0.5 group-hover:text-[#E8721C]"
+                  className="h-4 w-4 shrink-0 text-[#a3a3a3] transition-transform group-hover:translate-x-0.5 group-hover:text-[#E57100]"
                   strokeWidth={2}
                 />
               </Link>

@@ -21,7 +21,7 @@ export function Field({
 }
 
 export const inputClass =
-  "h-10 w-full rounded-lg border border-[#ececec] bg-white px-3 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E8721C] focus:ring-2 focus:ring-[#E8721C]/10";
+  "h-10 w-full rounded-lg border border-[#ececec] bg-white px-3 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E57100] focus:ring-2 focus:ring-[#E57100]/10";
 
 export const textareaClass =
-  "min-h-[100px] w-full rounded-lg border border-[#ececec] bg-white px-3 py-2 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E8721C] focus:ring-2 focus:ring-[#E8721C]/10";
+  "min-h-[100px] w-full rounded-lg border border-[#ececec] bg-white px-3 py-2 text-[14px] text-[#171717] outline-none transition-colors focus:border-[#E57100] focus:ring-2 focus:ring-[#E57100]/10";
