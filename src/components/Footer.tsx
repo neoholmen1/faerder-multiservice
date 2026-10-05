@@ -51,7 +51,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null } = {}) {
               width={160}
               height={50}
               quality={90}
-              className="h-12 w-auto object-contain"
+              className="footer-logo h-12 w-auto object-contain"
             />
             <p className="mt-4 text-[15px] leading-[1.7] text-text-secondary">
               Vi vasker for folk og bedrifter i Vestfold.
